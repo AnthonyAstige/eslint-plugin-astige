@@ -1,0 +1,19 @@
+{
+  "name": "eslint-plugin-astige",
+  "version": "0.0.1",
+  "description": "Anthony Astige's eslint base with custom rules",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnthonyAstige/eslint-plugin-astige.git"
+  },
+  "author": "Anthony Astige",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnthonyAstige/eslint-plugin-astige/issues"
+  },
+  "homepage": "https://github.com/AnthonyAstige/eslint-plugin-astige#readme"
+}
