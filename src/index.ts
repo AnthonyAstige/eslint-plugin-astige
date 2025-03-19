@@ -18,7 +18,7 @@ const SEVERITY = {
 
 const PLUGIN_NAME = "astige";
 
-export const recommended = {
+const recommended = {
   rules: {
     [`${PLUGIN_NAME}/fta-complexity-could-be-better`]: [
       SEVERITY.WARN,
