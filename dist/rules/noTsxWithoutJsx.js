@@ -41,3 +41,4 @@ exports.noTsxWithoutJsx = {
         };
     },
 };
+//# sourceMappingURL=noTsxWithoutJsx.js.map

@@ -1,6 +1,7 @@
 {
   "name": "eslint-plugin-astige",
   "version": "0.0.3",
+  "type": "commonjs",
   "description": "Anthony Astige's eslint base with custom rules",
   "main": "dist/index.js",
   "directories": {
@@ -25,6 +26,7 @@
     "@types/node": "^22.13.10",
     "@types/react": "^19.0.10",
     "@typescript-eslint/parser": "^8.26.1",
+    "@typescript-eslint/rule-tester": "^8.26.1",
     "@typescript-eslint/utils": "^8.26.1",
     "eslint": "^9.22.0",
     "react": "^19.0.0",
@@ -42,5 +44,13 @@
   },
   "dependencies": {
     "gpt-tokenizer": "^2.9.0"
-  }
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
 }
