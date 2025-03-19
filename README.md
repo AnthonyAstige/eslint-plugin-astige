@@ -8,7 +8,7 @@ You can take the whole things or just some of the custom rules.
 
 This extremely opinionated preset is designed with these key principles in mind:
 
-1. **One Right Way**: The config is intentionally strict and opinionated to encourage consistency across all projects. There should be minimal ambiguity about how code should be written. This is still JavaScript / TypeScript though, so there will be a fair amount of inherent flexibility.
+1. **One Right Way**: The config is intentionally strict and opinionated to encourage consistency across all my projects. There should be minimal ambiguity about how code should be written. This is still JavaScript / TypeScript though, so there will be a fair amount of inherent flexibility.
 
 2. **LLM-Friendly Code**: The rules are optimized for code that is easily processed and understood by large language models (LLMs). This includes:
 
@@ -28,6 +28,7 @@ This extremely opinionated preset is designed with these key principles in mind:
       3. [tRPC](https://trpc.io/) (+[Zod](https://zod.dev/))
    2. [Canonical ESLint Config](https://github.com/gajus/eslint-config-canonical)
    3. [Aider](https://aider.chat/)
+   4. [dprint](https://dprint.dev/) - Fast rust based formatting to minimize that done by ESLint. dprint config included since there's ESLint rule overlap and dprint should take priority for speed where it can.
 
 5. Speed - Any included rules should be relatively fast so that they can be run fast across entire codebases with 100's of files in seconds and also on individual files within milliseconds for complete analysis and editor integration.
 
