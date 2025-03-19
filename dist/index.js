@@ -7,4 +7,5 @@ exports.rules = {
     "no-tsx-without-jsx": noTsxWithoutJsx_1.noTsxWithoutJsx,
     "max-tokens-per-file": maxTokensPerFile_1.maxTokensPerFile,
 };
-// TODO: Add recommended config
+// TODO: Add recommended config and use it in my repository instead of configing there
+// TODO: * Pull in all my config from repository and document it well in here
