@@ -1,10 +1,38 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.rules = void 0;
+exports.configs = exports.rules = exports.recommended = void 0;
 const ftaComplexity_1 = require("./rules/ftaComplexity");
 const maxTokensPerFile_1 = require("./rules/maxTokensPerFile");
 const noImportAs_1 = require("./rules/noImportAs");
 const noTsxWithoutJsx_1 = require("./rules/noTsxWithoutJsx");
+const SEVERITY = {
+    OFF: 0,
+    WARN: 1,
+    ERROR: 2,
+};
+const PLUGIN_NAME = "astige";
+exports.recommended = {
+    rules: {
+        [`${PLUGIN_NAME}/fta-complexity-could-be-better`]: [
+            SEVERITY.WARN,
+            { "when-above": 55, "when-at-or-under": 75 },
+        ],
+        [`${PLUGIN_NAME}/fta-complexity-needs-improvement`]: [
+            SEVERITY.ERROR,
+            { "when-above": 75 },
+        ],
+        [`${PLUGIN_NAME}/max-tokens-per-file`]: [
+            SEVERITY.WARN,
+            {
+                js: 2000,
+                ts: 2000,
+                tsx: 2000,
+            },
+        ],
+        [`${PLUGIN_NAME}/no-import-as`]: SEVERITY.ERROR,
+        [`${PLUGIN_NAME}/no-tsx-without-jsx`]: SEVERITY.ERROR,
+    },
+};
 exports.rules = {
     "no-tsx-without-jsx": noTsxWithoutJsx_1.noTsxWithoutJsx,
     "no-import-as": noImportAs_1.noImportAs,
@@ -19,4 +47,7 @@ exports.rules = {
 // TODO: Add recommended config and use it in my repository instead of configing there
 // TODO: * Pull in all my config from repository and document it well in here
 // TODO: Self-apply my full eslint system to this repository
+exports.configs = {
+    recommended: exports.recommended,
+};
 //# sourceMappingURL=index.js.map

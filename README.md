@@ -56,7 +56,7 @@ export default [
       // Optionally: Take all the preset recommended rule config
       ...astige.configs.recommended.rules,
       // Optionally: Take or override specific rules
-      "astige/no-tsx-without-jsx": "error",
+      "astige/no-tsx-without-jsx": "warn",
     },
   },
 ];
