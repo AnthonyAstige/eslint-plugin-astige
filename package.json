@@ -43,6 +43,7 @@
     }
   },
   "dependencies": {
+    "fta-cli": "^2.0.1",
     "gpt-tokenizer": "^2.9.0"
   },
   "engines": {

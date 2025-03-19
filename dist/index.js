@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.rules = void 0;
+const ftaComplexity_1 = require("./rules/ftaComplexity");
 const maxTokensPerFile_1 = require("./rules/maxTokensPerFile");
 const noImportAs_1 = require("./rules/noImportAs");
 const noTsxWithoutJsx_1 = require("./rules/noTsxWithoutJsx");
@@ -8,6 +9,8 @@ exports.rules = {
     "no-tsx-without-jsx": noTsxWithoutJsx_1.noTsxWithoutJsx,
     "no-import-as": noImportAs_1.noImportAs,
     "max-tokens-per-file": maxTokensPerFile_1.maxTokensPerFile,
+    "fta-complexity-could-be-better": ftaComplexity_1.ftaComplexityCouldBeBetter,
+    "fta-complexity-needs-improvement": ftaComplexity_1.ftaComplexityNeedsImprovement,
 };
 // TODO: Pull in other eslint repositories I've made into here
 // TODO: * Updating their READMEs to point here, depublishing on NPM (is that good to do?), etc

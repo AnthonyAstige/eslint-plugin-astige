@@ -1,3 +1,4 @@
+import { ftaComplexityCouldBeBetter, ftaComplexityNeedsImprovement } from "./rules/ftaComplexity";
 import { maxTokensPerFile } from "./rules/maxTokensPerFile";
 import { noImportAs } from "./rules/noImportAs";
 import { noTsxWithoutJsx } from "./rules/noTsxWithoutJsx";
@@ -6,6 +7,8 @@ export const rules = {
   "no-tsx-without-jsx": noTsxWithoutJsx,
   "no-import-as": noImportAs,
   "max-tokens-per-file": maxTokensPerFile,
+  "fta-complexity-could-be-better": ftaComplexityCouldBeBetter,
+  "fta-complexity-needs-improvement": ftaComplexityNeedsImprovement,
 };
 // TODO: Pull in other eslint repositories I've made into here
 // TODO: * Updating their READMEs to point here, depublishing on NPM (is that good to do?), etc
