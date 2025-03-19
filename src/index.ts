@@ -28,8 +28,8 @@ const rules = {
 
 type PrefixedRuleName = `${typeof PLUGIN_NAME}/${keyof typeof rules}`;
 
-type Ruler = { [K in PrefixedRuleName]: SharedConfig.RuleEntry };
-const recommended: { rules: Ruler } = {
+type RuleEntryObject = { [K in PrefixedRuleName]: SharedConfig.RuleEntry };
+const recommended: { rules: RuleEntryObject } = {
   rules: {
     "astige/fta-complexity-could-be-better": [
       SEVERITY.WARN,
@@ -51,9 +51,9 @@ const recommended: { rules: Ruler } = {
     "astige/no-tsx-without-jsx": SEVERITY.ERROR,
   },
 } as const;
+
 const configs = {
   recommended,
 };
-
 
 export { configs, rules };
