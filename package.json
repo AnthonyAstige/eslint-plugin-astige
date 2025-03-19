@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-astige",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "commonjs",
   "description": "Anthony Astige's eslint base with custom rules",
   "main": "dist/index.js",
