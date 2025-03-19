@@ -1,6 +1,6 @@
 import { ESLintUtils, TSESTree } from "@typescript-eslint/utils";
-import { RuleWithMetaAndName } from "@typescript-eslint/utils/dist/eslint-utils/RuleCreator";
-import { RuleContext } from "@typescript-eslint/utils/dist/ts-eslint/Rule";
+import { RuleWithMetaAndName } from "@typescript-eslint/utils/eslint-utils";
+import type { RuleContext } from "@typescript-eslint/utils/ts-eslint";
 
 type ComplexityRule = Omit<
   RuleWithMetaAndName<Options, MessageIds>,

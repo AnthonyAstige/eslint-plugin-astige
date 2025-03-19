@@ -12,8 +12,9 @@ const config: FlatConfig.Config[] = [
       astige,
     },
     rules: {
-      "astige/no-tsx-without-jsx": "error",
-      "astige/no-import-as": "error",
+      "astige/no-import-as": astige.configs.recommended.rules["astige/no-import-as"],
+      "astige/no-tsx-without-jsx": astige.configs.recommended.rules["astige/no-tsx-without-jsx"],
+      "astige/max-tokens-per-file": astige.configs.recommended.rules["astige/max-tokens-per-file"],
     },
   },
 ];

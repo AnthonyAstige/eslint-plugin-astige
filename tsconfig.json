@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2019",
-    "module": "CommonJS",
+    "module": "Node16",
     "lib": ["ES2019"],
     "declaration": true,
     "outDir": "./dist",
@@ -15,7 +15,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "rootDir": "./src",
     "sourceMap": true,
     "resolveJsonModule": true

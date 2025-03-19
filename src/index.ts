@@ -4,6 +4,7 @@
 // TODO: Add recommended config and use it in my repository instead of configing there
 // TODO: * Pull in all my config from repository and document it well in here
 // TODO: Self-apply my full eslint system to this repository
+import type { SharedConfig } from "@typescript-eslint/utils/ts-eslint";
 import { ftaComplexityCouldBeBetter, ftaComplexityNeedsImprovement } from "./rules/ftaComplexity/ftaComplexity";
 import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile";
 import { noImportAs } from "./rules/noImportAs/noImportAs";
@@ -17,32 +18,6 @@ const SEVERITY = {
 
 const PLUGIN_NAME = "astige";
 
-const recommended = {
-  rules: {
-    [`${PLUGIN_NAME}/fta-complexity-could-be-better`]: [
-      SEVERITY.WARN,
-      { "when-above": 55, "when-at-or-under": 75 },
-    ],
-    [`${PLUGIN_NAME}/fta-complexity-needs-improvement`]: [
-      SEVERITY.ERROR,
-      { "when-above": 75 },
-    ],
-    [`${PLUGIN_NAME}/max-tokens-per-file`]: [
-      SEVERITY.WARN,
-      {
-        js: 2_000,
-        ts: 2_000,
-        tsx: 2_000,
-      },
-    ],
-    [`${PLUGIN_NAME}/no-import-as`]: SEVERITY.ERROR,
-    [`${PLUGIN_NAME}/no-tsx-without-jsx`]: SEVERITY.ERROR,
-  },
-};
-const configs = {
-  recommended,
-};
-
 const rules = {
   "no-tsx-without-jsx": noTsxWithoutJsx,
   "no-import-as": noImportAs,
@@ -50,5 +25,36 @@ const rules = {
   "fta-complexity-could-be-better": ftaComplexityCouldBeBetter,
   "fta-complexity-needs-improvement": ftaComplexityNeedsImprovement,
 };
+
+type PrefixedRuleName = `${typeof PLUGIN_NAME}/${keyof typeof rules}`;
+
+type Ruler = { [K in PrefixedRuleName]: SharedConfig.RuleEntry };
+const rulesRecon: Ruler = {
+  "astige/fta-complexity-could-be-better": [
+    SEVERITY.WARN,
+    { "when-above": 55, "when-at-or-under": 75 },
+  ] as const,
+  "astige/fta-complexity-needs-improvement": [
+    SEVERITY.ERROR,
+    { "when-above": 75 },
+  ] as const,
+  "astige/max-tokens-per-file": [
+    SEVERITY.WARN,
+    {
+      js: 2_000,
+      ts: 2_000,
+      tsx: 2_000,
+    },
+  ] as const,
+  "astige/no-import-as": SEVERITY.ERROR,
+  "astige/no-tsx-without-jsx": SEVERITY.ERROR,
+} as const;
+const recommended = {
+  ['rules']: rulesRecon,
+} as const;
+const configs = {
+  recommended,
+};
+
 
 export { configs, rules };
