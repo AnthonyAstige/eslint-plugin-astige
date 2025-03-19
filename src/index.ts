@@ -4,7 +4,7 @@
 // TODO: Add recommended config and use it in my repository instead of configing there
 // TODO: * Pull in all my config from repository and document it well in here
 // TODO: Self-apply my full eslint system to this repository
-import type { SharedConfig } from "@typescript-eslint/utils/ts-eslint";
+import type { FlatConfig, Linter, SharedConfig } from "@typescript-eslint/utils/ts-eslint";
 import { ftaComplexityCouldBeBetter, ftaComplexityNeedsImprovement } from "./rules/ftaComplexity/ftaComplexity";
 import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile";
 import { noImportAs } from "./rules/noImportAs/noImportAs";
@@ -18,42 +18,53 @@ const SEVERITY = {
 
 const PLUGIN_NAME = "astige";
 
-const rules = {
+const javascriptRules = {
   "no-tsx-without-jsx": noTsxWithoutJsx,
   "no-import-as": noImportAs,
   "max-tokens-per-file": maxTokensPerFile,
   "fta-complexity-could-be-better": ftaComplexityCouldBeBetter,
   "fta-complexity-needs-improvement": ftaComplexityNeedsImprovement,
 };
+type PrefixedJavaScriptRuleName = `${typeof PLUGIN_NAME}/${keyof typeof javascriptRules}`;
+const javascriptRuleConfigs: RuleEntryObject = {
+  "astige/fta-complexity-could-be-better": [
+    SEVERITY.WARN,
+    { "when-above": 55, "when-at-or-under": 75 },
+  ] as const,
+  "astige/fta-complexity-needs-improvement": [
+    SEVERITY.ERROR,
+    { "when-above": 75 },
+  ] as const,
+  "astige/max-tokens-per-file": [
+    SEVERITY.WARN,
+    {
+      js: 2_000,
+      ts: 2_000,
+      tsx: 2_000,
+    },
+  ] as const,
+  "astige/no-import-as": SEVERITY.ERROR,
+  "astige/no-tsx-without-jsx": SEVERITY.ERROR,
+};
 
-type PrefixedRuleName = `${typeof PLUGIN_NAME}/${keyof typeof rules}`;
-
-type RuleEntryObject = { [K in PrefixedRuleName]: SharedConfig.RuleEntry };
-const recommended: { rules: RuleEntryObject } = {
-  rules: {
-    "astige/fta-complexity-could-be-better": [
-      SEVERITY.WARN,
-      { "when-above": 55, "when-at-or-under": 75 },
-    ] as const,
-    "astige/fta-complexity-needs-improvement": [
-      SEVERITY.ERROR,
-      { "when-above": 75 },
-    ] as const,
-    "astige/max-tokens-per-file": [
-      SEVERITY.WARN,
-      {
-        js: 2_000,
-        ts: 2_000,
-        tsx: 2_000,
-      },
-    ] as const,
-    "astige/no-import-as": SEVERITY.ERROR,
-    "astige/no-tsx-without-jsx": SEVERITY.ERROR,
-  },
+// TODO: Put rule types in here somehow from the actual rules so we config them right?
+type RuleEntryObject = { [K in PrefixedJavaScriptRuleName]: SharedConfig.RuleEntry };
+const recommended: {
+  files: FlatConfig.Config["files"];
+  plugins: { "astige": FlatConfig.Plugin };
+  rules: RuleEntryObject;
+} = {
+  files: ["**/*.{js,ts,jsx,tsx}"],
+  plugins: { "astige": { rules: javascriptRules } },
+  rules: javascriptRuleConfigs,
 } as const;
 
 const configs = {
   recommended,
 };
 
-export { configs, rules };
+const auto: FlatConfig.Config[] = [
+  recommended,
+];
+
+export { auto, configs, javascriptRules as rules };

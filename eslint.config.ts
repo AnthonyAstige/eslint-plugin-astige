@@ -4,7 +4,7 @@ import astige from "./dist/index.js";
 
 const config: FlatConfig.Config[] = [
   {
-    files: ["src/**/*.{ts,tsx}"],
+    files: ["src/**/*.*"],
     languageOptions: {
       parser: typescriptParser,
     },
