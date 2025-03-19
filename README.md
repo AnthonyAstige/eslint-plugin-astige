@@ -16,7 +16,7 @@ This extremely opinionated preset is designed with these key principles in mind:
    - Minimal use of complex or ambiguous syntax
    - Consistent formatting and structure
    - Modular and concise for context window management
-   - Common code patterns for ease of parsing, extension, and keeping to the patterns
+   - Consistent, predictable code patterns that are easy to parse, simple to extend, and clear in intent
 
 3. **TypeScript Best Practices**: Embrace TypeScript's type system and idioms fully, following TypeScript conventions and best practices wherever practical.
 
