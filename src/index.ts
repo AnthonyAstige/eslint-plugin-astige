@@ -16,26 +16,23 @@ const SEVERITY = {
   ERROR: 2,
 } as const;
 
-const PLUGIN_NAME = "astige";
+const PLUGIN_NAME_JAVASCRIPT = "astige-javascript";
+const PLUGIN_NAME_EVERY = "astige-every";
 
+const everyRules = {
+  "max-tokens-per-file": maxTokensPerFile,
+};
 const javascriptRules = {
   "no-tsx-without-jsx": noTsxWithoutJsx,
   "no-import-as": noImportAs,
-  "max-tokens-per-file": maxTokensPerFile,
   "fta-complexity-could-be-better": ftaComplexityCouldBeBetter,
   "fta-complexity-needs-improvement": ftaComplexityNeedsImprovement,
 };
-type PrefixedJavaScriptRuleName = `${typeof PLUGIN_NAME}/${keyof typeof javascriptRules}`;
-const javascriptRuleConfigs: RuleEntryObject = {
-  "astige/fta-complexity-could-be-better": [
-    SEVERITY.WARN,
-    { "when-above": 55, "when-at-or-under": 75 },
-  ] as const,
-  "astige/fta-complexity-needs-improvement": [
-    SEVERITY.ERROR,
-    { "when-above": 75 },
-  ] as const,
-  "astige/max-tokens-per-file": [
+type PrefixedJavascriptRuleName = `${typeof PLUGIN_NAME_JAVASCRIPT}/${keyof typeof javascriptRules}`;
+type PrefixedEveryRuleName = `${typeof PLUGIN_NAME_EVERY}/${keyof typeof everyRules}`;
+type EveryRuleEntryObject = { [K in PrefixedEveryRuleName]: SharedConfig.RuleEntry };
+const everyRuleConfigs: EveryRuleEntryObject = {
+  "astige-every/max-tokens-per-file": [
     SEVERITY.WARN,
     {
       js: 2_000,
@@ -43,28 +40,50 @@ const javascriptRuleConfigs: RuleEntryObject = {
       tsx: 2_000,
     },
   ] as const,
-  "astige/no-import-as": SEVERITY.ERROR,
-  "astige/no-tsx-without-jsx": SEVERITY.ERROR,
+};
+const javascriptRuleConfigs: JavascriptRuleEntryObject = {
+  "astige-javascript/fta-complexity-could-be-better": [
+    SEVERITY.WARN,
+    { "when-above": 55, "when-at-or-under": 75 },
+  ] as const,
+  "astige-javascript/fta-complexity-needs-improvement": [
+    SEVERITY.ERROR,
+    { "when-above": 75 },
+  ] as const,
+  "astige-javascript/no-import-as": SEVERITY.ERROR,
+  "astige-javascript/no-tsx-without-jsx": SEVERITY.ERROR,
 };
 
 // TODO: Put rule types in here somehow from the actual rules so we config them right?
-type RuleEntryObject = { [K in PrefixedJavaScriptRuleName]: SharedConfig.RuleEntry };
-const recommended: {
+type JavascriptRuleEntryObject = { [K in PrefixedJavascriptRuleName]: SharedConfig.RuleEntry };
+const javascriptConfig: {
   files: FlatConfig.Config["files"];
-  plugins: { "astige": FlatConfig.Plugin };
-  rules: RuleEntryObject;
+  plugins: { [PLUGIN_NAME_JAVASCRIPT]: FlatConfig.Plugin };
+  rules: JavascriptRuleEntryObject;
 } = {
   files: ["**/*.{js,ts,jsx,tsx}"],
-  plugins: { "astige": { rules: javascriptRules } },
+  plugins: { [PLUGIN_NAME_JAVASCRIPT]: { rules: javascriptRules } },
   rules: javascriptRuleConfigs,
+} as const;
+const everyConfig: {
+  files: FlatConfig.Config["files"];
+  plugins: { [PLUGIN_NAME_EVERY]: FlatConfig.Plugin };
+  rules: EveryRuleEntryObject;
+} = {
+  files: ["**/*.{js,ts,jsx,tsx}"],
+  plugins: { [PLUGIN_NAME_EVERY]: { rules: everyRules } },
+  rules: everyRuleConfigs,
 } as const;
 
 const configs = {
-  recommended,
+  recommended: javascriptConfig,
+  every: everyConfig,
 };
 
 const auto: FlatConfig.Config[] = [
-  recommended,
+  javascriptConfig,
+  everyConfig,
 ];
 
-export { auto, configs, javascriptRules as rules };
+const allTheRules = { ...javascriptRules, ...everyRules };
+export { allTheRules as rules, auto, configs };
