@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.maxTokensPerFile = void 0;
+const gpt_4o_1 = require("gpt-tokenizer/cjs/model/gpt-4o");
 exports.maxTokensPerFile = {
     defaultOptions: [{}],
     meta: {
@@ -31,8 +32,8 @@ exports.maxTokensPerFile = {
         return {
             Program(node) {
                 const sourceText = sourceCode.getText(node);
-                const encodedTokens = 20; // encode(sourceText);
-                const tokenCount = 25; // encodedTokens.length;
+                const encodedTokens = (0, gpt_4o_1.encode)(sourceText);
+                const tokenCount = encodedTokens.length;
                 if (tokenCount > maxTokens) {
                     context.report({
                         data: {

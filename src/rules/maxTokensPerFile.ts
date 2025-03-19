@@ -1,5 +1,5 @@
 import { TSESLint } from "@typescript-eslint/utils";
-// import { encode } from "gpt-tokenizer/esm/model/gpt-4o";
+import { encode } from "gpt-tokenizer/cjs/model/gpt-4o";
 
 type MaxTokensConfig = {
   [key: string]: number;
@@ -40,8 +40,8 @@ export const maxTokensPerFile: TSESLint.RuleModule<"maxTokens", [MaxTokensConfig
     return {
       Program(node) {
         const sourceText = sourceCode.getText(node);
-        const encodedTokens = 20; // encode(sourceText);
-        const tokenCount = 25; // encodedTokens.length;
+        const encodedTokens = encode(sourceText);
+        const tokenCount = encodedTokens.length;
 
         if (tokenCount > maxTokens) {
           context.report({
