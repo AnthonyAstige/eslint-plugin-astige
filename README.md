@@ -20,7 +20,9 @@ This extremely opinionated preset is designed with these key principles in mind:
 
 3. **TypeScript Best Practices**: Embrace TypeScript's type system and idioms fully, following TypeScript conventions and best practices wherever practical.
 
-4. **Technology Foundations**: The preset is built around a carefully curated set of core technologies that provide a stable foundation for development. Current primary influences include:
+4. Speed - Any included rules should be relatively fast so that they can be run fast across entire codebases with 100's of files in seconds and also on individual files within milliseconds for complete analysis and editor integration.
+
+5. **Technology Foundations**: The preset is built around a carefully curated set of core technologies that provide a stable foundation for development. Current primary influences include:
 
    1. [T3 stack](https://create.t3.gg/)
       1. [PostgreSQL](https://www.postgresql.org/) via [Prisma](https://www.prisma.io/)
@@ -29,8 +31,6 @@ This extremely opinionated preset is designed with these key principles in mind:
    2. [Canonical ESLint Config](https://github.com/gajus/eslint-config-canonical)
    3. [Aider](https://aider.chat/)
    4. [dprint](https://dprint.dev/) - Fast rust based formatting to minimize that done by ESLint. Dprint config included since there's ESLint rule overlap and dprint should take priority for speed where it can.
-
-5. Speed - Any included rules should be relatively fast so that they can be run fast across entire codebases with 100's of files in seconds and also on individual files within milliseconds for complete analysis and editor integration.
 
 6. **Custom Rules When Necessary**: While I prioritize leveraging existing ESLint rules to maintain consistency and development speed, I'm willing to create custom rules when needed to enforce my guiding principles and address specific needs.
 
