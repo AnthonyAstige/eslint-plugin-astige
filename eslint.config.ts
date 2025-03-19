@@ -1,18 +1,19 @@
 import typescriptParser from "@typescript-eslint/parser";
 import type { FlatConfig } from "@typescript-eslint/utils/ts-eslint";
-import noTsxWithoutJsx from "./dist/index.js";
+import astige from "./dist/index.js";
 
 const config: FlatConfig.Config[] = [
   {
-    files: ["src/**/*.ts", "test/**/*.tsx"],
+    files: ["src/**/*.{ts,tsx}"],
     languageOptions: {
       parser: typescriptParser,
     },
     plugins: {
-      "no-tsx-without-jsx": noTsxWithoutJsx,
+      astige,
     },
     rules: {
-      "no-tsx-without-jsx/no-tsx-without-jsx": "error",
+      "astige/no-tsx-without-jsx": "error",
+      "astige/no-import-as": "error",
     },
   },
 ];
