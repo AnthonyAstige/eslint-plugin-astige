@@ -3,7 +3,12 @@
   "version": "0.0.1",
   "description": "Anthony Astige's eslint base with custom rules",
   "main": "dist/index.js",
+  "directories": {
+    "doc": "docs"
+  },
   "scripts": {
+    "build": "npx tsc",
+    "pub": "npm run build && npm publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +20,25 @@
   "bugs": {
     "url": "https://github.com/AnthonyAstige/eslint-plugin-astige/issues"
   },
-  "homepage": "https://github.com/AnthonyAstige/eslint-plugin-astige#readme"
+  "homepage": "https://github.com/AnthonyAstige/eslint-plugin-astige#readme",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@types/react": "^19.0.10",
+    "@typescript-eslint/parser": "^8.26.1",
+    "@typescript-eslint/utils": "^8.26.1",
+    "eslint": "^9.22.0",
+    "react": "^19.0.0",
+    "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.0.0",
+    "react": ">=16.8.0",
+    "typescript": ">=4.4.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  }
 }
