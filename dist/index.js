@@ -1,10 +1,10 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.rules = void 0;
-const noTsxWithoutJsx_1 = __importDefault(require("./rules/noTsxWithoutJsx"));
+const maxTokensPerFile_1 = require("./rules/maxTokensPerFile");
+const noTsxWithoutJsx_1 = require("./rules/noTsxWithoutJsx");
 exports.rules = {
-    "no-tsx-without-jsx": noTsxWithoutJsx_1.default,
+    "no-tsx-without-jsx": noTsxWithoutJsx_1.noTsxWithoutJsx,
+    "max-tokens-per-file": maxTokensPerFile_1.maxTokensPerFile,
 };
+// TODO: Add recommended config

@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const rule = {
+exports.noTsxWithoutJsx = void 0;
+exports.noTsxWithoutJsx = {
     defaultOptions: [],
     meta: {
         type: "problem",
@@ -40,4 +41,3 @@ const rule = {
         };
     },
 };
-exports.default = rule;

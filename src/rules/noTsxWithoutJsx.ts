@@ -1,6 +1,6 @@
 import { TSESLint } from "@typescript-eslint/utils";
 
-const rule: TSESLint.RuleModule<"noJsxInTsx", []> = {
+export const noTsxWithoutJsx: TSESLint.RuleModule<"noJsxInTsx", []> = {
   defaultOptions: [],
   meta: {
     type: "problem",
@@ -8,8 +8,7 @@ const rule: TSESLint.RuleModule<"noJsxInTsx", []> = {
       description: "Disallow .tsx files without JSX",
     },
     messages: {
-      noJsxInTsx:
-        "This file has a .tsx extension but does not contain any JSX elements.",
+      noJsxInTsx: "This file has a .tsx extension but does not contain any JSX elements.",
     },
     schema: [],
   },
@@ -43,5 +42,3 @@ const rule: TSESLint.RuleModule<"noJsxInTsx", []> = {
     };
   },
 };
-
-export default rule;
