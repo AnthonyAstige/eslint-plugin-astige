@@ -29,28 +29,27 @@ const rules = {
 type PrefixedRuleName = `${typeof PLUGIN_NAME}/${keyof typeof rules}`;
 
 type Ruler = { [K in PrefixedRuleName]: SharedConfig.RuleEntry };
-const rulesRecon: Ruler = {
-  "astige/fta-complexity-could-be-better": [
-    SEVERITY.WARN,
-    { "when-above": 55, "when-at-or-under": 75 },
-  ] as const,
-  "astige/fta-complexity-needs-improvement": [
-    SEVERITY.ERROR,
-    { "when-above": 75 },
-  ] as const,
-  "astige/max-tokens-per-file": [
-    SEVERITY.WARN,
-    {
-      js: 2_000,
-      ts: 2_000,
-      tsx: 2_000,
-    },
-  ] as const,
-  "astige/no-import-as": SEVERITY.ERROR,
-  "astige/no-tsx-without-jsx": SEVERITY.ERROR,
-} as const;
-const recommended = {
-  ['rules']: rulesRecon,
+const recommended: { rules: Ruler } = {
+  rules: {
+    "astige/fta-complexity-could-be-better": [
+      SEVERITY.WARN,
+      { "when-above": 55, "when-at-or-under": 75 },
+    ] as const,
+    "astige/fta-complexity-needs-improvement": [
+      SEVERITY.ERROR,
+      { "when-above": 75 },
+    ] as const,
+    "astige/max-tokens-per-file": [
+      SEVERITY.WARN,
+      {
+        js: 2_000,
+        ts: 2_000,
+        tsx: 2_000,
+      },
+    ] as const,
+    "astige/no-import-as": SEVERITY.ERROR,
+    "astige/no-tsx-without-jsx": SEVERITY.ERROR,
+  },
 } as const;
 const configs = {
   recommended,
