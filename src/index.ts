@@ -40,7 +40,11 @@ const recommended = {
     [`${PLUGIN_NAME}/no-tsx-without-jsx`]: SEVERITY.ERROR,
   },
 };
-export const rules = {
+const configs = {
+  recommended,
+};
+
+const rules = {
   "no-tsx-without-jsx": noTsxWithoutJsx,
   "no-import-as": noImportAs,
   "max-tokens-per-file": maxTokensPerFile,
@@ -48,6 +52,4 @@ export const rules = {
   "fta-complexity-needs-improvement": ftaComplexityNeedsImprovement,
 };
 
-export const configs = {
-  recommended,
-};
+export { configs, rules };
