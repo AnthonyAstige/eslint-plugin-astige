@@ -52,9 +52,10 @@ export default [
       astige,
     },
     rules: {
+      // Optionally: Take all the preset recommended rule config
       ...astige.configs.recommended.rules,
-      // Add custom rule overrides here if needed
-      // "astige/rule-name": "error",
+      // Optionally: Take or override specific rules
+      "astige/no-tsx-without-jsx": "error",
     },
   },
 ];
