@@ -5,10 +5,10 @@
 // TODO: Add recommended config and use it in my repository instead of configing there
 // TODO: * Pull in all my config from repository and document it well in here
 // TODO: Self-apply my full eslint system to this repository
-import { ftaComplexityCouldBeBetter, ftaComplexityNeedsImprovement } from "./rules/ftaComplexity";
-import { maxTokensPerFile } from "./rules/maxTokensPerFile";
-import { noImportAs } from "./rules/noImportAs";
-import { noTsxWithoutJsx } from "./rules/noTsxWithoutJsx";
+import { ftaComplexityCouldBeBetter, ftaComplexityNeedsImprovement } from "./rules/ftaComplexity/ftaComplexity";
+import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile";
+import { noImportAs } from "./rules/noImportAs/noImportAs";
+import { noTsxWithoutJsx } from "./rules/noTsxWithoutJsx/noTsxWithoutJsx";
 
 const SEVERITY = {
   OFF: 0,
