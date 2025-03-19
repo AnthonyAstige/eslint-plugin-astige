@@ -3,6 +3,29 @@ import { maxTokensPerFile } from "./rules/maxTokensPerFile";
 import { noImportAs } from "./rules/noImportAs";
 import { noTsxWithoutJsx } from "./rules/noTsxWithoutJsx";
 
+/*
+ // TODO: Inject these rules form my main repository as the recommended
+    rules: {
+      "astige/fta-complexity-could-be-better": [
+        "warn",
+        { "when-above": 55, "when-at-or-under": 75 },
+      ],
+      "astige/fta-complexity-needs-improvement": [
+        SEVERITY.ERROR,
+        { "when-above": 75 },
+      ],
+      "astige/max-tokens-per-file": [
+        SEVERITY.WARN,
+        {
+          js: 2_000,
+          ts: 2_000,
+          tsx: 2_000,
+        },
+      ],
+      "astige/no-import-as": SEVERITY.ERROR,
+      "astige/no-tsx-without-jsx": SEVERITY.ERROR,
+    },
+*/
 export const rules = {
   "no-tsx-without-jsx": noTsxWithoutJsx,
   "no-import-as": noImportAs,
