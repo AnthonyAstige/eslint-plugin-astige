@@ -18,11 +18,11 @@ const rules = {
 // TODO: * Apply to all rules?
 const PLUGIN_NAME = "astige-javascript";
 type PrefixedRuleName = `${typeof PLUGIN_NAME}/${keyof typeof rules}`;
-type JavascriptRuleEntryObject = {
+type RuleEntryObject = {
   [K in PrefixedRuleName]: SharedConfig.RuleEntry;
 };
 
-const ruleConfigs: JavascriptRuleEntryObject = {
+const ruleConfigs: RuleEntryObject = {
   "astige-javascript/fta-complexity-could-be-better": [
     WARN,
     { "when-above": 55, "when-at-or-under": 75 },
@@ -37,7 +37,7 @@ const ruleConfigs: JavascriptRuleEntryObject = {
 };
 
 export const astigeJavascriptPlugin: FlatConfig.Plugin = { rules: rules };
-export const astigeJavascriptConfig: FlatConfig.Config = {
+export const astigeJavascriptConfig: FlatConfig.Config & { rules: RuleEntryObject } = {
   files: ["**/*.{js,ts,jsx,tsx}"],
   plugins: { [PLUGIN_NAME]: astigeJavascriptPlugin },
   rules: ruleConfigs,
