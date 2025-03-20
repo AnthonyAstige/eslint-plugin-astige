@@ -1,5 +1,6 @@
 import { type FlatConfig, type SharedConfig } from "@typescript-eslint/utils/ts-eslint";
 import { WARN } from "../../severityConstants";
+import { PluginConfig } from "../../sharedTypes";
 import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile";
 
 const rules = {
@@ -7,14 +8,10 @@ const rules = {
 };
 
 const PLUGIN_NAME = "astige-every";
-type PrefixedRuleName = `${typeof PLUGIN_NAME}/${keyof typeof rules}`;
-type RuleEntryObject = {
-  [K in PrefixedRuleName]: SharedConfig.RuleEntry;
-};
 
 export const astigeEveryPlugin: FlatConfig.Plugin = { rules: rules };
 // TODO: Setup no-op parser and make work in this config
-export const astigeEveryConfig: FlatConfig.Config & { rules: RuleEntryObject } = {
+export const astigeEveryConfig: PluginConfig<typeof PLUGIN_NAME, typeof rules> = {
   files: ["**/*.{js,ts,jsx,tsx}"],
   plugins: { [PLUGIN_NAME]: astigeEveryPlugin },
   rules: {

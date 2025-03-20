@@ -1,5 +1,6 @@
 import { type FlatConfig, type SharedConfig } from "@typescript-eslint/utils/ts-eslint";
 import { ERROR, WARN } from "../../severityConstants";
+import { PluginConfig } from "../../sharedTypes";
 import { ftaComplexityCouldBeBetter, ftaComplexityNeedsImprovement } from "./rules/ftaComplexity/ftaComplexity";
 import { noExportAs } from "./rules/noExportAs/noExportAs";
 import { noImportAs } from "./rules/noImportAs/noImportAs";
@@ -17,13 +18,9 @@ const rules = {
 // TODO: Put rule types in here somehow from the actual rules so we config them right?
 // TODO: * Apply to all rules?
 const PLUGIN_NAME = "astige-javascript";
-type PrefixedRuleName = `${typeof PLUGIN_NAME}/${keyof typeof rules}`;
-type RuleEntryObject = {
-  [K in PrefixedRuleName]: SharedConfig.RuleEntry;
-};
 
 export const astigeJavascriptPlugin: FlatConfig.Plugin = { rules: rules };
-export const astigeJavascriptConfig: FlatConfig.Config & { rules: RuleEntryObject } = {
+export const astigeJavascriptConfig: PluginConfig<typeof PLUGIN_NAME, typeof rules> = {
   files: ["**/*.{js,ts,jsx,tsx}"],
   plugins: { [PLUGIN_NAME]: astigeJavascriptPlugin },
   rules: {
