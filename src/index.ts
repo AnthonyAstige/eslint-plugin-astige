@@ -1,4 +1,5 @@
 import { everyConfig, everyPlugin } from "./plugins/astige-every";
+import { ignoreConfig } from "./plugins/astige-ignore";
 import { javascriptConfig, javascriptPlugin } from "./plugins/astige-javascript";
 // TODO: Update docs that this is a collection of plugins in a single plugin
 // TODO: * Maybe rename this to plugins?
@@ -14,6 +15,7 @@ import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 
 const configs = {
   every: everyConfig,
+  ignore: ignoreConfig,
   javascript: javascriptConfig,
 };
 
