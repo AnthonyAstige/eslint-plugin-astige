@@ -10,7 +10,7 @@ const rules = {
 
 const astigeEveryPlugin: FlatConfig.Plugin = { rules: rules };
 const astigeEveryConfig: PluginConfig<[typeof PLUGIN_NAME], typeof rules> = {
-  // TODO: Setup no-op parser and make work in this config
+  // TODO 3. Setup no-op parser and make work in this config
   files: ["**/*.{js,ts,jsx,tsx}"],
   plugins: { [PLUGIN_NAME]: astigeEveryPlugin },
   rules: {
