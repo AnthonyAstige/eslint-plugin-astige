@@ -6,26 +6,7 @@ import { encode } from "gpt-tokenizer/model/gpt-4o";
 type MaxTokensConfig = {
   [key: string]: number;
 };
-function shouldReport(
-  context: RuleContext<"maxTokens", [MaxTokensConfig]>,
-  sourceText: string,
-) {
-  const encodedTokens = encode(sourceText);
-  const tokenCount = encodedTokens.length;
-  const { options } = context;
-  const [maxTokensConfig] = options;
-  const fileType = context.filename.split(".").pop();
-  if (!fileType) {
-    return false;
-  }
-  const maxTokens = maxTokensConfig[fileType];
-  if (!maxTokens) {
-    return false;
-  }
-  return (tokenCount > maxTokens);
-}
-
-function report(
+function reportIfNeeded(
   context: RuleContext<"maxTokens", [MaxTokensConfig]>,
   node: TSESTree.Node | TSESTree.Token,
   sourceText: string,
@@ -33,11 +14,19 @@ function report(
   const encodedTokens = encode(sourceText);
   const tokenCount = encodedTokens.length;
   const fileType = context.filename.split(".").pop();
-  const maxTokens = context.options[0][fileType!];
+
+  if (!fileType) {
+    return;
+  }
+
+  const maxTokens = context.options[0][fileType];
+  if (!maxTokens || tokenCount <= maxTokens) {
+    return;
+  }
 
   context.report({
     data: {
-      fileType: fileType!,
+      fileType,
       maxTokens: String(maxTokens),
       tokenCount: tokenCount.toString(),
     },
@@ -55,18 +44,13 @@ export const maxTokensPerFile: TSESLint.RuleModule<
 
     if (fileType === "md") {
       const sourceText = fs.readFileSync(context.filename, "utf8");
-
-      if (shouldReport(context, sourceText)) {
-        report(context, context.sourceCode.ast, sourceText);
-      }
+      reportIfNeeded(context, context.sourceCode.ast, sourceText);
     }
 
     return {
       Program(node) {
         const sourceText = context.sourceCode.getText(node);
-        if (shouldReport(context, sourceText)) {
-          report(context, node, sourceText);
-        }
+        reportIfNeeded(context, node, sourceText);
       },
     };
   },
