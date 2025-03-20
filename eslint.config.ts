@@ -1,20 +1,17 @@
 import typescriptParser from "@typescript-eslint/parser";
 import type { FlatConfig } from "@typescript-eslint/utils/ts-eslint";
+import { defineConfig, globalIgnores } from "eslint/config";
 import astige from "./dist/index.js";
 
 const config: FlatConfig.Config[] = [
   {
-    files: ["src/**/*.*"],
     languageOptions: {
       parser: typescriptParser,
     },
-    plugins: {
-      astige,
-    },
-    rules: {
-      ...astige.configs.recommended.rules,
-    },
+    files: ["**/*.{ts,tsx}"],
   },
+  globalIgnores(["dist/*"]),
+  ...astige.auto,
 ];
 
 export default config;

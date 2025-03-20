@@ -16,12 +16,12 @@ const everyRuleConfigs: EveryRuleEntryObject = {
       ts: 2_000,
       tsx: 2_000,
     },
-  ] as const,
+  ],
 };
 
 export const everyPlugin: FlatConfig.Plugin = { rules: everyRules };
+// TODO: Setup no-op parser and make work in this config
 export const everyConfig: FlatConfig.Config = {
-  // TODO: Setup no-op parser and make work in this config
   files: ["**/*.{js,ts,jsx,tsx}"],
   plugins: { [PLUGIN_NAME_EVERY]: everyPlugin },
   rules: everyRuleConfigs,
