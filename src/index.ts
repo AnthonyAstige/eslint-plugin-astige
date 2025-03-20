@@ -6,10 +6,13 @@
 // TODO: * Pull in all my config from repository and document it well in here
 // TODO: Self-apply my full eslint system to this repository
 import type { FlatConfig, Linter, SharedConfig } from "@typescript-eslint/utils/ts-eslint";
-import { ftaComplexityCouldBeBetter, ftaComplexityNeedsImprovement } from "./rules/ftaComplexity/ftaComplexity";
-import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile";
-import { noImportAs } from "./rules/noImportAs/noImportAs";
-import { noTsxWithoutJsx } from "./rules/noTsxWithoutJsx/noTsxWithoutJsx";
+import { maxTokensPerFile } from "./plugins/astige-every/rules/maxTokensPerFile/maxTokensPerFile";
+import {
+  ftaComplexityCouldBeBetter,
+  ftaComplexityNeedsImprovement,
+} from "./plugins/astige-javascript/rules/ftaComplexity/ftaComplexity";
+import { noImportAs } from "./plugins/astige-javascript/rules/noImportAs/noImportAs";
+import { noTsxWithoutJsx } from "./plugins/astige-javascript/rules/noTsxWithoutJsx/noTsxWithoutJsx";
 
 const SEVERITY = {
   OFF: 0,
