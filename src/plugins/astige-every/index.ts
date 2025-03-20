@@ -10,7 +10,6 @@ const rules = {
 
 const astigeEveryPlugin: FlatConfig.Plugin = { rules: rules };
 const astigeEveryConfig: PluginConfig<[typeof PLUGIN_NAME], typeof rules> = {
-  files: ["**/*"],
   plugins: { [PLUGIN_NAME]: astigeEveryPlugin },
   rules: {
     "astige-every/max-tokens-per-file": [
