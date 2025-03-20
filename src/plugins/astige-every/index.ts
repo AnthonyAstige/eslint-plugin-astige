@@ -3,11 +3,10 @@ import { WARN } from "../../severityConstants";
 import { PluginConfig } from "../../sharedTypes";
 import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile";
 
+const PLUGIN_NAME = "astige-every";
 const rules = {
   "max-tokens-per-file": maxTokensPerFile,
 };
-
-const PLUGIN_NAME = "astige-every";
 
 const astigeEveryPlugin: FlatConfig.Plugin = { rules: rules };
 const astigeEveryConfig: PluginConfig<[typeof PLUGIN_NAME], typeof rules> = {

@@ -6,6 +6,7 @@ import { noExportAs } from "./rules/noExportAs/noExportAs";
 import { noImportAs } from "./rules/noImportAs/noImportAs";
 import { noTsxWithoutJsx } from "./rules/noTsxWithoutJsx/noTsxWithoutJsx";
 
+const PLUGIN_NAME = "astige-javascript";
 const rules = {
   "fta-complexity-could-be-better": ftaComplexityCouldBeBetter,
   "fta-complexity-needs-improvement": ftaComplexityNeedsImprovement,
@@ -13,7 +14,6 @@ const rules = {
   "no-import-as": noImportAs,
   "no-tsx-without-jsx": noTsxWithoutJsx,
 };
-const PLUGIN_NAME = "astige-javascript";
 
 const astigeJavascriptPlugin: FlatConfig.Plugin = { rules: rules };
 const astigeJavascriptConfig: PluginConfig<[typeof PLUGIN_NAME], typeof rules> = {
