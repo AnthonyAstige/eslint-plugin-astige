@@ -1,10 +1,10 @@
 import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
-import { WARN, ERROR } from "../../severityConstants.ts";
-import { noExportAs } from "./rules/noExportAs/noExportAs.ts";
-import { noImportAs } from "./rules/noImportAs/noImportAs.ts";
-import { noTsxWithoutJsx } from "./rules/noTsxWithoutJsx/noTsxWithoutJsx.ts";
-import { ftaComplexityCouldBeBetter, ftaComplexityNeedsImprovement } from "./rules/ftaComplexity/ftaComplexity.ts";
-import type { PluginConfigs } from "~/sharedTypes.ts";
+import { ERROR, WARN } from "../../severityConstants.js";
+import type { PluginConfigs } from "../../sharedTypes.js";
+import { ftaComplexityCouldBeBetter, ftaComplexityNeedsImprovement } from "./rules/ftaComplexity/ftaComplexity.js";
+import { noExportAs } from "./rules/noExportAs/noExportAs.js";
+import { noImportAs } from "./rules/noImportAs/noImportAs.js";
+import { noTsxWithoutJsx } from "./rules/noTsxWithoutJsx/noTsxWithoutJsx.js";
 
 const PLUGIN_NAME = "astige-javascript";
 const rules = {

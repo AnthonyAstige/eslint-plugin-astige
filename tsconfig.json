@@ -14,12 +14,9 @@
     "sourceMap": true,
     "declarationMap": true,
 
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
+    // "allowImportingTsExtensions": true,
+    // "noEmit": true,
     "noImplicitAny": true,
-    "paths": {
-      "~/*": ["./src/*"]
-    },
     "noUncheckedIndexedAccess": true,
     "outDir": "./dist",
     "resolveJsonModule": true,

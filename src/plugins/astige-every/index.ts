@@ -1,8 +1,8 @@
-import type { FlatConfig } from '@typescript-eslint/utils/ts-eslint';
+import type { FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 const markdown = await import("@eslint/markdown").then(m => m.default);
-import { WARN } from "~/severityConstants.js";
+import { WARN } from "../../severityConstants.js";
+import type { PluginConfigs } from "../../sharedTypes.js";
 import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile.js";
-import type { PluginConfigs } from '~/sharedTypes.js';
 
 const PLUGIN_NAME = "astige-every";
 const rules = {
