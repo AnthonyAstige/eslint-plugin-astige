@@ -16,6 +16,8 @@ const astigeEveryConfigs: PluginConfigs<[typeof PLUGIN_NAME], typeof rules> = [{
       WARN,
       {
         // TODO: Make this work for md files also, and set a real limit
+        // TODO: Note: Try official md support in `@eslint/markdown` per https://eslint.org/blog/2024/10/eslint-json-markdown-support/
+        // TODO: Note: * It seeks `markdown-eslint-parser` broke `eslint-interactive`
         // md: 100,
         js: 2_000,
         ts: 2_000,
