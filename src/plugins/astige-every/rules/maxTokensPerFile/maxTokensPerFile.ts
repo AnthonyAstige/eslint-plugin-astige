@@ -1,4 +1,4 @@
-import { type TSESLint } from "@typescript-eslint/utils";
+import { type TSESLint, TSESTree } from "@typescript-eslint/utils";
 import type { RuleContext } from "@typescript-eslint/utils/ts-eslint";
 import fs from "fs";
 import { encode } from "gpt-tokenizer/model/gpt-4o";
@@ -27,8 +27,7 @@ function shouldReport(
 
 function report(
   context: RuleContext<"maxTokens", [MaxTokensConfig]>,
-  // TODO: Fix any
-  node: any,
+  node: TSESTree.Node | TSESTree.Token,
   sourceText: string,
 ) {
   const encodedTokens = encode(sourceText);
