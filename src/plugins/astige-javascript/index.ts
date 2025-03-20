@@ -1,4 +1,4 @@
-import { type FlatConfig, type SharedConfig } from "@typescript-eslint/utils/ts-eslint";
+import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 import { ERROR, WARN } from "../../severityConstants";
 import { PluginConfig } from "../../sharedTypes";
 import { ftaComplexityCouldBeBetter, ftaComplexityNeedsImprovement } from "./rules/ftaComplexity/ftaComplexity";
