@@ -5,8 +5,9 @@
     "@tsconfig/node20/tsconfig"
   ],
   "compilerOptions": {
-    // https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html#im-writing-a-library
-    // Whatever missing from https://www.npmjs.com/package/@tsconfig/node20
+    // From https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html#im-writing-a-library but removing those already in:
+    // * https://www.npmjs.com/package/@tsconfig/node20
+    // * https://www.npmjs.com/package/@tsconfig/strictest
     "verbatimModuleSyntax": true,
     "declaration": true,
     "sourceMap": true,
