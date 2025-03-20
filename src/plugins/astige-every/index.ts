@@ -4,6 +4,9 @@ import { WARN } from "../../severityConstants.js";
 import type { PluginConfigs } from "../../sharedTypes.js";
 import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile.js";
 
+const MAX_TEXT_TOKENS = 3_000;
+const MAX_CODE_TOKENS = 2_000;
+
 const PLUGIN_NAME = "astige-every";
 const rules = {
   "max-tokens-per-file": maxTokensPerFile,
@@ -23,7 +26,7 @@ const astigeEveryConfigs: PluginConfigs<[typeof PLUGIN_NAME], typeof rules> = [
       "astige-every/max-tokens-per-file": [
         WARN,
         {
-          md: 3_000,
+          md: MAX_TEXT_TOKENS,
         },
       ],
     },
@@ -35,11 +38,11 @@ const astigeEveryConfigs: PluginConfigs<[typeof PLUGIN_NAME], typeof rules> = [
       "astige-every/max-tokens-per-file": [
         WARN,
         {
-          json: 3_000,
-          js: 2_000,
-          jsx: 2_000,
-          ts: 2_000,
-          tsx: 2_000,
+          json: MAX_TEXT_TOKENS,
+          js: MAX_CODE_TOKENS,
+          jsx: MAX_CODE_TOKENS,
+          ts: MAX_CODE_TOKENS,
+          tsx: MAX_CODE_TOKENS,
         },
       ],
       "no-warning-comments": [
