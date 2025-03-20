@@ -1,6 +1,6 @@
 import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 
-export const ignoreConfig: FlatConfig.Config = {
+export const astigeIgnoreConfig: FlatConfig.Config = {
   ignores: [
     "out/**",
     ".data/**",

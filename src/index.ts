@@ -1,6 +1,6 @@
-import { everyConfig, everyPlugin } from "./plugins/astige-every";
-import { ignoreConfig } from "./plugins/astige-ignore";
-import { javascriptConfig, javascriptPlugin } from "./plugins/astige-javascript";
+import { astigeEveryConfig, astigeEveryPlugin } from "./plugins/astige-every";
+import { astigeIgnoreConfig } from "./plugins/astige-ignore";
+import { astigeJavascriptConfig, astigeJavascriptPlugin } from "./plugins/astige-javascript";
 // TODO: Update docs that this is a collection of plugins in a single plugin
 // TODO: * Maybe rename this to plugins?
 // TODO: * Explain why: Single repository, but allows splitting of plugin loading and processing per file type etc (like plugins do)
@@ -14,17 +14,17 @@ import { javascriptConfig, javascriptPlugin } from "./plugins/astige-javascript"
 import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 
 const configs = {
-  every: everyConfig,
-  ignore: ignoreConfig,
-  javascript: javascriptConfig,
+  "astige-every": astigeEveryConfig,
+  "astige-ignore": astigeIgnoreConfig,
+  "astige-javascript": astigeJavascriptConfig,
 };
 
 // TODO: Check if the README instructions work for override plugins
 const plugins = {
-  every: everyPlugin,
-  javascript: javascriptPlugin,
+  "astige-every": astigeEveryPlugin,
+  "astige-javascript": astigeJavascriptPlugin,
 };
 
-const auto: FlatConfig.Config[] = [javascriptConfig, everyConfig];
+const auto: FlatConfig.Config[] = [astigeJavascriptConfig, astigeEveryConfig];
 
 export { auto, configs, plugins };

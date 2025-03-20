@@ -36,9 +36,9 @@ const javascriptRuleConfigs: JavascriptRuleEntryObject = {
   "astige-javascript/no-tsx-without-jsx": ERROR,
 };
 
-export const javascriptPlugin: FlatConfig.Plugin = { rules: javascriptRules };
-export const javascriptConfig: FlatConfig.Config = {
+export const astigeJavascriptPlugin: FlatConfig.Plugin = { rules: javascriptRules };
+export const astigeJavascriptConfig: FlatConfig.Config = {
   files: ["**/*.{js,ts,jsx,tsx}"],
-  plugins: { [PLUGIN_NAME_JAVASCRIPT]: javascriptPlugin },
+  plugins: { [PLUGIN_NAME_JAVASCRIPT]: astigeJavascriptPlugin },
   rules: javascriptRuleConfigs,
 };
