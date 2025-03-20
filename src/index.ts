@@ -1,3 +1,4 @@
+// TODO: Split up this file and get organized
 // TODO: Pull in other eslint repositories I've made into here
 // TODO: * Updating their READMEs to point here, depublishing on NPM (is that good to do?), etc
 // TODO: * Add lint rule tests (figure out how to do it right)
