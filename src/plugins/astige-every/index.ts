@@ -14,8 +14,8 @@ const rules = {
 
 const astigeEveryPlugin: FlatConfig.Plugin = { rules: rules };
 const astigeEveryConfigs: PluginConfigs<[typeof PLUGIN_NAME], typeof rules> = [
-  // TODO: Make work work all file types with a fallback token count
-  // TODO: * May need a custom parser
+  // TODO 1. Make work work all file types with a fallback token count
+  // TODO 1. * May need a custom parser
   {
     files: ["**/*.md"],
     plugins: {
