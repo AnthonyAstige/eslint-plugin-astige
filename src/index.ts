@@ -1,3 +1,6 @@
+// TODO: Update docs that this is a collection of plugins in a single plugin
+// TODO: * Maybe rename this to plugins?
+// TODO: * Explain why: Single repository, but allows splitting of plugin loading and processing per file type etc (like plugins do)
 // TODO: Split up this file and get organized
 // TODO: Pull in other eslint repositories I've made into here
 // TODO: * Updating their READMEs to point here, depublishing on NPM (is that good to do?), etc
@@ -5,8 +8,9 @@
 // TODO: Add recommended config and use it in my repository instead of configing there
 // TODO: * Pull in all my config from repository and document it well in here
 // TODO: Self-apply my full eslint system to this repository
-import type { FlatConfig, Linter, SharedConfig } from "@typescript-eslint/utils/ts-eslint";
-import { maxTokensPerFile } from "./plugins/astige-every/rules/maxTokensPerFile/maxTokensPerFile";
+import type { FlatConfig, SharedConfig } from "@typescript-eslint/utils/ts-eslint";
+import { SEVERITY } from "./constants";
+import { everyConfig } from "./plugins/astige-every";
 import {
   ftaComplexityCouldBeBetter,
   ftaComplexityNeedsImprovement,
@@ -14,18 +18,8 @@ import {
 import { noImportAs } from "./plugins/astige-javascript/rules/noImportAs/noImportAs";
 import { noTsxWithoutJsx } from "./plugins/astige-javascript/rules/noTsxWithoutJsx/noTsxWithoutJsx";
 
-const SEVERITY = {
-  OFF: 0,
-  WARN: 1,
-  ERROR: 2,
-} as const;
-
 const PLUGIN_NAME_JAVASCRIPT = "astige-javascript";
-const PLUGIN_NAME_EVERY = "astige-every";
 
-const everyRules = {
-  "max-tokens-per-file": maxTokensPerFile,
-};
 const javascriptRules = {
   "no-tsx-without-jsx": noTsxWithoutJsx,
   "no-import-as": noImportAs,
@@ -33,18 +27,6 @@ const javascriptRules = {
   "fta-complexity-needs-improvement": ftaComplexityNeedsImprovement,
 };
 type PrefixedJavascriptRuleName = `${typeof PLUGIN_NAME_JAVASCRIPT}/${keyof typeof javascriptRules}`;
-type PrefixedEveryRuleName = `${typeof PLUGIN_NAME_EVERY}/${keyof typeof everyRules}`;
-type EveryRuleEntryObject = { [K in PrefixedEveryRuleName]: SharedConfig.RuleEntry };
-const everyRuleConfigs: EveryRuleEntryObject = {
-  "astige-every/max-tokens-per-file": [
-    SEVERITY.WARN,
-    {
-      js: 2_000,
-      ts: 2_000,
-      tsx: 2_000,
-    },
-  ] as const,
-};
 const javascriptRuleConfigs: JavascriptRuleEntryObject = {
   "astige-javascript/fta-complexity-could-be-better": [
     SEVERITY.WARN,
@@ -70,17 +52,6 @@ const javascriptConfig: {
   rules: javascriptRuleConfigs,
 } as const;
 
-// TODO: Setup no-op parser and make work in this config
-const everyConfig: {
-  files: FlatConfig.Config["files"];
-  plugins: { [PLUGIN_NAME_EVERY]: FlatConfig.Plugin };
-  rules: EveryRuleEntryObject;
-} = {
-  files: ["**/*.{js,ts,jsx,tsx}"],
-  plugins: { [PLUGIN_NAME_EVERY]: { rules: everyRules } },
-  rules: everyRuleConfigs,
-} as const;
-
 const configs = {
   recommended: javascriptConfig,
   every: everyConfig,
@@ -91,5 +62,4 @@ const auto: FlatConfig.Config[] = [
   everyConfig,
 ];
 
-const allTheRules = { ...javascriptRules, ...everyRules };
-export { allTheRules as rules, auto, configs };
+export { auto, configs };
