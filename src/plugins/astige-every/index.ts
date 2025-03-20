@@ -1,5 +1,5 @@
 import { type FlatConfig, type SharedConfig } from "@typescript-eslint/utils/ts-eslint";
-import { SEVERITY } from "../../constants";
+import { WARN } from "../../severityConstants";
 import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile";
 
 const PLUGIN_NAME_EVERY = "astige-every";
@@ -12,7 +12,7 @@ const everyRules = {
 };
 const everyRuleConfigs: EveryRuleEntryObject = {
   "astige-every/max-tokens-per-file": [
-    SEVERITY.WARN,
+    WARN,
     {
       js: 2_000,
       ts: 2_000,

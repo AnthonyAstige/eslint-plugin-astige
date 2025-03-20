@@ -1,5 +1,5 @@
 import { type FlatConfig, type SharedConfig } from "@typescript-eslint/utils/ts-eslint";
-import { SEVERITY } from "../../constants";
+import { ERROR, WARN } from "../../severityConstants";
 import { ftaComplexityCouldBeBetter, ftaComplexityNeedsImprovement } from "./rules/ftaComplexity/ftaComplexity";
 import { noExportAs } from "./rules/noExportAs/noExportAs";
 import { noImportAs } from "./rules/noImportAs/noImportAs";
@@ -23,16 +23,16 @@ const javascriptRules = {
 type PrefixedJavascriptRuleName = `${typeof PLUGIN_NAME_JAVASCRIPT}/${keyof typeof javascriptRules}`;
 const javascriptRuleConfigs: JavascriptRuleEntryObject = {
   "astige-javascript/fta-complexity-could-be-better": [
-    SEVERITY.WARN,
+    WARN,
     { "when-above": 55, "when-at-or-under": 75 },
   ],
   "astige-javascript/fta-complexity-needs-improvement": [
-    SEVERITY.ERROR,
+    ERROR,
     { "when-above": 75 },
   ],
-  "astige-javascript/no-export-as": SEVERITY.ERROR,
-  "astige-javascript/no-import-as": SEVERITY.ERROR,
-  "astige-javascript/no-tsx-without-jsx": SEVERITY.ERROR,
+  "astige-javascript/no-export-as": ERROR,
+  "astige-javascript/no-import-as": ERROR,
+  "astige-javascript/no-tsx-without-jsx": ERROR,
 };
 
 export const javascriptPlugin: FlatConfig.Plugin = { rules: javascriptRules };
