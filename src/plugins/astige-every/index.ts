@@ -29,7 +29,7 @@ const astigeEveryConfigs: PluginConfigs<[typeof PLUGIN_NAME], typeof rules> = [
     },
   },
   {
-    files: ["**/*.{js,ts,tsx,json}"],
+    files: ["**/*.{js,jsx,ts,tsx,json}"],
     plugins: { [PLUGIN_NAME]: astigeEveryPlugin },
     rules: {
       "astige-every/max-tokens-per-file": [
@@ -37,6 +37,7 @@ const astigeEveryConfigs: PluginConfigs<[typeof PLUGIN_NAME], typeof rules> = [
         {
           json: 3_000,
           js: 2_000,
+          jsx: 2_000,
           ts: 2_000,
           tsx: 2_000,
         },
