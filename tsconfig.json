@@ -1,18 +1,14 @@
 {
+  "extends": ["@tsconfig/strictest/tsconfig", "@tsconfig/node20/tsconfig"],
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
-    "lib": [
-      "ES2019"
-    ],
 
     // https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html#im-writing-a-library
-    "module": "node18",
-    "target": "es2022",
-    "strict": true,
+    // Whatever missing from https://www.npmjs.com/package/@tsconfig/node20
     "verbatimModuleSyntax": true,
     "declaration": true,
-    "sourceMap": true,
-    "declarationMap": true,
+    "sourceMap": false,
+    "declarationMap": false,
 
     // "allowImportingTsExtensions": true,
     // "noEmit": true,
@@ -21,7 +17,6 @@
     "outDir": "./dist",
     "resolveJsonModule": true,
     "rootDir": "./src",
-    "skipLibCheck": true,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true,

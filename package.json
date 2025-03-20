@@ -11,6 +11,8 @@
   },
   "description": "Anthony Astige's eslint base with custom rules",
   "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "@tsconfig/strictest": "^2.0.5",
     "@types/node": "^22.13.10",
     "@types/react": "^19.0.10",
     "@typescript-eslint/parser": "^8.26.1",
