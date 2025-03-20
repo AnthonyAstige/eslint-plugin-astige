@@ -7,10 +7,10 @@ const everyRules = {
 };
 
 const PLUGIN_NAME_EVERY = "astige-every";
+type PrefixedEveryRuleName = `${typeof PLUGIN_NAME_EVERY}/${keyof typeof everyRules}`;
 type EveryRuleEntryObject = {
   [K in PrefixedEveryRuleName]: SharedConfig.RuleEntry;
 };
-type PrefixedEveryRuleName = `${typeof PLUGIN_NAME_EVERY}/${keyof typeof everyRules}`;
 const everyRuleConfigs: EveryRuleEntryObject = {
   "astige-every/max-tokens-per-file": [
     WARN,
