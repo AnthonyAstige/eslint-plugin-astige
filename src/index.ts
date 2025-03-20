@@ -21,6 +21,6 @@ const plugins = {
   "astige-javascript": astigeJavascriptPlugin,
 };
 
-const auto: FlatConfig.Config[] = [...astigeIgnoreConfigs, ...astigeJavascriptConfigs, ...astigeEveryConfigs];
+const auto: FlatConfig.Config[] = [...astigeIgnoreConfigs, ...astigeEveryConfigs, ...astigeJavascriptConfigs];
 
 export { auto, configs, plugins };
