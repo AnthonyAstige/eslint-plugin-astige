@@ -2,17 +2,17 @@ import { type FlatConfig, type SharedConfig } from "@typescript-eslint/utils/ts-
 import { WARN } from "../../severityConstants";
 import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile";
 
-const everyRules = {
+const rules = {
   "max-tokens-per-file": maxTokensPerFile,
 };
 
-const PLUGIN_NAME_EVERY = "astige-every";
-type PrefixedEveryRuleName = `${typeof PLUGIN_NAME_EVERY}/${keyof typeof everyRules}`;
-type EveryRuleEntryObject = {
-  [K in PrefixedEveryRuleName]: SharedConfig.RuleEntry;
+const PLUGIN_NAME = "astige-every";
+type PrefixedRuleName = `${typeof PLUGIN_NAME}/${keyof typeof rules}`;
+type RuleEntryObject = {
+  [K in PrefixedRuleName]: SharedConfig.RuleEntry;
 };
 
-const everyRuleConfigs: EveryRuleEntryObject = {
+const ruleConfigs: RuleEntryObject = {
   "astige-every/max-tokens-per-file": [
     WARN,
     {
@@ -23,10 +23,10 @@ const everyRuleConfigs: EveryRuleEntryObject = {
   ],
 };
 
-export const astigeEveryPlugin: FlatConfig.Plugin = { rules: everyRules };
+export const astigeEveryPlugin: FlatConfig.Plugin = { rules: rules };
 // TODO: Setup no-op parser and make work in this config
 export const astigeEveryConfig: FlatConfig.Config = {
   files: ["**/*.{js,ts,jsx,tsx}"],
-  plugins: { [PLUGIN_NAME_EVERY]: astigeEveryPlugin },
-  rules: everyRuleConfigs,
+  plugins: { [PLUGIN_NAME]: astigeEveryPlugin },
+  rules: ruleConfigs,
 };

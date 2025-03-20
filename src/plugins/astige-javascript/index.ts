@@ -5,7 +5,7 @@ import { noExportAs } from "./rules/noExportAs/noExportAs";
 import { noImportAs } from "./rules/noImportAs/noImportAs";
 import { noTsxWithoutJsx } from "./rules/noTsxWithoutJsx/noTsxWithoutJsx";
 
-const javascriptRules = {
+const rules = {
   "fta-complexity-could-be-better": ftaComplexityCouldBeBetter,
   "fta-complexity-needs-improvement": ftaComplexityNeedsImprovement,
   "no-export-as": noExportAs,
@@ -16,13 +16,13 @@ const javascriptRules = {
 
 // TODO: Put rule types in here somehow from the actual rules so we config them right?
 // TODO: * Apply to all rules?
-const PLUGIN_NAME_JAVASCRIPT = "astige-javascript";
-type PrefixedJavascriptRuleName = `${typeof PLUGIN_NAME_JAVASCRIPT}/${keyof typeof javascriptRules}`;
+const PLUGIN_NAME = "astige-javascript";
+type PrefixedRuleName = `${typeof PLUGIN_NAME}/${keyof typeof rules}`;
 type JavascriptRuleEntryObject = {
-  [K in PrefixedJavascriptRuleName]: SharedConfig.RuleEntry;
+  [K in PrefixedRuleName]: SharedConfig.RuleEntry;
 };
 
-const javascriptRuleConfigs: JavascriptRuleEntryObject = {
+const ruleConfigs: JavascriptRuleEntryObject = {
   "astige-javascript/fta-complexity-could-be-better": [
     WARN,
     { "when-above": 55, "when-at-or-under": 75 },
@@ -36,9 +36,9 @@ const javascriptRuleConfigs: JavascriptRuleEntryObject = {
   "astige-javascript/no-tsx-without-jsx": ERROR,
 };
 
-export const astigeJavascriptPlugin: FlatConfig.Plugin = { rules: javascriptRules };
+export const astigeJavascriptPlugin: FlatConfig.Plugin = { rules: rules };
 export const astigeJavascriptConfig: FlatConfig.Config = {
   files: ["**/*.{js,ts,jsx,tsx}"],
-  plugins: { [PLUGIN_NAME_JAVASCRIPT]: astigeJavascriptPlugin },
-  rules: javascriptRuleConfigs,
+  plugins: { [PLUGIN_NAME]: astigeJavascriptPlugin },
+  rules: ruleConfigs,
 };
