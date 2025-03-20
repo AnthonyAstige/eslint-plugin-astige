@@ -1,5 +1,9 @@
 {
-  "extends": ["@tsconfig/strictest/tsconfig", "@tsconfig/node20/tsconfig"],
+  "extends": [
+    "@tsconfig/strictest/tsconfig",
+    // My current site works on Node20 because some package is holding us back, may move to Node2022 once cleared up - Anthony 2025-03-20 ],
+    "@tsconfig/node20/tsconfig"
+  ],
   "compilerOptions": {
     // https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html#im-writing-a-library
     // Whatever missing from https://www.npmjs.com/package/@tsconfig/node20
