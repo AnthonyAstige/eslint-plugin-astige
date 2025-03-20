@@ -5,6 +5,8 @@ import { ftaComplexityCouldBeBetter, ftaComplexityNeedsImprovement } from "./rul
 import { noImportAs } from "./rules/noImportAs/noImportAs";
 import { noTsxWithoutJsx } from "./rules/noTsxWithoutJsx/noTsxWithoutJsx";
 
+// TODO: Improve this pattern overall and apply to all sub-plugins
+
 // TODO: Put rule types in here somehow from the actual rules so we config them right?
 // TODO: * Apply to all rules?
 type JavascriptRuleEntryObject = { [K in PrefixedJavascriptRuleName]: SharedConfig.RuleEntry };
@@ -27,6 +29,7 @@ const javascriptRuleConfigs: JavascriptRuleEntryObject = {
   "astige-javascript/no-import-as": SEVERITY.ERROR,
   "astige-javascript/no-tsx-without-jsx": SEVERITY.ERROR,
 };
+
 export const javascriptConfig: {
   files: FlatConfig.Config["files"];
   plugins: { [PLUGIN_NAME_JAVASCRIPT]: FlatConfig.Plugin };
