@@ -2,14 +2,15 @@ import { type FlatConfig, type SharedConfig } from "@typescript-eslint/utils/ts-
 import { WARN } from "../../severityConstants";
 import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile";
 
+const everyRules = {
+  "max-tokens-per-file": maxTokensPerFile,
+};
+
 const PLUGIN_NAME_EVERY = "astige-every";
 type EveryRuleEntryObject = {
   [K in PrefixedEveryRuleName]: SharedConfig.RuleEntry;
 };
 type PrefixedEveryRuleName = `${typeof PLUGIN_NAME_EVERY}/${keyof typeof everyRules}`;
-const everyRules = {
-  "max-tokens-per-file": maxTokensPerFile,
-};
 const everyRuleConfigs: EveryRuleEntryObject = {
   "astige-every/max-tokens-per-file": [
     WARN,

@@ -5,14 +5,6 @@ import { noExportAs } from "./rules/noExportAs/noExportAs";
 import { noImportAs } from "./rules/noImportAs/noImportAs";
 import { noTsxWithoutJsx } from "./rules/noTsxWithoutJsx/noTsxWithoutJsx";
 
-// TODO: Improve this pattern overall and apply to all sub-plugins
-
-// TODO: Put rule types in here somehow from the actual rules so we config them right?
-// TODO: * Apply to all rules?
-const PLUGIN_NAME_JAVASCRIPT = "astige-javascript";
-type JavascriptRuleEntryObject = {
-  [K in PrefixedJavascriptRuleName]: SharedConfig.RuleEntry;
-};
 const javascriptRules = {
   "fta-complexity-could-be-better": ftaComplexityCouldBeBetter,
   "fta-complexity-needs-improvement": ftaComplexityNeedsImprovement,
@@ -20,7 +12,15 @@ const javascriptRules = {
   "no-import-as": noImportAs,
   "no-tsx-without-jsx": noTsxWithoutJsx,
 };
+// TODO: Improve this pattern overall and apply to all sub-plugins
+
+// TODO: Put rule types in here somehow from the actual rules so we config them right?
+// TODO: * Apply to all rules?
+const PLUGIN_NAME_JAVASCRIPT = "astige-javascript";
 type PrefixedJavascriptRuleName = `${typeof PLUGIN_NAME_JAVASCRIPT}/${keyof typeof javascriptRules}`;
+type JavascriptRuleEntryObject = {
+  [K in PrefixedJavascriptRuleName]: SharedConfig.RuleEntry;
+};
 const javascriptRuleConfigs: JavascriptRuleEntryObject = {
   "astige-javascript/fta-complexity-could-be-better": [
     WARN,
