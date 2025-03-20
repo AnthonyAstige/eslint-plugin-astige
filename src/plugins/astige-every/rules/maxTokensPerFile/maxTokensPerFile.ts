@@ -1,10 +1,29 @@
 import { type TSESLint } from "@typescript-eslint/utils";
+import type { RuleContext } from "@typescript-eslint/utils/ts-eslint";
 import fs from "fs";
 import { encode } from "gpt-tokenizer/model/gpt-4o";
 
 type MaxTokensConfig = {
   [key: string]: number;
 };
+function shouldReport(
+  context: RuleContext<"maxTokens", [MaxTokensConfig]>,
+  sourceText: string,
+) {
+  const encodedTokens = encode(sourceText);
+  const tokenCount = encodedTokens.length;
+  const { options } = context;
+  const [maxTokensConfig] = options;
+  const fileType = context.filename.split(".").pop();
+  if (!fileType) {
+    return false;
+  }
+  const maxTokens = maxTokensConfig[fileType];
+  if (!maxTokens) {
+    return false;
+  }
+  return (tokenCount > maxTokens);
+}
 
 export const maxTokensPerFile: TSESLint.RuleModule<
   "maxTokens",
@@ -15,20 +34,20 @@ export const maxTokensPerFile: TSESLint.RuleModule<
     const [maxTokensConfig] = options;
     const fileType = context.filename.split(".").pop();
 
-    if (!fileType || !maxTokensConfig[fileType]) {
+    if (!fileType) {
       return {};
     }
 
     const maxTokens = maxTokensConfig[fileType];
 
-    if(fileType === 'md') {
+    if (fileType === "md") {
       const maxTokens = maxTokensConfig[fileType];
       const sourceText = fs.readFileSync(context.filename, "utf8");
 
       const encodedTokens = encode(sourceText);
       const tokenCount = encodedTokens.length;
 
-      if (tokenCount > maxTokens) {
+      if (shouldReport(context, sourceText)) {
         // Use the Program node from the AST for reporting
         context.report({
           data: {
@@ -47,7 +66,7 @@ export const maxTokensPerFile: TSESLint.RuleModule<
         const sourceText = context.sourceCode.getText(node);
         const encodedTokens = encode(sourceText);
         const tokenCount = encodedTokens.length;
-        if (tokenCount > maxTokens) {
+        if (shouldReport(context, sourceText)) {
           context.report({
             data: {
               fileType,
