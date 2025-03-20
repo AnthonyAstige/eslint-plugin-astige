@@ -2,8 +2,8 @@ const PLUGIN_NAME_JAVASCRIPT = "astige-javascript";
 import type { FlatConfig, SharedConfig } from "@typescript-eslint/utils/ts-eslint";
 import { SEVERITY } from "../../constants";
 import { ftaComplexityCouldBeBetter, ftaComplexityNeedsImprovement } from "./rules/ftaComplexity/ftaComplexity";
-import { noImportAs } from "./rules/noImportAs/noImportAs";
 import { noExportAs } from "./rules/noExportAs/noExportAs";
+import { noImportAs } from "./rules/noImportAs/noImportAs";
 import { noTsxWithoutJsx } from "./rules/noTsxWithoutJsx/noTsxWithoutJsx";
 
 // TODO: Improve this pattern overall and apply to all sub-plugins
@@ -32,13 +32,9 @@ const javascriptRuleConfigs: JavascriptRuleEntryObject = {
   "astige-javascript/no-tsx-without-jsx": SEVERITY.ERROR,
   "astige-javascript/no-export-as": SEVERITY.ERROR,
 };
-export const javascriptPlugin = { rules: javascriptRules };
 
-export const javascriptConfig: {
-  files: FlatConfig.Config["files"];
-  plugins: { [PLUGIN_NAME_JAVASCRIPT]: FlatConfig.Plugin };
-  rules: JavascriptRuleEntryObject;
-} = {
+export const javascriptPlugin: FlatConfig.Plugin = { rules: javascriptRules };
+export const javascriptConfig: FlatConfig.Config = {
   files: ["**/*.{js,ts,jsx,tsx}"],
   plugins: { [PLUGIN_NAME_JAVASCRIPT]: javascriptPlugin },
   rules: javascriptRuleConfigs,
