@@ -23,7 +23,7 @@ const astigeEveryConfigs: PluginConfigs<[typeof PLUGIN_NAME], typeof rules> = [
       "astige-every/max-tokens-per-file": [
         WARN,
         {
-          md: 3000,
+          md: 2_000,
         },
       ],
     },
