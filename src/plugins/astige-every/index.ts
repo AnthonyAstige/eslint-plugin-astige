@@ -15,9 +15,12 @@ const astigeEveryConfigs: PluginConfigs<[typeof PLUGIN_NAME], typeof rules> = [{
     "astige-every/max-tokens-per-file": [
       WARN,
       {
+        // TODO: Make this work for md files also, and set a real limit
+        // md: 100,
         js: 2_000,
         ts: 2_000,
         tsx: 2_000,
+        // TODO: Make work work all file types with a fallback token count
       },
     ],
     "no-warning-comments": [
