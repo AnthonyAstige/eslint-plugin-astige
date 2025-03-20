@@ -9,8 +9,8 @@
     // Whatever missing from https://www.npmjs.com/package/@tsconfig/node20
     "verbatimModuleSyntax": true,
     "declaration": true,
-    "sourceMap": false,
-    "declarationMap": false,
+    "sourceMap": true,
+    "declarationMap": true,
 
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
