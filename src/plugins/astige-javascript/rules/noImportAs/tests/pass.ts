@@ -1,1 +1,1 @@
-import { a } from "./importable";
+import { a } from './importable';

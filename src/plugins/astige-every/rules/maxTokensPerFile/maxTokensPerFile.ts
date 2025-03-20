@@ -1,35 +1,18 @@
-import { TSESLint } from "@typescript-eslint/utils";
-import { encode } from "gpt-tokenizer/cjs/model/gpt-4o";
+import { type TSESLint } from '@typescript-eslint/utils';
+import { encode } from 'gpt-tokenizer/cjs/model/gpt-4o';
 
 type MaxTokensConfig = {
   [key: string]: number;
 };
 
-export const maxTokensPerFile: TSESLint.RuleModule<"maxTokens", [MaxTokensConfig]> = {
-  defaultOptions: [{}],
-  meta: {
-    type: "suggestion",
-    docs: {
-      description:
-        "Enforce a maximum number of tokens per file type to keep files manageable by LLMS (quicker to output entire files when edits made)",
-    },
-    messages: {
-      maxTokens:
-        "File exceeds the maximum allowed tokens of {{maxTokens}} for .{{fileType}} files. Token count: {{tokenCount}}",
-    },
-    schema: [
-      {
-        additionalProperties: {
-          type: "number",
-        },
-        type: "object",
-      },
-    ],
-  },
+export const maxTokensPerFile: TSESLint.RuleModule<
+  'maxTokens',
+  [MaxTokensConfig]
+> = {
   create(context) {
-    const { sourceCode, options } = context;
+    const { options, sourceCode } = context;
     const [maxTokensConfig] = options;
-    const fileType = context.filename.split(".").pop();
+    const fileType = context.filename.split('.').pop();
 
     if (!fileType || !maxTokensConfig[fileType]) {
       return {};
@@ -50,11 +33,31 @@ export const maxTokensPerFile: TSESLint.RuleModule<"maxTokens", [MaxTokensConfig
               maxTokens: String(maxTokens),
               tokenCount: tokenCount.toString(),
             },
-            messageId: "maxTokens",
+            messageId: 'maxTokens',
             node,
           });
         }
       },
     };
+  },
+  defaultOptions: [{}],
+  meta: {
+    docs: {
+      description:
+        'Enforce a maximum number of tokens per file type to keep files manageable by LLMS (quicker to output entire files when edits made)',
+    },
+    messages: {
+      maxTokens:
+        'File exceeds the maximum allowed tokens of {{maxTokens}} for .{{fileType}} files. Token count: {{tokenCount}}',
+    },
+    schema: [
+      {
+        additionalProperties: {
+          type: 'number',
+        },
+        type: 'object',
+      },
+    ],
+    type: 'suggestion',
   },
 };
