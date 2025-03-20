@@ -1,6 +1,6 @@
 import { PluginConfig } from "../../sharedTypes";
 
-export const astigeIgnoreConfig: PluginConfig<[], {}> = {
+const astigeIgnoreConfig: PluginConfig<[], {}> = {
   ignores: [
     "out/**",
     ".data/**",
@@ -10,3 +10,5 @@ export const astigeIgnoreConfig: PluginConfig<[], {}> = {
     "next-env.d.ts",
   ],
 };
+
+export { astigeIgnoreConfig };

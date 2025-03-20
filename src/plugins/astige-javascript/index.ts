@@ -13,14 +13,10 @@ const rules = {
   "no-import-as": noImportAs,
   "no-tsx-without-jsx": noTsxWithoutJsx,
 };
-// TODO: Improve this pattern overall and apply to all sub-plugins
-
-// TODO: Put rule types in here somehow from the actual rules so we config them right?
-// TODO: * Apply to all rules?
 const PLUGIN_NAME = "astige-javascript";
 
-export const astigeJavascriptPlugin: FlatConfig.Plugin = { rules: rules };
-export const astigeJavascriptConfig: PluginConfig<[typeof PLUGIN_NAME], typeof rules> = {
+const astigeJavascriptPlugin: FlatConfig.Plugin = { rules: rules };
+const astigeJavascriptConfig: PluginConfig<[typeof PLUGIN_NAME], typeof rules> = {
   files: ["**/*.{js,ts,jsx,tsx}"],
   plugins: { [PLUGIN_NAME]: astigeJavascriptPlugin },
   rules: {
@@ -37,3 +33,5 @@ export const astigeJavascriptConfig: PluginConfig<[typeof PLUGIN_NAME], typeof r
     "astige-javascript/no-tsx-without-jsx": ERROR,
   },
 };
+
+export { astigeJavascriptConfig, astigeJavascriptPlugin };
