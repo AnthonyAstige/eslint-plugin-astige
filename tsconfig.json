@@ -8,8 +8,6 @@
     "sourceMap": false,
     "declarationMap": false,
 
-    // "allowImportingTsExtensions": true,
-    // "noEmit": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
     "noUncheckedIndexedAccess": true,
