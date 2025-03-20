@@ -65,6 +65,8 @@ const javascriptConfig: {
   plugins: { [PLUGIN_NAME_JAVASCRIPT]: { rules: javascriptRules } },
   rules: javascriptRuleConfigs,
 } as const;
+
+// TODO: Setup no-op parser and make work in this config
 const everyConfig: {
   files: FlatConfig.Config["files"];
   plugins: { [PLUGIN_NAME_EVERY]: FlatConfig.Plugin };
