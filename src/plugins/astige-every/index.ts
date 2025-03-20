@@ -11,7 +11,7 @@ const PLUGIN_NAME = "astige-every";
 
 export const astigeEveryPlugin: FlatConfig.Plugin = { rules: rules };
 // TODO: Setup no-op parser and make work in this config
-export const astigeEveryConfig: PluginConfig<typeof PLUGIN_NAME, typeof rules> = {
+export const astigeEveryConfig: PluginConfig<[typeof PLUGIN_NAME], typeof rules> = {
   files: ["**/*.{js,ts,jsx,tsx}"],
   plugins: { [PLUGIN_NAME]: astigeEveryPlugin },
   rules: {

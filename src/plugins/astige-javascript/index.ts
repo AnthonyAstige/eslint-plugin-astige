@@ -20,7 +20,7 @@ const rules = {
 const PLUGIN_NAME = "astige-javascript";
 
 export const astigeJavascriptPlugin: FlatConfig.Plugin = { rules: rules };
-export const astigeJavascriptConfig: PluginConfig<typeof PLUGIN_NAME, typeof rules> = {
+export const astigeJavascriptConfig: PluginConfig<[typeof PLUGIN_NAME], typeof rules> = {
   files: ["**/*.{js,ts,jsx,tsx}"],
   plugins: { [PLUGIN_NAME]: astigeJavascriptPlugin },
   rules: {
