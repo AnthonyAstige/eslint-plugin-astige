@@ -46,7 +46,7 @@ Add the auto plugin collection to your ESLint configuration. Then optionally cus
 import astige from "eslint-plugin-astige";
 
 export default [
-  // Get all the recommended rules & plugins
+  // Get all the recommended configs
   ...astige.auto,
   // Optionally: Take or override specific plugin rules
   {

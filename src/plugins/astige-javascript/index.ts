@@ -1,6 +1,6 @@
 import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 import { ERROR, WARN } from "../../severityConstants";
-import { PluginConfig } from "../../sharedTypes";
+import { PluginConfigs } from "../../sharedTypes";
 import { ftaComplexityCouldBeBetter, ftaComplexityNeedsImprovement } from "./rules/ftaComplexity/ftaComplexity";
 import { noExportAs } from "./rules/noExportAs/noExportAs";
 import { noImportAs } from "./rules/noImportAs/noImportAs";
@@ -16,7 +16,7 @@ const rules = {
 };
 
 const astigeJavascriptPlugin: FlatConfig.Plugin = { rules: rules };
-const astigeJavascriptConfig: PluginConfig<[typeof PLUGIN_NAME], typeof rules> = {
+const astigeJavascriptConfigs: PluginConfigs<[typeof PLUGIN_NAME], typeof rules> = [{
   files: ["**/*.{js,ts,jsx,tsx}"],
   plugins: { [PLUGIN_NAME]: astigeJavascriptPlugin },
   rules: {
@@ -32,6 +32,6 @@ const astigeJavascriptConfig: PluginConfig<[typeof PLUGIN_NAME], typeof rules> =
     "astige-javascript/no-import-as": ERROR,
     "astige-javascript/no-tsx-without-jsx": ERROR,
   },
-};
+}];
 
-export { astigeJavascriptConfig, astigeJavascriptPlugin };
+export { astigeJavascriptConfigs, astigeJavascriptPlugin };

@@ -1,6 +1,6 @@
-import { PluginConfig } from "../../sharedTypes";
+import { PluginConfigs } from "../../sharedTypes";
 
-const astigeIgnoreConfig: PluginConfig<[], {}> = {
+const astigeIgnoreConfigs: PluginConfigs<[], {}> = [{
   ignores: [
     "out/**",
     ".data/**",
@@ -9,6 +9,6 @@ const astigeIgnoreConfig: PluginConfig<[], {}> = {
     "package-lock.json",
     "next-env.d.ts",
   ],
-};
+}];
 
-export { astigeIgnoreConfig };
+export { astigeIgnoreConfigs };

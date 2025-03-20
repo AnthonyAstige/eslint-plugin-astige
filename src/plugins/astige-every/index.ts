@@ -1,6 +1,6 @@
 import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 import { WARN } from "../../severityConstants";
-import { PluginConfig } from "../../sharedTypes";
+import { PluginConfigs } from "../../sharedTypes";
 import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile";
 
 const PLUGIN_NAME = "astige-every";
@@ -9,7 +9,7 @@ const rules = {
 };
 
 const astigeEveryPlugin: FlatConfig.Plugin = { rules: rules };
-const astigeEveryConfig: PluginConfig<[typeof PLUGIN_NAME], typeof rules> = {
+const astigeEveryConfigs: PluginConfigs<[typeof PLUGIN_NAME], typeof rules> = [{
   plugins: { [PLUGIN_NAME]: astigeEveryPlugin },
   rules: {
     "astige-every/max-tokens-per-file": [
@@ -28,6 +28,6 @@ const astigeEveryConfig: PluginConfig<[typeof PLUGIN_NAME], typeof rules> = {
       },
     ],
   },
-};
+}];
 
-export { astigeEveryConfig, astigeEveryPlugin };
+export { astigeEveryConfigs, astigeEveryPlugin };

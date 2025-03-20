@@ -4,7 +4,7 @@ import type { FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 import { globalIgnores } from "eslint/config";
 import astige from "./dist/index.js";
 
-const config: FlatConfig.Config[] = [
+const configs: FlatConfig.Config[] = [
   // TODO: get away from languageOptions once canonical auto is in
   {
     languageOptions: {
@@ -18,4 +18,4 @@ const config: FlatConfig.Config[] = [
   ...astige.auto,
 ];
 
-export default config;
+export default configs;

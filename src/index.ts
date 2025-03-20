@@ -1,6 +1,6 @@
-import { astigeEveryConfig, astigeEveryPlugin } from "./plugins/astige-every";
-import { astigeIgnoreConfig } from "./plugins/astige-ignore";
-import { astigeJavascriptConfig, astigeJavascriptPlugin } from "./plugins/astige-javascript";
+import { astigeEveryConfigs, astigeEveryPlugin } from "./plugins/astige-every";
+import { astigeIgnoreConfigs } from "./plugins/astige-ignore";
+import { astigeJavascriptConfigs, astigeJavascriptPlugin } from "./plugins/astige-javascript";
 // TODO: Pull in other eslint repositories I've made into here
 // TODO: * Updating their READMEs to point here, depublishing on NPM (is that good to do?), etc
 // TODO: * Add lint rule tests (figure out how to do it right)
@@ -10,9 +10,9 @@ import { astigeJavascriptConfig, astigeJavascriptPlugin } from "./plugins/astige
 import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 
 const configs = {
-  "astige-every": astigeEveryConfig,
-  "astige-ignore": astigeIgnoreConfig,
-  "astige-javascript": astigeJavascriptConfig,
+  "astige-every": astigeEveryConfigs,
+  "astige-ignore": astigeIgnoreConfigs,
+  "astige-javascript": astigeJavascriptConfigs,
 };
 
 // TODO: Check if the README instructions work for override plugins
@@ -21,6 +21,6 @@ const plugins = {
   "astige-javascript": astigeJavascriptPlugin,
 };
 
-const auto: FlatConfig.Config[] = [astigeJavascriptConfig, astigeEveryConfig];
+const auto: FlatConfig.Config[] = [...astigeJavascriptConfigs, ...astigeEveryConfigs];
 
 export { auto, configs, plugins };
