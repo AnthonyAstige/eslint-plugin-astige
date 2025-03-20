@@ -1,4 +1,4 @@
-import { FlatConfig, SharedConfig } from "@typescript-eslint/utils/ts-eslint";
+import type { FlatConfig, SharedConfig } from "@typescript-eslint/utils/ts-eslint";
 
 export type PluginConfigs<PluginNames extends string[], Rules extends Record<string, unknown>> = Array<
   FlatConfig.Config & {

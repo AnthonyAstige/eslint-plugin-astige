@@ -1,5 +1,5 @@
 import { type TSESLint } from "@typescript-eslint/utils";
-import { encode } from "gpt-tokenizer/cjs/model/gpt-4o";
+import { encode } from "gpt-tokenizer/model/gpt-4o";
 
 type MaxTokensConfig = {
   [key: string]: number;

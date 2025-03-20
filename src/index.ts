@@ -1,6 +1,3 @@
-import { astigeEveryConfigs, astigeEveryPlugin } from "./plugins/astige-every";
-import { astigeIgnoreConfigs } from "./plugins/astige-ignore";
-import { astigeJavascriptConfigs, astigeJavascriptPlugin } from "./plugins/astige-javascript";
 // TODO: Pull in other eslint repositories I've made into here
 // TODO: * Updating their READMEs to point here, depublishing on NPM (is that good to do?), etc
 // TODO: * Add lint rule tests (figure out how to do it right)
@@ -8,6 +5,9 @@ import { astigeJavascriptConfigs, astigeJavascriptPlugin } from "./plugins/astig
 // TODO: * Pull in all my config from repository and document it well in here
 // TODO: Self-apply my full eslint system to this repository
 import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
+import { astigeEveryConfigs, astigeEveryPlugin } from "./plugins/astige-every/index.js";
+import { astigeIgnoreConfigs } from "./plugins/astige-ignore/index.js";
+import { astigeJavascriptConfigs, astigeJavascriptPlugin } from "./plugins/astige-javascript/index.js";
 
 const configs = {
   "astige-every": astigeEveryConfigs,
@@ -21,6 +21,6 @@ const plugins = {
   "astige-javascript": astigeJavascriptPlugin,
 };
 
-const auto: FlatConfig.Config[] = [...astigeJavascriptConfigs, ...astigeEveryConfigs];
+const auto: FlatConfig.Config[] = [...astigeIgnoreConfigs, ...astigeJavascriptConfigs, ...astigeEveryConfigs];
 
 export { auto, configs, plugins };

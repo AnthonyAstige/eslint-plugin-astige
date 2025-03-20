@@ -1,26 +1,34 @@
 {
   "compilerOptions": {
-    "declaration": true,
-    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "lib": [
       "ES2019"
     ],
-    "module": "Node16",
-    "moduleResolution": "node16",
+
+    // https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html#im-writing-a-library
+    "module": "node18",
+    "target": "es2022",
+    "strict": true,
+    "verbatimModuleSyntax": true,
+    "declaration": true,
+    "sourceMap": true,
+    "declarationMap": true,
+
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
     "noImplicitAny": true,
+    "paths": {
+      "~/*": ["./src/*"]
+    },
     "noUncheckedIndexedAccess": true,
     "outDir": "./dist",
     "resolveJsonModule": true,
     "rootDir": "./src",
     "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true,
-    "strictPropertyInitialization": true,
-    "target": "ES2019"
+    "strictPropertyInitialization": true
   },
   "exclude": [
     "node_modules",

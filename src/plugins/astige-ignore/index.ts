@@ -1,4 +1,4 @@
-import { PluginConfigs } from "../../sharedTypes";
+import type { PluginConfigs } from "~/sharedTypes.ts";
 
 const astigeIgnoreConfigs: PluginConfigs<[], {}> = [{
   ignores: [

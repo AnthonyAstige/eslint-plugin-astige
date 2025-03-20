@@ -4,6 +4,7 @@
     "url": "https://github.com/AnthonyAstige/eslint-plugin-astige/issues"
   },
   "dependencies": {
+    "@eslint/markdown": "^6.3.0",
     "eslint-config-canonical": "^44.4.2",
     "fta-cli": "^2.0.1",
     "gpt-tokenizer": "^2.9.0"
@@ -52,11 +53,11 @@
     "url": "git+https://github.com/AnthonyAstige/eslint-plugin-astige.git"
   },
   "scripts": {
-    "build": "npx tsc",
+    "build": "sh ./scripts/build.sh",
     "format": "npx dprint fmt",
     "pub": "npm run build && npm publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "type": "commonjs",
+  "type": "module",
   "version": "0.0.6"
 }

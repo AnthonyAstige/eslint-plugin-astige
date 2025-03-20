@@ -1,1 +1,1 @@
-import { a as b } from "./importable";
+import { a as b } from "./importable.ts";
