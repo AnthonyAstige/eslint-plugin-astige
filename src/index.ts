@@ -9,12 +9,18 @@
 // TODO: * Pull in all my config from repository and document it well in here
 // TODO: Self-apply my full eslint system to this repository
 import type { FlatConfig } from "@typescript-eslint/utils/ts-eslint";
-import { everyConfig } from "./plugins/astige-every";
-import { javascriptConfig } from "./plugins/astige-javascript";
+import { everyConfig, everyPlugin } from "./plugins/astige-every";
+import { javascriptConfig, javascriptPlugin } from "./plugins/astige-javascript";
 
 const configs = {
-  recommended: javascriptConfig,
+  javascript: javascriptConfig,
   every: everyConfig,
+};
+
+// TODO: Check if the README instructions work for override plugins
+const plugins = {
+  javascript: javascriptPlugin,
+  every: everyPlugin,
 };
 
 const auto: FlatConfig.Config[] = [
@@ -22,4 +28,4 @@ const auto: FlatConfig.Config[] = [
   everyConfig,
 ];
 
-export { auto, configs };
+export { auto, configs, plugins };

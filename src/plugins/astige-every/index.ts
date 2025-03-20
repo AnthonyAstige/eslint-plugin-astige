@@ -18,6 +18,9 @@ const everyRuleConfigs: EveryRuleEntryObject = {
     },
   ] as const,
 };
+
+export const everyPlugin = { rules: everyRules };
+
 // TODO: Setup no-op parser and make work in this config
 export const everyConfig: {
   files: FlatConfig.Config["files"];
@@ -25,6 +28,6 @@ export const everyConfig: {
   rules: EveryRuleEntryObject;
 } = {
   files: ["**/*.{js,ts,jsx,tsx}"],
-  plugins: { [PLUGIN_NAME_EVERY]: { rules: everyRules } },
+  plugins: { [PLUGIN_NAME_EVERY]: everyPlugin },
   rules: everyRuleConfigs,
 } as const;

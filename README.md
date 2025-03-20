@@ -1,8 +1,6 @@
 # eslint-plugin-astige
 
-My personal ESLint plugin containing a recommended configuration of existing and custom rules.
-
-You can take the whole things or just some of the custom rules.
+My personal ESLint plugin collection containing multiple focused plugins with recommended configurations.
 
 ## Guiding Principles
 
@@ -42,25 +40,35 @@ npm install eslint-plugin-astige --save-dev
 
 ## Usage (`eslint.config.ts`)
 
-Add the preset to your ESLint configuration. You can use the recommended rules as-is or customize specific rules:
+Add the auto plugin collection to your ESLint configuration. Then optionally customize:
 
 ```typescript
 import astige from "eslint-plugin-astige";
 
 export default [
+  // Get all the recommended rules & plugins
+  ...astige.auto,
+  // Optionally: Take or override specific plugin rules
   {
     plugins: {
-      astige,
+      "astige-javascript": astige.plugins.javascript,
     },
     rules: {
-      // Optionally: Take all the preset recommended rule config
-      ...astige.configs.recommended.rules,
-      // Optionally: Take or override specific rules
-      "astige/no-tsx-without-jsx": "warn",
+      "astige-javascript/no-tsx-without-jsx": "warn",
     },
   },
 ];
 ```
+
+## Multiple plugin background
+
+This is structured as a collection of plugins in a single repository to:
+
+1. Allow splitting of plugin loading and processing per file type
+2. Enable modular adoption of rules
+3. Maintain a single source of truth for all my ESLint configurations
+4. Simplify dependency management, versioning, coding of multiple plugins
+5. Enable focused development and testing of specific rule sets
 
 ## Contributing
 

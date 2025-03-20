@@ -29,6 +29,7 @@ const javascriptRuleConfigs: JavascriptRuleEntryObject = {
   "astige-javascript/no-import-as": SEVERITY.ERROR,
   "astige-javascript/no-tsx-without-jsx": SEVERITY.ERROR,
 };
+export const javascriptPlugin = { rules: javascriptRules };
 
 export const javascriptConfig: {
   files: FlatConfig.Config["files"];
@@ -36,6 +37,6 @@ export const javascriptConfig: {
   rules: JavascriptRuleEntryObject;
 } = {
   files: ["**/*.{js,ts,jsx,tsx}"],
-  plugins: { [PLUGIN_NAME_JAVASCRIPT]: { rules: javascriptRules } },
+  plugins: { [PLUGIN_NAME_JAVASCRIPT]: javascriptPlugin },
   rules: javascriptRuleConfigs,
 } as const;
