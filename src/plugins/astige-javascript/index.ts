@@ -22,23 +22,21 @@ type RuleEntryObject = {
   [K in PrefixedRuleName]: SharedConfig.RuleEntry;
 };
 
-const ruleConfigs: RuleEntryObject = {
-  "astige-javascript/fta-complexity-could-be-better": [
-    WARN,
-    { "when-above": 55, "when-at-or-under": 75 },
-  ],
-  "astige-javascript/fta-complexity-needs-improvement": [
-    ERROR,
-    { "when-above": 75 },
-  ],
-  "astige-javascript/no-export-as": ERROR,
-  "astige-javascript/no-import-as": ERROR,
-  "astige-javascript/no-tsx-without-jsx": ERROR,
-};
-
 export const astigeJavascriptPlugin: FlatConfig.Plugin = { rules: rules };
 export const astigeJavascriptConfig: FlatConfig.Config & { rules: RuleEntryObject } = {
   files: ["**/*.{js,ts,jsx,tsx}"],
   plugins: { [PLUGIN_NAME]: astigeJavascriptPlugin },
-  rules: ruleConfigs,
+  rules: {
+    "astige-javascript/fta-complexity-could-be-better": [
+      WARN,
+      { "when-above": 55, "when-at-or-under": 75 },
+    ],
+    "astige-javascript/fta-complexity-needs-improvement": [
+      ERROR,
+      { "when-above": 75 },
+    ],
+    "astige-javascript/no-export-as": ERROR,
+    "astige-javascript/no-import-as": ERROR,
+    "astige-javascript/no-tsx-without-jsx": ERROR,
+  },
 };
