@@ -8,6 +8,7 @@ const astigeIgnoreConfigs: PluginConfigs<[], {}> = [{
     ".next-dev/**",
     "package-lock.json",
     "next-env.d.ts",
+    ".aider.chat.history.md",
   ],
 }];
 
