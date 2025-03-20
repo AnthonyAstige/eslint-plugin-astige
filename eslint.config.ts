@@ -10,7 +10,6 @@ const config: FlatConfig.Config[] = [
     languageOptions: {
       parser: typescriptParser,
     },
-    files: ["**/*.{ts,tsx}"],
   },
   globalIgnores([
     "dist/*",
