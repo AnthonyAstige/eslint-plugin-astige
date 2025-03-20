@@ -27,4 +27,4 @@ export const everyConfig: FlatConfig.Config = {
   files: ["**/*.{js,ts,jsx,tsx}"],
   plugins: { [PLUGIN_NAME_EVERY]: everyPlugin },
   rules: everyRuleConfigs,
-} as const;
+};

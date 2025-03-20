@@ -9,4 +9,4 @@ export const ignoreConfig: FlatConfig.Config = {
     "package-lock.json",
     "next-env.d.ts",
   ],
-} as const;
+};

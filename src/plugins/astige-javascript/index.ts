@@ -40,4 +40,4 @@ export const javascriptConfig: FlatConfig.Config = {
   files: ["**/*.{js,ts,jsx,tsx}"],
   plugins: { [PLUGIN_NAME_JAVASCRIPT]: javascriptPlugin },
   rules: javascriptRuleConfigs,
-} as const;
+};
