@@ -10,8 +10,7 @@ const rules = {
 
 const astigeEveryPlugin: FlatConfig.Plugin = { rules: rules };
 const astigeEveryConfig: PluginConfig<[typeof PLUGIN_NAME], typeof rules> = {
-  // TODO 3. Setup no-op parser and make work in this config
-  files: ["**/*.{js,ts,jsx,tsx}"],
+  files: ["**/*"],
   plugins: { [PLUGIN_NAME]: astigeEveryPlugin },
   rules: {
     "astige-every/max-tokens-per-file": [
@@ -20,6 +19,13 @@ const astigeEveryConfig: PluginConfig<[typeof PLUGIN_NAME], typeof rules> = {
         js: 2_000,
         ts: 2_000,
         tsx: 2_000,
+      },
+    ],
+    "no-warning-comments": [
+      WARN,
+      {
+        // Single warn syntax so low priority reminders like `TODO 1.` can remain
+        terms: ["TODO:"],
       },
     ],
   },
