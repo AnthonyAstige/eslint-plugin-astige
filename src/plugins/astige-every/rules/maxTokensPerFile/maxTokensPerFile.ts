@@ -25,57 +25,48 @@ function shouldReport(
   return (tokenCount > maxTokens);
 }
 
+function report(
+  context: RuleContext<"maxTokens", [MaxTokensConfig]>,
+  // TODO: Fix any
+  node: any,
+  sourceText: string,
+) {
+  const encodedTokens = encode(sourceText);
+  const tokenCount = encodedTokens.length;
+  const fileType = context.filename.split(".").pop();
+  const maxTokens = context.options[0][fileType!];
+
+  context.report({
+    data: {
+      fileType: fileType!,
+      maxTokens: String(maxTokens),
+      tokenCount: tokenCount.toString(),
+    },
+    messageId: "maxTokens",
+    node,
+  });
+}
+
 export const maxTokensPerFile: TSESLint.RuleModule<
   "maxTokens",
   [MaxTokensConfig]
 > = {
   create(context) {
-    const { options } = context;
-    const [maxTokensConfig] = options;
     const fileType = context.filename.split(".").pop();
 
-    if (!fileType) {
-      return {};
-    }
-
-    const maxTokens = maxTokensConfig[fileType];
-
     if (fileType === "md") {
-      const maxTokens = maxTokensConfig[fileType];
       const sourceText = fs.readFileSync(context.filename, "utf8");
 
-      const encodedTokens = encode(sourceText);
-      const tokenCount = encodedTokens.length;
-
       if (shouldReport(context, sourceText)) {
-        // Use the Program node from the AST for reporting
-        context.report({
-          data: {
-            fileType,
-            maxTokens: String(maxTokens),
-            tokenCount: tokenCount.toString(),
-          },
-          messageId: "maxTokens",
-          node: context.sourceCode.ast,
-        });
+        report(context, context.sourceCode.ast, sourceText);
       }
     }
 
     return {
       Program(node) {
         const sourceText = context.sourceCode.getText(node);
-        const encodedTokens = encode(sourceText);
-        const tokenCount = encodedTokens.length;
         if (shouldReport(context, sourceText)) {
-          context.report({
-            data: {
-              fileType,
-              maxTokens: String(maxTokens),
-              tokenCount: tokenCount.toString(),
-            },
-            messageId: "maxTokens",
-            node,
-          });
+          report(context, node, sourceText);
         }
       },
     };
