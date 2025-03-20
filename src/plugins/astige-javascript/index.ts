@@ -21,6 +21,7 @@ type PrefixedJavascriptRuleName = `${typeof PLUGIN_NAME_JAVASCRIPT}/${keyof type
 type JavascriptRuleEntryObject = {
   [K in PrefixedJavascriptRuleName]: SharedConfig.RuleEntry;
 };
+
 const javascriptRuleConfigs: JavascriptRuleEntryObject = {
   "astige-javascript/fta-complexity-could-be-better": [
     WARN,

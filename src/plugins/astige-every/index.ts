@@ -11,6 +11,7 @@ type PrefixedEveryRuleName = `${typeof PLUGIN_NAME_EVERY}/${keyof typeof everyRu
 type EveryRuleEntryObject = {
   [K in PrefixedEveryRuleName]: SharedConfig.RuleEntry;
 };
+
 const everyRuleConfigs: EveryRuleEntryObject = {
   "astige-every/max-tokens-per-file": [
     WARN,
