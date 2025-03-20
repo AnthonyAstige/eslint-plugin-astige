@@ -1,18 +1,18 @@
-import { type TSESLint } from '@typescript-eslint/utils';
-import { encode } from 'gpt-tokenizer/cjs/model/gpt-4o';
+import { type TSESLint } from "@typescript-eslint/utils";
+import { encode } from "gpt-tokenizer/cjs/model/gpt-4o";
 
 type MaxTokensConfig = {
   [key: string]: number;
 };
 
 export const maxTokensPerFile: TSESLint.RuleModule<
-  'maxTokens',
+  "maxTokens",
   [MaxTokensConfig]
 > = {
   create(context) {
     const { options, sourceCode } = context;
     const [maxTokensConfig] = options;
-    const fileType = context.filename.split('.').pop();
+    const fileType = context.filename.split(".").pop();
 
     if (!fileType || !maxTokensConfig[fileType]) {
       return {};
@@ -33,7 +33,7 @@ export const maxTokensPerFile: TSESLint.RuleModule<
               maxTokens: String(maxTokens),
               tokenCount: tokenCount.toString(),
             },
-            messageId: 'maxTokens',
+            messageId: "maxTokens",
             node,
           });
         }
@@ -44,20 +44,20 @@ export const maxTokensPerFile: TSESLint.RuleModule<
   meta: {
     docs: {
       description:
-        'Enforce a maximum number of tokens per file type to keep files manageable by LLMS (quicker to output entire files when edits made)',
+        "Enforce a maximum number of tokens per file type to keep files manageable by LLMS (quicker to output entire files when edits made)",
     },
     messages: {
       maxTokens:
-        'File exceeds the maximum allowed tokens of {{maxTokens}} for .{{fileType}} files. Token count: {{tokenCount}}',
+        "File exceeds the maximum allowed tokens of {{maxTokens}} for .{{fileType}} files. Token count: {{tokenCount}}",
     },
     schema: [
       {
         additionalProperties: {
-          type: 'number',
+          type: "number",
         },
-        type: 'object',
+        type: "object",
       },
     ],
-    type: 'suggestion',
+    type: "suggestion",
   },
 };

@@ -28,7 +28,7 @@ Finally, a practical consideration: writing your plugin in TypeScript means you 
 
 Creating an ESLint plugin in TypeScript involves setting up the project structure, writing one or more rules, testing those rules, and bundling everything into a shareable package. Below is a step-by-step guide:
 
-**Step 1: Set Up a TypeScript ESLint Plugin Project**  
+**Step 1: Set Up a TypeScript ESLint Plugin Project**\
 Begin by creating a new NPM package for your plugin. Choose a name following the convention `eslint-plugin-<your-plugin-name>` (this makes it clear that it’s an ESLint plugin). Initialize the project and install the necessary dependencies:
 
 - **ESLint and TypeScript** – You’ll need ESLint (as a dev dependency and peer dependency) and TypeScript for writing the code.
@@ -57,13 +57,13 @@ This will set up a basic `package.json` and add the needed packages. Next, creat
 
 Organize your project with a `src/` directory. Inside `src/`, you can have subfolders like `rules/` for rule implementations, and an entry point for the plugin (e.g., `src/index.ts` which will export all your rules). It’s also good to set up a README and a license if you plan to open-source the plugin.
 
-**Step 2: Implement Custom ESLint Rules (in TypeScript)**  
+**Step 2: Implement Custom ESLint Rules (in TypeScript)**\
 Now you can write your custom rule(s). Each ESLint rule is typically an object with a **meta** definition and a **create** function. Let’s walk through implementing a simple example rule in TypeScript. Our example rule, **“enforce-foo-bar”**, will enforce that any constant variable named `foo` is always assigned the literal `"bar"`. If `const foo` is assigned something else, the rule will report an error and even offer an autofix to change the value to `"bar"` (this is the same scenario used in the official ESLint tutorial) ([Custom Rule Tutorial - ESLint - Pluggable JavaScript Linter](https://eslint.org/docs/latest/extend/custom-rule-tutorial#:~:text=The%20Custom%20Rule)) ([Custom Rule Tutorial - ESLint - Pluggable JavaScript Linter](https://eslint.org/docs/latest/extend/custom-rule-tutorial#:~:text=Running%20ESLint%20with%20the%20rule,file%20to%20contain%20the%20following)).
 
 Create a file `src/rules/enforce-foo-bar.ts` and start defining the rule module. We’ll import the types we need from `@typescript-eslint/utils` (to get proper typings for context, nodes, etc.). For simplicity, we can define the rule without using the `RuleCreator` helper, but ensure we type it correctly as an ESLint RuleModule. For example:
 
 ```ts
-import { TSESTree, ESLintUtils } from "@typescript-eslint/utils";
+import { ESLintUtils, TSESTree } from "@typescript-eslint/utils";
 
 // Using ESLintUtils to get the type for RuleModule
 type MessageIds = "unexpectedValue";
@@ -77,12 +77,12 @@ export const enforceFooBarRule = ESLintUtils.RuleCreator(
     type: "problem",
     docs: {
       description:
-        'Enforce that a variable named `foo` is assigned the literal "bar"',
+        "Enforce that a variable named `foo` is assigned the literal \"bar\"",
       recommended: false,
     },
     messages: {
       unexpectedValue:
-        'Unexpected value {{val}} assigned to `foo`. Use "bar" instead.',
+        "Unexpected value {{val}} assigned to `foo`. Use \"bar\" instead.",
     },
     fixable: "code",
     schema: [], // no options schema
@@ -97,9 +97,9 @@ export const enforceFooBarRule = ESLintUtils.RuleCreator(
           if (node.id.type === "Identifier" && node.id.name === "foo") {
             // Check the assigned initial value is a literal different from "bar"
             if (
-              node.init &&
-              node.init.type === "Literal" &&
-              node.init.value !== "bar"
+              node.init
+              && node.init.type === "Literal"
+              && node.init.value !== "bar"
             ) {
               const wrongValue = node.init.value;
               // Report a problem with a message (using the messageId defined in meta)
@@ -109,7 +109,7 @@ export const enforceFooBarRule = ESLintUtils.RuleCreator(
                 data: { val: String(wrongValue) },
                 fix(fixer) {
                   // Provide an autofix: replace the initializer with "bar"
-                  return fixer.replaceText(node.init!, '"bar"');
+                  return fixer.replaceText(node.init!, "\"bar\"");
                 },
               });
             }
@@ -132,7 +132,7 @@ A few things to note in this rule implementation:
 
 Once you’ve implemented the rule logic, you should **export** it so it can be included in the plugin. In the code above, we exported a named `enforceFooBarRule`. You could also use `export default` if you prefer each rule file to export a default rule object. The key is that the plugin’s entry point will need to import this and attach it to ESLint.
 
-**Step 3: Write Unit Tests for Your ESLint Rules**  
+**Step 3: Write Unit Tests for Your ESLint Rules**\
 Writing tests for your custom rules is essential to ensure they work as expected and to prevent regressions when the plugin evolves. ESLint provides a helpful utility class called `RuleTester` to facilitate rule testing ([Custom Rule Tutorial - ESLint - Pluggable JavaScript Linter](https://eslint.org/docs/latest/extend/custom-rule-tutorial#:~:text=With%20the%20rule%20written%2C%20you,sure%20it%E2%80%99s%20working%20as%20expected)) ([Custom Rule Tutorial - ESLint - Pluggable JavaScript Linter](https://eslint.org/docs/latest/extend/custom-rule-tutorial#:~:text=To%20write%20the%20test%20using,bar.test.js%60%20file)). The RuleTester allows you to define a set of **valid** code samples and **invalid** code samples for each rule, and it will run ESLint with your rule to verify that:
 
 - All valid samples produce no errors.
@@ -156,20 +156,20 @@ const ruleTester = new RuleTester({
 ruleTester.run("enforce-foo-bar", rule, {
   valid: [
     // Should not error when foo is assigned "bar"
-    { code: 'const foo = "bar";' },
+    { code: "const foo = \"bar\";" },
     // Other variables or let/var should not be touched
-    { code: 'const baz = "baz";' },
-    { code: 'let foo = "baz";' },
+    { code: "const baz = \"baz\";" },
+    { code: "let foo = \"baz\";" },
   ],
   invalid: [
     {
-      code: 'const foo = "baz";',
-      output: 'const foo = "bar";', // expected autofix result
+      code: "const foo = \"baz\";",
+      output: "const foo = \"bar\";", // expected autofix result
       errors: [{ messageId: "unexpectedValue", data: { val: "baz" } }],
     },
     {
       code: "const foo = 42;",
-      output: 'const foo = "bar";',
+      output: "const foo = \"bar\";",
       errors: [{ messageId: "unexpectedValue", data: { val: "42" } }],
     },
   ],
@@ -180,7 +180,7 @@ In this test code, we configured RuleTester with the TypeScript parser (`@typesc
 
 You can run these tests with a test runner (like Mocha or Jest) or even just by running the test file with Node (since we used RuleTester which throws on failure). For convenience, add a script in your `package.json` like `"test": "node ./tests/enforce-foo-bar.test.js"`. After implementing the rule and seeing tests pass (all scenarios green), you are confident that your rule behaves correctly.
 
-**Step 4: Bundle the Plugin and Configure for Publishing**  
+**Step 4: Bundle the Plugin and Configure for Publishing**\
 Once you have one or more rules implemented and tested, the next step is to bundle them into an ESLint plugin module and prepare the package for distribution. An ESLint plugin is essentially an object that exports its rules (and maybe configs or processors). By convention, the plugin’s main file exports a structure like:
 
 ```js
