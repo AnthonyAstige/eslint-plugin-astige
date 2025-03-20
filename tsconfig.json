@@ -1,8 +1,6 @@
 {
   "extends": ["@tsconfig/strictest/tsconfig", "@tsconfig/node20/tsconfig"],
   "compilerOptions": {
-    "forceConsistentCasingInFileNames": true,
-
     // https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html#im-writing-a-library
     // Whatever missing from https://www.npmjs.com/package/@tsconfig/node20
     "verbatimModuleSyntax": true,
@@ -12,6 +10,7 @@
 
     // "allowImportingTsExtensions": true,
     // "noEmit": true,
+    "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
     "noUncheckedIndexedAccess": true,
     "outDir": "./dist",
