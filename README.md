@@ -83,6 +83,14 @@ This extremely opinionated preset is designed with these key principles:
    4. Simplify dependency management, versioning, coding of multiple plugins
    5. Enable focused development and testing of specific rule sets
 
+### The plugins
+
+- [astige-ignore](./plugins/astige-ignore.md)
+- [astige-every](./plugins/astige-every.md) 📏
+- [astige-javascript](./plugins/astige-javascript.md) 📏
+
+📏 Contains Custom Rules
+
 ## Contributing
 
 While this is primarily my personal preset, I welcome suggestions and discussions about the rules. Please open an issue to start a conversation.
