@@ -2,37 +2,6 @@
 
 My personal ESLint plugin collection containing multiple focused plugins with recommended configurations.
 
-## Guiding Principles
-
-This extremely opinionated preset is designed with these key principles in mind:
-
-1. **One Right Way**: The config is intentionally strict and opinionated to encourage consistency across all my projects. There should be minimal ambiguity about how code should be written. This is still JavaScript / TypeScript though, so there will be a fair amount of inherent flexibility.
-
-2. **LLM-Friendly Code**: The rules are optimized for code that is easily processed and understood by large language models (LLMs). This includes:
-
-   - Clear and explicit code patterns
-   - Minimal use of complex or ambiguous syntax
-   - Consistent formatting and structure
-   - Modular and concise for context window management
-   - Consistent, predictable code patterns that are easy to parse, simple to extend, and clear in intent
-
-3. **TypeScript Best Practices**: Embrace TypeScript's type system and idioms fully, following TypeScript conventions and best practices wherever practical.
-
-4. Speed - Any included rules should be relatively fast so that they can be run fast across entire codebases with 100's of files in seconds and also on individual files within milliseconds for complete analysis and editor integration.
-
-5. **Technology Foundations**: The preset is built around a carefully curated set of core technologies that provide a stable foundation for development. Current primary influences include:
-
-   1. [Canonical ESLint Config](https://github.com/gajus/eslint-config-canonical)
-   2. [T3 stack](https://create.t3.gg/)
-      1. [Next.js](https://nextjs.org/)
-      2. [PostgreSQL](https://www.postgresql.org/) via [Prisma](https://www.prisma.io/)
-      3. [Tailwind](https://tailwindcss.com/)
-      4. [tRPC](https://trpc.io/) (+[Zod](https://zod.dev/))
-   3. [Aider](https://aider.chat/)
-   4. [dprint](https://dprint.dev/) - Fast rust based formatting to minimize that done by ESLint. Dprint config included since there's ESLint rule overlap and dprint should take priority for speed where it can.
-
-6. **Custom Rules When Necessary**: While I prioritize leveraging existing ESLint rules to maintain consistency and development speed, I'm willing to create custom rules when needed to enforce my guiding principles and address specific needs.
-
 ## Installation
 
 ```bash
@@ -68,16 +37,6 @@ const config: FlatConfig.Config[] = [
 export default config;
 ```
 
-## Multiple plugin background
-
-This is structured as a collection of plugins in a single repository to:
-
-1. Allow splitting of plugin loading and processing per file type
-2. Enable modular adoption of rules
-3. Maintain a single source of truth for all my ESLint configurations
-4. Simplify dependency management, versioning, coding of multiple plugins
-5. Enable focused development and testing of specific rule sets
-
 ### The plugins
 
 - [astige-ignore](./docs/plugins/astige-ignore.md)
@@ -85,6 +44,44 @@ This is structured as a collection of plugins in a single repository to:
 - [astige-javascript](./docs/plugins/astige-javascript.md) 📏
 
 📏 Contains Custom Rules
+
+## Guiding Principles
+
+This extremely opinionated preset is designed with these key principles in mind:
+
+1. **One Right Way**: The config is intentionally strict and opinionated to encourage consistency across all my projects. There should be minimal ambiguity about how code should be written. This is still JavaScript / TypeScript though, so there will be a fair amount of inherent flexibility.
+
+2. **LLM-Friendly Code**: The rules are optimized for code that is easily processed and understood by large language models (LLMs). This includes:
+
+   - Clear and explicit code patterns
+   - Minimal use of complex or ambiguous syntax
+   - Consistent formatting and structure
+   - Modular and concise for context window management
+   - Consistent, predictable code patterns that are easy to parse, simple to extend, and clear in intent
+
+3. **TypeScript Best Practices**: Embrace TypeScript's type system and idioms fully, following TypeScript conventions and best practices wherever practical.
+
+4. Speed - Any included rules should be relatively fast so that they can be run fast across entire codebases with 100's of files in seconds and also on individual files within milliseconds for complete analysis and editor integration.
+
+5. **Technology Foundations**: The preset is built around a carefully curated set of core technologies that provide a stable foundation for development. Current primary influences include:
+
+   1. [Canonical ESLint Config](https://github.com/gajus/eslint-config-canonical)
+   2. [T3 stack](https://create.t3.gg/)
+      1. [Next.js](https://nextjs.org/)
+      2. [PostgreSQL](https://www.postgresql.org/) via [Prisma](https://www.prisma.io/)
+      3. [Tailwind](https://tailwindcss.com/)
+      4. [tRPC](https://trpc.io/) (+[Zod](https://zod.dev/))
+   3. [Aider](https://aider.chat/)
+   4. [dprint](https://dprint.dev/) - Fast rust based formatting to minimize that done by ESLint. Dprint config included since there's ESLint rule overlap and dprint should take priority for speed where it can.
+
+6. **Custom Rules When Necessary**: While I prioritize leveraging existing ESLint rules to maintain consistency and development speed, I'm willing to create custom rules when needed to enforce my guiding principles and address specific needs.
+
+7. **Multiple sub-plugins:** This is structured as a collection of sub-plugins in a single repository to:
+   1. Allow splitting of plugin loading and processing per file type
+   2. Enable modular adoption of rules
+   3. Maintain a single source of truth for all my ESLint configurations
+   4. Simplify dependency management, versioning, coding of multiple plugins
+   5. Enable focused development and testing of specific rule sets
 
 ## Contributing
 
