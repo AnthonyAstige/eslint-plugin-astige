@@ -1,7 +1,8 @@
+import { globalIgnores } from "eslint/config";
 import type { PluginConfigs } from "../../sharedTypes.js";
 
-const astigeIgnoreConfigs: PluginConfigs<[], {}> = [{
-  ignores: [
+const astigeIgnoreConfigs: PluginConfigs<[], {}> = [
+  globalIgnores([
     "out/**",
     ".data/**",
     ".next-prod/**",
@@ -9,7 +10,7 @@ const astigeIgnoreConfigs: PluginConfigs<[], {}> = [{
     "package-lock.json",
     "next-env.d.ts",
     ".aider.chat.history.md",
-  ],
-}];
+  ]),
+];
 
 export { astigeIgnoreConfigs };
