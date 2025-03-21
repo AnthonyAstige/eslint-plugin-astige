@@ -66,9 +66,10 @@
     "build": "./scripts/build.sh",
     "format": "./scripts/format.sh",
     "lint": "./scripts/lint.sh",
+    "postinstall": "echo Running post-install script",
     "pub": "npm run build && npm publish",
     "test": "jest"
   },
   "type": "module",
-  "version": "0.0.9"
+  "version": "0.0.10"
 }
