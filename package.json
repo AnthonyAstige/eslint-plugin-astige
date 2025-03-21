@@ -5,6 +5,7 @@
   },
   "dependencies": {
     "@eslint/markdown": "^6.3.0",
+    "@next/eslint-plugin-next": "^15.2.3",
     "fta-cli": "^2.0.1",
     "gpt-tokenizer": "^2.9.0"
   },

@@ -2,6 +2,9 @@ import markdown from "@eslint/markdown";
 import importPlugin from "eslint-plugin-import";
 import { ERROR, OFF, WARN } from "../../severityConstants.js";
 import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile.js";
+import nextPlugin from "@next/eslint-plugin-next";
+// import jsxA11yConfig from "eslint-config-canonical/configurations/jsx-a11y";
+import globals from "globals";
 
 import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 
@@ -77,6 +80,191 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
       "perfectionist/sort-imports": OFF,
       "prettier/prettier": OFF,
     },
+  },
+  /*
+  // TODO: Bring this back in ; typing issue I think need to adjust my custom type def
+  {
+    files: ["** /*.tsx"],
+    ...jsxA11yConfig.recommended,
+    rules: {
+      "jsx-a11y/label-has-associated-control": OFF,
+    },
+  },
+  */
+  {
+    files: ["**/*.{ts,tsx}"],
+    rules: {
+      "canonical/filename-match-regex": [ERROR],
+    },
+  },
+  {
+    plugins: {
+      // TODO: Ensure this is correct / fix back to "import/[rule-name]" override everywhere?
+      // TODO: * Before I had this named "import" in an attempt to override import from canonical's auto config
+      // TODO: ** Not sure if everything was working as intended even
+      "eslint-plugin-import": importPlugin,
+    },
+  },
+  {
+    files: ["**/*.{cjs,mjs,js,ts,tsx}"],
+    plugins: {
+      "@next/next": nextPlugin,
+    },
+    rules: {
+      ...nextPlugin.configs.recommended.rules,
+      ...nextPlugin.configs["core-web-vitals"].rules,
+      /*
+       * ChatGPT query "Adjust this eslint id-match rule's regex to allow snake_case variables also" by Anthony on 2024-02-14
+       * * Original: ^[A-Za-z]+(?:[A-Z][a-z]*)*\d*$)|(^[A-Z]+(_[A-Z]+)*(_\d$)*$)|(^(_|\$)$
+       * * Updated:  ^[a-zA-Z_$][a-zA-Z0-9_$]*$|^[A-Z]+(_[A-Z0-9]+)*$|^[a-z]+(_[a-z0-9]+)*$
+       * ChatGPT comment: '// Adjusted ESLint id-match rule regex to allow camelCase, PascalCase, UPPER_CASE with underscores, and snake_case identifiers'
+       *
+       * Note: Not really reviewed, as regex complex, but seems to work
+       */
+      "canonical/id-match": [
+        ERROR,
+        "^[a-zA-Z_$][a-zA-Z0-9_$]*$|^[A-Z]+(_[A-Z0-9]+)*$|^[a-z]+(_[a-z0-9]+)*$",
+      ],
+      complexity: [WARN, 8],
+      "eslint-plugin-import/extensions": [
+        ERROR,
+        {
+          pattern: {
+            cjs: "always",
+            css: "always",
+            js: "never",
+            mjs: "always",
+            ts: "never",
+            tsx: "never",
+          },
+        },
+      ],
+      "eslint-plugin-import/group-exports": ERROR,
+      "eslint-plugin-import/no-commonjs": ERROR,
+      "eslint-plugin-import/no-default-export": ERROR, // General concensus is default-exports are bad - https://old.reddit.com/r/javascript/comments/x3hsov/default_exports_in_javascript_modules_are_terrible/
+      "max-depth": [WARN, 2],
+      "max-lines-per-function": [WARN, 150],
+      "no-console": [WARN], // Allow console logs during normal development, plan is to cleanup in cleanup phase
+      "no-inline-comments": [OFF], // Allow inline comments for simplicity ; I trust myself
+      "no-unreachable": [WARN], // Prevent auto-fix removing unreachable code (race condition?) & actually warn - https://stackoverflow.com/a/74964368
+      "unicorn/no-array-reduce": OFF,
+    },
+  },
+  {
+    files: ["**/*.{cjs,mjs,js}"],
+    rules: {
+      "eslint-plugin-import/extensions": [
+        ERROR,
+        {
+          pattern: {
+            cjs: "always",
+            js: "always",
+            mjs: "always",
+          },
+        },
+      ],
+    },
+  },
+  {
+    files: ["**/*.{ts,tsx}"],
+    rules: {
+      "@typescript-eslint/consistent-type-assertions": [
+        ERROR,
+        {
+          assertionStyle: "never",
+        },
+      ],
+      /**
+       * Allow various for Prisma since it's permiating our app
+       * 1) @typescript-eslint/naming-convention: Variable naming snake_case
+       * 2) canonical/id-match: Variable naming snake_case
+       */
+      "@typescript-eslint/naming-convention": [
+        OFF,
+        {
+          format: ["camelCase", "UPPER_CASE", "PascalCase", "snake_case"],
+        },
+      ],
+      "@typescript-eslint/no-deprecated": ERROR,
+      "@typescript-eslint/no-empty-object-type": [ERROR],
+      "@typescript-eslint/no-restricted-types": [
+        ERROR,
+        {
+          types: {
+            "React.FC": {
+              message: "Use regular function components instead of React.FC",
+            },
+          },
+        },
+      ],
+      "@typescript-eslint/no-unnecessary-condition": [ERROR],
+      "@typescript-eslint/no-unsafe-function-type": [ERROR],
+      "@typescript-eslint/no-unused-vars": [
+        ERROR,
+        {
+          // Catch what ts server warns about as an error instead w/args: all
+          args: "all",
+          argsIgnorePattern: "^_",
+          destructuredArrayIgnorePattern: "^_",
+          ignoreRestSiblings: true,
+        },
+      ],
+      "@typescript-eslint/no-wrapper-object-types": [ERROR],
+    },
+  },
+  {
+    files: ["**/*.tsx"],
+    rules: {
+      // Use camelCase for *.tsx filenames as PascalCase may break HMR (fast reload) in Next.js 🤷
+      "canonical/filename-match-exported": [
+        ERROR,
+        {
+          transforms: ["camel"],
+        },
+      ],
+      // Allow className for tailwind
+      "react/forbid-component-props": [
+        ERROR,
+        {
+          forbid: ["style"],
+        },
+      ],
+    },
+  },
+  {
+    files: ["**/*.cjs", "**/*.mjs", "**/*.js"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+  // Invert to default exports for certain cases
+  {
+    files: [
+      // Next.JS pages (Note: only place actual pages here)
+      // * TODO: Check that only pages are in this folder
+      "src/pages/**/*.{ts,tsx}",
+      // Other plugins expecting a default export
+      "eslint.config.ts",
+      "jest.config.mjs",
+      "next.config.mjs",
+      "postcss.config.mjs",
+      "tailwind.config.ts",
+      "src/types/**/*.d.ts",
+    ],
+    // files: ['**/*'],
+    rules: {
+      "eslint-plugin-import/no-default-export": OFF,
+      "eslint-plugin-import/no-named-export": ERROR,
+      "eslint-plugin-import/prefer-default-export": ERROR,
+    },
+  },
+  {
+    files: ["**/*"],
+    rules: {
+      "jsonc/no-comments": OFF
+    }
   },
   // Disable or adjust slow rules
   // * Found via `TIMING=1 npx eslint`
