@@ -1,2 +1,2 @@
 #!/bin/sh
-echo "INIT BIN SCRIPT CALLED"
+echo "INIT BIN SCRIPT CALLED B"
