@@ -5,6 +5,7 @@ import { astigeJavascriptConfigs, astigeJavascriptPlugin } from "./plugins/astig
 // TODO: Move all my personal project's eslint configuration into here
 import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 import canonicalAuto from "eslint-config-canonical/configurations/auto";
+import { astigeNextConfigs } from "./plugins/astige-next";
 
 const configs = {
   "astige-every": astigeEveryConfigs,
@@ -21,6 +22,7 @@ const auto: FlatConfig.Config[] = [
   ...astigeIgnoreConfigs,
   ...canonicalAuto,
   ...astigeEveryConfigs,
+  ...astigeNextConfigs,
   ...astigeJavascriptConfigs,
 ];
 

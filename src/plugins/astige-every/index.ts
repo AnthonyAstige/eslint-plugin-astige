@@ -1,5 +1,4 @@
 import markdown from "@eslint/markdown";
-import nextPlugin from "@next/eslint-plugin-next";
 import importPlugin from "eslint-plugin-import";
 import { ERROR, OFF, WARN } from "../../severityConstants";
 import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile";
@@ -106,12 +105,7 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
   },
   {
     files: ["**/*.{cjs,mjs,js,ts,tsx}"],
-    plugins: {
-      "@next/next": nextPlugin,
-    },
     rules: {
-      ...nextPlugin.configs.recommended.rules,
-      ...nextPlugin.configs["core-web-vitals"].rules,
       /*
        * ChatGPT query "Adjust this eslint id-match rule's regex to allow snake_case variables also" by Anthony on 2024-02-14
        * * Original: ^[A-Za-z]+(?:[A-Z][a-z]*)*\d*$)|(^[A-Z]+(_[A-Z]+)*(_\d$)*$)|(^(_|\$)$
