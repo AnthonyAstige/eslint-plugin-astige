@@ -12,8 +12,7 @@ const configs: FlatConfig.Config[] = [
     },
   },
   globalIgnores([
-    "dist/*",
-    "package-lock.json",
+    "docs/generated-create-eslint-plugin-instructions.md",
   ]),
   ...astige.auto,
 ];
