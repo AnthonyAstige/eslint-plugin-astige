@@ -65,12 +65,7 @@ This extremely opinionated preset is designed with these key principles:
    3. [Aider](https://aider.chat/)
    4. [dprint](https://dprint.dev/)
 7. **Custom Rules When Necessary**: While I prioritize leveraging existing ESLint rules to maintain consistency and development speed, I'm willing to create custom rules when needed to enforce my guiding principles and address specific needs.
-8. **Multiple Sub-Plugins**: This is structured as a collection of sub-plugins in a single repository to:
-   1. Logical grouping of processing by usage
-   2. Enable modular adoption of rules
-   3. Maintain a single source of truth for all my shared ESLint configurations
-   4. Simplify dependency management, versioning, coding of multiple plugins
-   5. Enable focused development and testing of specific rule sets
+8. **Multiple Sub-Plugins**: The plugin is structured as a collection of sub-plugins in a single repository to enable logical grouping by usage, modular rule adoption, and a single source of truth for all shared ESLint configurations. This approach simplifies dependency management, versioning, and coding of multiple plugins while enabling focused development and testing of specific rule sets.
 
 ### The plugins
 
