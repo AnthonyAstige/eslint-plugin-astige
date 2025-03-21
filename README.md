@@ -55,6 +55,10 @@ export default [
     },
     rules: {
       "astige-javascript/no-tsx-without-jsx": "warn",
+      "astige-javascript/fta-complexity-needs-improvement": [
+        "error",
+        { "when-above": 66 },
+      ],
     },
   },
 ];
