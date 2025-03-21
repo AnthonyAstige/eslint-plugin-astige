@@ -61,7 +61,7 @@ This extremely opinionated preset is designed with these key principles in mind:
 
 3. **TypeScript Best Practices**: Embrace TypeScript's type system and idioms fully, following TypeScript conventions and best practices wherever practical.
 
-4. Speed - Any included rules should be relatively fast so that they can be run fast across entire codebases with 100's of files in seconds and also on individual files within milliseconds for complete analysis and editor integration.
+4. **Speed:** Any included rules should be relatively fast so that they can be run fast across entire codebases with 100's of files in seconds and also on individual files within milliseconds for complete analysis and editor integration.
 
 5. **Technology Foundations**: The preset is built around a carefully curated set of core technologies that provide a stable foundation for development. Current primary influences include:
 
@@ -77,9 +77,9 @@ This extremely opinionated preset is designed with these key principles in mind:
 6. **Custom Rules When Necessary**: While I prioritize leveraging existing ESLint rules to maintain consistency and development speed, I'm willing to create custom rules when needed to enforce my guiding principles and address specific needs.
 
 7. **Multiple sub-plugins:** This is structured as a collection of sub-plugins in a single repository to:
-   1. Allow splitting of plugin loading and processing per file type
+   1. Logical grouping of processing by usage
    2. Enable modular adoption of rules
-   3. Maintain a single source of truth for all my ESLint configurations
+   3. Maintain a single source of truth for all my shared ESLint configurations
    4. Simplify dependency management, versioning, coding of multiple plugins
    5. Enable focused development and testing of specific rule sets
 
