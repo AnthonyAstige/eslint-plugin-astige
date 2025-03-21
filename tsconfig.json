@@ -1,27 +1,20 @@
 {
   "compilerOptions": {
-    // From https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html#im-writing-a-library but removing those already in:
-    // * https://www.npmjs.com/package/@tsconfig/node20
-    // * https://www.npmjs.com/package/@tsconfig/strictest
     "declaration": true,
     "declarationMap": true,
-
-
     "forceConsistentCasingInFileNames": true,
-    // Allows imports with no file extensions (fixed jest issues when importing from others)
-    // * There's probably another way, but this worked quickly - Anthony 2025-03-21
     "module": "es2020",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "Bundler", // Allows imports with no file extensions (fixed jest issues when importing from others). There's probably another way, but this worked quickly - Anthony 2025-03-21
     "noImplicitAny": true,
     "outDir": "./dist",
     "resolveJsonModule": true,
     "rootDir": "./src",
     "sourceMap": true,
     "strictBindCallApply": true,
-    "verbatimModuleSyntax": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true,
-    "strictPropertyInitialization": true
+    "strictPropertyInitialization": true,
+    "verbatimModuleSyntax": true
   },
   "exclude": [
     "node_modules",
