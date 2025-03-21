@@ -6,6 +6,7 @@ My personal ESLint plugin collection containing multiple focused plugins with re
 
 ```bash
 npm install eslint-plugin-astige --save-dev
+npx eslint-plugin-astige-init
 ```
 
 ## Usage (`eslint.config.ts`)
@@ -50,38 +51,31 @@ export default config;
 This extremely opinionated preset is designed with these key principles:
 
 1. **One Right Way**: The config is intentionally strict and opinionated to encourage consistency across all projects. There should be minimal ambiguity about how code should be written. This is still JavaScript/TypeScript though, so there will be inherent flexibility.
-
 2. **LLM-Friendly Code**: The rules are optimized for code that is easily processed and understood by large language models (LLMs), including:
-
    - Clear and explicit code patterns
    - Minimal use of complex or ambiguous syntax
    - Consistent formatting and structure
    - Modular and concise for context window management
    - Consistent, predictable code patterns that are easy to parse, simple to extend, and clear in intent
-
 3. **TypeScript Best Practices**: Fully embrace TypeScript's type system and idioms, following TypeScript conventions and best practices wherever practical.
-
-4. **Speed**: Any included rules should be fast enough to run across entire codebases with hundreds of files in seconds, and on individual files within milliseconds for complete analysis and editor integration.
-
-5. **Technology Foundations**: The preset is built around a carefully curated set of core technologies that provide a stable development foundation. Current primary influences include:
-
-   1. [Canonical ESLint Config](https://github.com/gajus/eslint-config-canonical)
-   2. [T3 stack](https://create.t3.gg/)
-      1. [Next.js](https://nextjs.org/)
-      2. [PostgreSQL](https://www.postgresql.org/) via [Prisma](https://www.prisma.io/)
-      3. [Tailwind](https://tailwindcss.com/)
-      4. [tRPC](https://trpc.io/) (+[Zod](https://zod.dev/))
-   3. [Aider](https://aider.chat/)
-   4. [dprint](https://dprint.dev/) - Fast rust based formatting to minimize that done by ESLint. Dprint config included since there's ESLint rule overlap and dprint should take priority for speed where it can.
-
-6. **Custom Rules When Necessary**: While I prioritize leveraging existing ESLint rules to maintain consistency and development speed, I'm willing to create custom rules when needed to enforce my guiding principles and address specific needs.
-
-7. **Multiple Sub-Plugins**: This is structured as a collection of sub-plugins in a single repository to:
-   1. Logical grouping of processing by usage
-   2. Enable modular adoption of rules
-   3. Maintain a single source of truth for all my shared ESLint configurations
-   4. Simplify dependency management, versioning, coding of multiple plugins
-   5. Enable focused development and testing of specific rule sets
+4. **Formatters First**: [Linters are not formatters](https://typescript-eslint.io/users/what-about-formatting/#formatters-vs-linters) and are inherently slower. We rely on formatters for whatever they can do, and minimize the formatting work we have ESLint do.
+5. **Speed**: Any included rules should be fast enough to run across entire codebases with hundreds of files in seconds, and on individual files within milliseconds for complete analysis and editor integration.
+6. **Technology Foundations**: The preset is built around a carefully curated set of core technologies that provide a stable development foundation. Current primary influences include:
+   3. [Canonical ESLint Config](https://github.com/gajus/eslint-config-canonical)
+   4. [T3 stack](https://create.t3.gg/)
+   3. [Next.js](https://nextjs.org/)
+   4. [PostgreSQL](https://www.postgresql.org/) via [Prisma](https://www.prisma.io/)
+   5. [Tailwind](https://tailwindcss.com/)
+   6. [tRPC](https://trpc.io/) (+[Zod](https://zod.dev/))
+   5. [Aider](https://aider.chat/)
+   6. [dprint](https://dprint.dev/)
+7. **Custom Rules When Necessary**: While I prioritize leveraging existing ESLint rules to maintain consistency and development speed, I'm willing to create custom rules when needed to enforce my guiding principles and address specific needs.
+8. **Multiple Sub-Plugins**: This is structured as a collection of sub-plugins in a single repository to:
+   3. Logical grouping of processing by usage
+   4. Enable modular adoption of rules
+   5. Maintain a single source of truth for all my shared ESLint configurations
+   6. Simplify dependency management, versioning, coding of multiple plugins
+   7. Enable focused development and testing of specific rule sets
 
 ### The plugins
 
@@ -90,6 +84,13 @@ This extremely opinionated preset is designed with these key principles:
 - [astige-javascript](./plugins/astige-javascript.md) 📏
 
 📏 Contains Custom Rules
+
+### Tightly Coupled Non-ESLint Configurations
+
+These base configurations are included and installed with `npx eslint-plugin-astige-init`. They help reduce conflicts and duplication with ESLint rules:
+
+- `dprint.base.json`: Handles code formatting to minimize ESLint formatting rules
+- `tsconfig.base.json`: Manages TypeScript compiler options to reduce overlap with ESLint rules
 
 ## Contributing
 
