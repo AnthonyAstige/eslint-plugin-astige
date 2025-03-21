@@ -17,7 +17,7 @@ const configs: FlatConfig.Config[] = [
     "tests/", // TODO: Fix so tests will get eslint treatment
     "eslint.config.ts", // TODO 1. Fix so this file is linted too ; was trouble making work with typescriptParser (because this isn't under src which is our main tsconfig bundling)
     "dist",
-    "docs/generated-create-eslint-plugin-instructions.md",
+    "docs/dev/generated-create-eslint-plugin-instructions.md",
   ]),
   ...astige.auto,
   {
