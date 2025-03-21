@@ -43,9 +43,10 @@ npm install eslint-plugin-astige --save-dev
 Add the auto plugin collection to your ESLint configuration. Then optionally customize:
 
 ```typescript
+import { type FlatConfig } from "@typescript-eslint/utils/dist/ts-eslint";
 import * as astige from "eslint-plugin-astige";
 
-export default [
+const config: FlatConfig.Config[] = [
   // Get all the recommended configs
   ...astige.auto,
   // Optionally: Take or override specific plugin rules
@@ -62,6 +63,8 @@ export default [
     },
   },
 ];
+
+export default config;
 ```
 
 ## Multiple plugin background
