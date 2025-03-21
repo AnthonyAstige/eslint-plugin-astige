@@ -1,3 +1,4 @@
+// TODO: Document all the custom rules and pluings in this repository
 // TODO: Move all my personal project's eslint configuration into here
 import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 import { astigeEveryConfigs, astigeEveryPlugin } from "./plugins/astige-every/index.js";
