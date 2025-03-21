@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // TODO 5. Get off this bandaid (maybe the thread has some updated info, this solution was put in place 2025-03-20)
+    // Bandaid disabling verbatimModuleSyntax for Jest Only (1 of 2) per https://github.com/kulshekhar/ts-jest/issues/4081#issuecomment-1515758013
+    "verbatimModuleSyntax": false
+  }
+}

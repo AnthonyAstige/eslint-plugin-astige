@@ -175,7 +175,10 @@ const config = {
 
   // A map from regular expressions to paths to transformers
   // transform: undefined,
-
+  // Bandaid disabling verbatimModuleSyntax for Jest Only (2 of 2) per https://github.com/kulshekhar/ts-jest/issues/4081#issuecomment-1515758013
+  transform: {
+    ".ts": ["ts-jest", { tsconfig: "./tsconfig.jest.json" }],
+  },
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
   //   "/node_modules/",
