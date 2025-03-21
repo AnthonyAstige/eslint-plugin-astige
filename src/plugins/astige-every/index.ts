@@ -1,11 +1,10 @@
 import markdown from "@eslint/markdown";
 import importPlugin from "eslint-plugin-import";
-import { ERROR, OFF, WARN } from "../../severityConstants.js";
-import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile.js";
+import { ERROR, OFF, WARN } from "../../severityConstants";
+import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile";
 import nextPlugin from "@next/eslint-plugin-next";
 // import jsxA11yConfig from "eslint-config-canonical/configurations/jsx-a11y";
 import globals from "globals";
-
 import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 
 const MAX_TEXT_TOKENS = 3_000;
