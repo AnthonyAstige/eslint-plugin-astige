@@ -51,12 +51,7 @@ export default config;
 This extremely opinionated preset is designed with these key principles:
 
 1. **One Right Way**: The config is intentionally strict and opinionated to encourage consistency across all projects. There should be minimal ambiguity about how code should be written. This is still JavaScript/TypeScript though, so there will be inherent flexibility.
-2. **LLM-Friendly Code**: The rules are optimized for code that is easily processed and understood by large language models (LLMs), including:
-   - Clear and explicit code patterns
-   - Minimal use of complex or ambiguous syntax
-   - Consistent formatting and structure
-   - Modular and concise for context window management
-   - Consistent, predictable code patterns that are easy to parse, simple to extend, and clear in intent
+2. **LLM-Friendly Code**: The rules are optimized for code that is easily processed and understood by large language models (LLMs), emphasizing clear and explicit code patterns with minimal use of complex or ambiguous syntax. The code maintains consistent formatting and structure while being modular and concise for better context window management. This results in consistent, predictable code patterns that are easy to parse, simple to extend, and clear in intent.
 3. **TypeScript Best Practices**: Fully embrace TypeScript's type system and idioms, following TypeScript conventions and best practices wherever practical.
 4. **Formatters First**: [Linters are not formatters](https://typescript-eslint.io/users/what-about-formatting/#formatters-vs-linters) and are inherently slower. We rely on formatters for whatever they can do, and minimize the formatting work we have ESLint do.
 5. **Speed**: Any included rules should be fast enough to run across entire codebases with hundreds of files in seconds, and on individual files within milliseconds for complete analysis and editor integration.
