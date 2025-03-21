@@ -66,19 +66,6 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
       "jsonc/no-comments": OFF,
     },
   },
-  {
-    // Disable formatting capability for eslint (use dprint instead for performance even over prettier)
-    // * https://old.reddit.com/r/neovim/comments/1f44u1a/eslint_performance_compared_to_vscode_lspeslint/llmhn47/
-    // * https://typescript-eslint.io/users/what-about-formatting/#suggested-usage---prettier
-    // * https://news.ycombinator.com/item?id=31160722
-    files: ["**/*"],
-    rules: {
-      "jsonc/array-bracket-newline": OFF,
-      "jsonc/array-element-newline": OFF,
-      "perfectionist/sort-imports": OFF,
-      "prettier/prettier": OFF,
-    },
-  },
   /*
   // TODO: Bring this back in ; typing issue I think need to adjust my custom type def
   {
@@ -258,6 +245,19 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
     files: ["**/*"],
     rules: {
       "jsonc/no-comments": OFF,
+    },
+  },
+  {
+    // Disable formatting capability for eslint (use dprint instead for performance even over prettier)
+    // * https://old.reddit.com/r/neovim/comments/1f44u1a/eslint_performance_compared_to_vscode_lspeslint/llmhn47/
+    // * https://typescript-eslint.io/users/what-about-formatting/#suggested-usage---prettier
+    // * https://news.ycombinator.com/item?id=31160722
+    files: ["**/*"],
+    rules: {
+      "jsonc/array-bracket-newline": OFF,
+      "jsonc/array-element-newline": OFF,
+      "perfectionist/sort-imports": OFF,
+      "prettier/prettier": OFF,
     },
   },
   // Disable or adjust slow rules
