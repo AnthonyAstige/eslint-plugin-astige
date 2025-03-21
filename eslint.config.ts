@@ -11,7 +11,9 @@ const configs: FlatConfig.Config[] = [
       parser: typescriptParser,
     },
   },
+  // Custom ignores for this specific project
   globalIgnores([
+    "dist",
     "docs/generated-create-eslint-plugin-instructions.md",
   ]),
   ...astige.auto,
