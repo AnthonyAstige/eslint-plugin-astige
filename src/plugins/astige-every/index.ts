@@ -1,5 +1,4 @@
-import { WARN } from '../../severityConstants.js';
-import { type PluginConfigs } from '../../sharedTypes.js';
+import { OFF, WARN } from '../../severityConstants.js';
 import { maxTokensPerFile } from './rules/maxTokensPerFile/maxTokensPerFile.js';
 import markdown from '@eslint/markdown';
 import { type FlatConfig } from '@typescript-eslint/utils/ts-eslint';
@@ -13,7 +12,8 @@ const rules = {
 };
 
 const astigeEveryPlugin: FlatConfig.Plugin = { rules };
-const astigeEveryConfigs: PluginConfigs<[typeof PLUGIN_NAME], typeof rules> = [
+// const astigeEveryConfigs: PluginConfigs<[typeof PLUGIN_NAME], typeof rules> = [
+const astigeEveryConfigs: FlatConfig.Config[] = [
   // TODO 1. Make work work all file types with a fallback token count
   // TODO 1. * May need a custom parser
   {
@@ -53,6 +53,14 @@ const astigeEveryConfigs: PluginConfigs<[typeof PLUGIN_NAME], typeof rules> = [
           terms: ['TODO:'],
         },
       ],
+    },
+  },
+  // TODO: Move all of this stuff out of the every config ; these rules are not really meant for everything ; I need to get organized
+  // TODO: * And when done put back the above PluginConfigs
+  {
+    files: ['**/*.json'],
+    rules: {
+      'jsonc/no-comments': OFF,
     },
   },
 ];
