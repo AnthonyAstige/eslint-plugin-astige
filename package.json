@@ -63,7 +63,7 @@
     "url": "git+https://github.com/AnthonyAstige/eslint-plugin-astige.git"
   },
   "scripts": {
-    "build": "sh ./scripts/build.sh",
+    "build": "./scripts/build.sh",
     "format": "./scripts/format.sh",
     "lint": "./scripts/lint.sh",
     "pub": "npm run build && npm publish",
