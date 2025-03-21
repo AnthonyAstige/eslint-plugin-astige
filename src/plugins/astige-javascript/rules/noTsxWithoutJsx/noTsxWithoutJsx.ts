@@ -1,9 +1,9 @@
-import { createRule } from "../../../../createRule";
+import { createRule } from '../../../../createRule';
 
 export const noTsxWithoutJsx = createRule({
   create(context) {
     const filename = context.filename;
-    if (!filename.endsWith(".tsx")) {
+    if (!filename.endsWith('.tsx')) {
       return {};
     }
 
@@ -16,14 +16,14 @@ export const noTsxWithoutJsx = createRule({
       JSXFragment() {
         containsJSX = true;
       },
-      "Program:exit"(node) {
+      'Program:exit'(node) {
         if (!containsJSX) {
           const sourceCode = context.sourceCode;
           const firstToken = sourceCode.getFirstToken(node);
           if (firstToken) {
             context.report({
               loc: firstToken.loc,
-              messageId: "noJsxInTsx",
+              messageId: 'noJsxInTsx',
             });
           }
         }
@@ -33,13 +33,14 @@ export const noTsxWithoutJsx = createRule({
   defaultOptions: [],
   meta: {
     docs: {
-      description: "Disallow .tsx files without JSX",
+      description: 'Disallow .tsx files without JSX',
     },
     messages: {
-      noJsxInTsx: "This file has a .tsx extension but does not contain any JSX elements.",
+      noJsxInTsx:
+        'This file has a .tsx extension but does not contain any JSX elements.',
     },
     schema: [],
-    type: "problem",
+    type: 'problem',
   },
-  name: "no-tsx-without-jsx",
+  name: 'no-tsx-without-jsx',
 });

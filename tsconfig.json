@@ -1,29 +1,24 @@
 {
-  "extends": [
-    "@tsconfig/strictest/tsconfig",
-    // My current site works on Node20 because some package is holding us back, may move to Node2022 once cleared up - Anthony 2025-03-20 ],
-    "@tsconfig/node20/tsconfig"
-  ],
   "compilerOptions": {
     // From https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html#im-writing-a-library but removing those already in:
     // * https://www.npmjs.com/package/@tsconfig/node20
     // * https://www.npmjs.com/package/@tsconfig/strictest
     "declaration": true,
-    "sourceMap": true,
     "declarationMap": true,
-    "verbatimModuleSyntax": true,
 
+
+    "forceConsistentCasingInFileNames": true,
     // Allows imports with no file extensions (fixed jest issues when importing from others)
     // * There's probably another way, but this worked quickly - Anthony 2025-03-21
     "module": "es2020",
     "moduleResolution": "Bundler",
-
-    "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
     "outDir": "./dist",
     "resolveJsonModule": true,
     "rootDir": "./src",
+    "sourceMap": true,
     "strictBindCallApply": true,
+    "verbatimModuleSyntax": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true
@@ -31,6 +26,11 @@
   "exclude": [
     "node_modules",
     "dist"
+  ],
+  "extends": [
+    "@tsconfig/strictest/tsconfig",
+    // My current site works on Node20 because some package is holding us back, may move to Node2022 once cleared up - Anthony 2025-03-20 ],
+    "@tsconfig/node20/tsconfig"
   ],
   "include": [
     "src/**/*"

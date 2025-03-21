@@ -1,6 +1,9 @@
 {
   "dockerfile": {},
-  "excludes": ["**/node_modules", "**/*-lock.json"],
+  "excludes": [
+    "**/node_modules",
+    "**/*-lock.json"
+  ],
   "json": {},
   "malva": {},
   "markdown": {},
