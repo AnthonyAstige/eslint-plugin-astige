@@ -20,3 +20,5 @@ npx tsc
 
 # Copy manual files
 cp ./dprint.json ./dist/
+mkdir ./dist/bin/
+cp ./src/bin/* ./dist/bin/

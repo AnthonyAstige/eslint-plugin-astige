@@ -1,0 +1,1 @@
+echo "INIT BIN SCRIPT CALLED"

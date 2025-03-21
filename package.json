@@ -1,5 +1,8 @@
 {
   "author": "Anthony Astige",
+  "bin": {
+    "init": "./dist/bin/init.sh"
+  },
   "bugs": {
     "url": "https://github.com/AnthonyAstige/eslint-plugin-astige/issues"
   },
@@ -71,5 +74,5 @@
     "test": "jest"
   },
   "type": "module",
-  "version": "0.0.10"
+  "version": "0.0.11"
 }
