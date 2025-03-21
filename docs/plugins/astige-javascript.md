@@ -99,10 +99,3 @@ const MyComponent = () => <div>Hello</div>;
 **Inspiration**
 
 [jsx-eslint/eslint-plugin-react#3843](https://github.com/jsx-eslint/eslint-plugin-react/issues/3843)
-
----
-
-## Related
-
-- [ESLint](https://eslint.org/) - Pluggable JavaScript linter
-- [TypeScript ESLint](https://typescript-eslint.io/) - TypeScript support for ESLint

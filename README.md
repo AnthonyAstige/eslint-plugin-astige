@@ -90,3 +90,8 @@ While this is primarily my personal preset, I welcome suggestions and discussion
 ## License
 
 ISC
+
+## Related
+
+- [ESLint](https://eslint.org/) - Pluggable JavaScript linter
+- [TypeScript ESLint](https://typescript-eslint.io/) - TypeScript support for ESLint
