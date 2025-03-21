@@ -65,7 +65,7 @@
   "scripts": {
     "build": "sh ./scripts/build.sh",
     "format": "npx dprint fmt",
-    "lint": "npx eslint",
+    "lint": "./scripts/lint.sh",
     "pub": "npm run build && npm publish",
     "test": "jest"
   },
