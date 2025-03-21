@@ -1,6 +1,4 @@
-// TODO: Add recommended config and use it in my repository instead of configing there
-// TODO: * Pull in all my config from repository and document it well in here
-// TODO: Self-apply my full eslint system to this repository
+// TODO: Move all my personal project's eslint configuration into here
 import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 import { astigeEveryConfigs, astigeEveryPlugin } from "./plugins/astige-every/index.js";
 import { astigeIgnoreConfigs } from "./plugins/astige-ignore/index.js";
