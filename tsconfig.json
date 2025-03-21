@@ -13,6 +13,7 @@
     "declarationMap": true,
     // TODO: See if we can get this back, seems like a good setting
     // * https://www.typescriptlang.org/tsconfig/#verbatimModuleSyntax
+    // * Reported issue @ https://github.com/kulshekhar/ts-jest/issues/4081 maybe solution in there?
     "verbatimModuleSyntax": false, // Disabled for Jest (ts-jest) tests to have import syntax work
 
     "forceConsistentCasingInFileNames": true,
