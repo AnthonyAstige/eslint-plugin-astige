@@ -1,20 +1,20 @@
-# eslint-plugin-fta
+# astige-javascript
 
-ESLint plugin for FTA (Fast TypeScript Analyzer) complexity analysis. Enforces file-level complexity thresholds based on FTA's scoring system.
+The ESLint Astige JavaScript plugin
 
 ## Installation
 
 ```bash
-npm install eslint-plugin-fta
+npm install eslint-plugin-astige-javascript
 ```
 
 ## Usage
 
 Add to your ESLint config:
 
-```js
+```ts
 import typescriptParser from "@typescript-eslint/parser";
-import fta from "eslint-plugin-fta";
+import { astigeJavascriptConfigs } from "eslint-plugin-astige-javascript";
 
 export default [
   {
@@ -22,62 +22,56 @@ export default [
     languageOptions: {
       parser: typescriptParser,
     },
-    plugins: {
-      fta,
-    },
-    rules: {
-      // Warn when complexity is between 50-60
-      "fta/complexity-could-be-better": [
-        "warn",
-        { "when-above": 50, "when-at-or-under": 60 },
-      ],
-
-      // Error when complexity is above 60
-      "fta/complexity-needs-improvement": ["error", { "when-above": 60 }],
-    },
+    ...astigeJavascriptConfigs,
   },
 ];
 ```
 
 ## Rules
 
-- `complexity-could-be-better`: Warns when FTA score is between specified thresholds
-- `complexity-needs-improvement`: Errors when FTA score exceeds threshold
+### `fta-complexity-could-be-better` & `fta-complexity-needs-improvement`
 
-## About FTA
+Triggers when FTA score is between specified thresholds and when FTA score exceeds threshold respectively.
+
+```ts
+export default [
+  {
+    rules: {
+      // Warn when complexity is between 50-60
+      "astige-javascript/complexity-could-be-better": [
+        "warn",
+        { "when-above": 50, "when-at-or-under": 60 },
+      ],
+      // Error when complexity is above 60
+      "astige-javascript/complexity-needs-improvement": ["error", {
+        "when-above": 60,
+      }],
+    },
+  },
+];
+```
+
+#### About FTA
 
 FTA (Fast TypeScript Analyzer) is a Rust-based static analysis tool that calculates code complexity metrics. Learn more at [ftaproject.dev](https://ftaproject.dev).
 
-## ESLint Docs
+### `no-export-as`
 
-For more on ESLint configuration, see [eslint.org](https://eslint.org).
+Disallows using the `as` keyword in export statements, enforcing direct named exports.
 
-# eslint-plugin-no-named-import-alias
+❌ Incorrect:
 
-ESLint plugin to enforce direct named imports without aliases
-
-## Installation
-
-```bash
-npm install eslint-plugin-no-named-import-alias --save-dev
+```typescript
+export { foo as bar };
 ```
 
-## Usage
+✅ Correct:
 
-Add the plugin to your ESLint configuration:
-
-```json
-{
-  "plugins": ["eslint-plugin-no-named-import-alias"],
-  "rules": {
-    "eslint-plugin-no-named-import-alias/no-import-as": "error"
-  }
-}
+```typescript
+export { foo };
 ```
 
-## Rules
-
-### no-import-as
+### `no-import-as`
 
 Disallows using the `as` keyword in import statements, enforcing direct named imports.
 
@@ -93,51 +87,11 @@ import { foo as bar } from "module";
 import { foo } from "module";
 ```
 
-## Why?
+### `no-tsx-without-jsx`
 
-Using direct named imports:
+Ensures JSX presence in `.tsx` files to maintain clear file type distinctions in TypeScript projects.
 
-- Easier to search for uses in codebase
-- Maintains codebase consistency
-- Reduces indirection and hence cognitive overhead
-
-# eslint-plugin-no-tsx-without-jsx
-
-An ESLint plugin that enforces JSX presence in `.tsx` files to maintain clear file type distinctions in TypeScript projects.
-
-## Why?
-
-Using `.tsx` extensions for files without JSX can cause confusion and inconsistency. This plugin ensures that `.tsx` files contain JSX elements
-
-## Installation
-
-```bash
-npm install eslint-plugin-no-tsx-without-jsx --save-dev
-```
-
-## Usage
-
-1. Add to your ESLint configuration:
-
-```json
-{
-  "plugins": ["no-tsx-without-jsx"],
-  "rules": {
-    "no-tsx-without-jsx/no-tsx-without-jsx": "error"
-  }
-}
-```
-
-2. Example valid/invalid usage:
-
-✅ Valid (contains JSX):
-
-```tsx
-// myComponent.tsx
-const MyComponent = () => <div>Hello</div>;
-```
-
-❌ Invalid (no JSX):
+❌ Incorrect:
 
 ```tsx
 // utility.tsx
@@ -146,9 +100,16 @@ export function utility() {
 } // Should be utility.ts
 ```
 
-## Inspiration
+✅ Valid (contains JSX):
 
-This plugin was inspired by the discussion in [jsx-eslint/eslint-plugin-react#3843](https://github.com/jsx-eslint/eslint-plugin-react/issues/3843)
+```tsx
+// myComponent.tsx
+const MyComponent = () => <div>Hello</div>;
+```
+
+#### Inspiration
+
+The `no-tsx-without-jsx` rule was inspired by the discussion in [jsx-eslint/eslint-plugin-react#3843](https://github.com/jsx-eslint/eslint-plugin-react/issues/3843)
 
 ## Related
 
