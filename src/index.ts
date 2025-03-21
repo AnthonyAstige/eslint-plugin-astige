@@ -13,7 +13,6 @@ const configs = {
   "astige-javascript": astigeJavascriptConfigs,
 };
 
-// TODO: Check if the README instructions work for override plugins
 const plugins = {
   "astige-every": astigeEveryPlugin,
   "astige-javascript": astigeJavascriptPlugin,
