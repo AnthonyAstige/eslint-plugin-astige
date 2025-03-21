@@ -1,12 +1,10 @@
 # astige-javascript
 
-The ESLint Astige JavaScript plugin
+The Astige JavaScript ESLint plugin
 
 ## Installation
 
-```bash
-npm install eslint-plugin-astige-javascript
-```
+See [README.md](../../README.md)
 
 ## Usage
 
@@ -51,7 +49,7 @@ export default [
 ];
 ```
 
-#### About FTA
+**About FTA**
 
 FTA (Fast TypeScript Analyzer) is a Rust-based static analysis tool that calculates code complexity metrics. Learn more at [ftaproject.dev](https://ftaproject.dev).
 
@@ -107,9 +105,9 @@ export function utility() {
 const MyComponent = () => <div>Hello</div>;
 ```
 
-#### Inspiration
+**Inspiration**
 
-The `no-tsx-without-jsx` rule was inspired by the discussion in [jsx-eslint/eslint-plugin-react#3843](https://github.com/jsx-eslint/eslint-plugin-react/issues/3843)
+[jsx-eslint/eslint-plugin-react#3843](https://github.com/jsx-eslint/eslint-plugin-react/issues/3843)
 
 ## Related
 

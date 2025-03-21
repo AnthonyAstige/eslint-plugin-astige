@@ -80,9 +80,9 @@ This is structured as a collection of plugins in a single repository to:
 
 ### The plugins
 
-- [astige-ignore](./plugins/astige-ignore.md)
-- [astige-every](./plugins/astige-every.md) 📏
-- [astige-javascript](./plugins/astige-javascript.md) 📏
+- [astige-ignore](./docs/plugins/astige-ignore.md)
+- [astige-every](./docs/plugins/astige-every.md) 📏
+- [astige-javascript](./docs/plugins/astige-javascript.md) 📏
 
 📏 Contains Custom Rules
 
