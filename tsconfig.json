@@ -13,6 +13,11 @@
     "declarationMap": true,
     "verbatimModuleSyntax": true,
 
+    // Allows imports with no file extensions (fixed jest issues when importing from others)
+    // * There's probably another way, but this worked quickly - Anthony 2025-03-21
+    "module": "es2020",
+    "moduleResolution": "Bundler",
+
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
     "outDir": "./dist",

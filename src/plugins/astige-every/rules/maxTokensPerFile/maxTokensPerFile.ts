@@ -1,7 +1,8 @@
-import { type TSESLint, TSESTree } from "@typescript-eslint/utils";
+import { TSESTree } from "@typescript-eslint/utils";
 import type { RuleContext } from "@typescript-eslint/utils/ts-eslint";
 import fs from "fs";
 import { encode } from "gpt-tokenizer/model/gpt-4o";
+import { createRule } from "../../../../createRule";
 
 type MaxTokensConfig = {
   [key: string]: number;
@@ -35,10 +36,7 @@ function reportIfNeeded(
   });
 }
 
-export const maxTokensPerFile: TSESLint.RuleModule<
-  "maxTokens",
-  [MaxTokensConfig]
-> = {
+export const maxTokensPerFile = createRule({
   create(context) {
     const fileType = context.filename.split(".").pop();
 
@@ -74,4 +72,5 @@ export const maxTokensPerFile: TSESLint.RuleModule<
     ],
     type: "suggestion",
   },
-};
+  name: "max-tokens-per-file",
+});

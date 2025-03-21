@@ -1,8 +1,9 @@
-import { ESLintUtils, type TSESTree } from "@typescript-eslint/utils";
+import { type TSESTree } from "@typescript-eslint/utils";
 import { type RuleWithMetaAndName } from "@typescript-eslint/utils/eslint-utils";
 import { type RuleContext } from "@typescript-eslint/utils/ts-eslint";
 import { type AnalyzedFile, runFta } from "fta-cli";
 import path from "node:path";
+import { createRule } from "../../../../createRule";
 
 type ComplexityRule = Omit<
   RuleWithMetaAndName<Options, MessageIds>,
@@ -128,17 +129,13 @@ const complexityRuleConfig: ComplexityRule = {
   },
 };
 
-export const ftaComplexityCouldBeBetter = ESLintUtils.RuleCreator(
-  (name) => `https://example.com/rule/${name}`,
-)<Options, MessageIds>({
+export const ftaComplexityCouldBeBetter = createRule<Options, MessageIds>({
   ...complexityRuleConfig,
   defaultOptions: [{ "when-above": 50, "when-at-or-under": 60 }],
   name: "complexity-could-be-better",
 });
 
-export const ftaComplexityNeedsImprovement = ESLintUtils.RuleCreator(
-  (name) => `https://example.com/rule/${name}`,
-)<Options, MessageIds>({
+export const ftaComplexityNeedsImprovement = createRule<Options, MessageIds>({
   ...complexityRuleConfig,
   defaultOptions: [{ "when-above": 60 }],
   name: "complexity-needs-improvement",

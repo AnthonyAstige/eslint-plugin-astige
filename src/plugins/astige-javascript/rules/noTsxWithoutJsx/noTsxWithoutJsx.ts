@@ -1,6 +1,6 @@
-import { type TSESLint } from "@typescript-eslint/utils";
+import { createRule } from "../../../../createRule";
 
-export const noTsxWithoutJsx: TSESLint.RuleModule<"noJsxInTsx", []> = {
+export const noTsxWithoutJsx = createRule({
   create(context) {
     const filename = context.filename;
     if (!filename.endsWith(".tsx")) {
@@ -41,4 +41,5 @@ export const noTsxWithoutJsx: TSESLint.RuleModule<"noJsxInTsx", []> = {
     schema: [],
     type: "problem",
   },
-};
+  name: "no-tsx-without-jsx",
+});

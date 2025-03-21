@@ -1,8 +1,7 @@
-import { ESLintUtils, type TSESTree } from "@typescript-eslint/utils";
+import { type TSESTree } from "@typescript-eslint/utils";
+import { createRule } from "../../../../createRule";
 
-export const noImportAs = ESLintUtils.RuleCreator(
-  () => `https://github.com/AnthonyAstige/eslint-plugin-no-named-import-alias`,
-)({
+export const noImportAs = createRule({
   create(context) {
     return {
       ImportSpecifier(node: TSESTree.ImportSpecifier) {
