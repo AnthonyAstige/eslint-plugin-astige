@@ -40,7 +40,7 @@ npm install eslint-plugin-astige --save-dev
 
 ## Usage (`eslint.config.ts`)
 
-Add the auto plugin collection to your ESLint configuration. Then optionally customize:
+Assuming you're using ESLint's new [flat config system](https://eslint.org/blog/2022/08/new-config-system-part-2/) and have TypeScript support, you can add the auto plugin collection to your ESLint configuration and optionally customize:
 
 ```typescript
 import { type FlatConfig } from "@typescript-eslint/utils/dist/ts-eslint";
