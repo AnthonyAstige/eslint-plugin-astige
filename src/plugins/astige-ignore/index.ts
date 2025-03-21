@@ -1,7 +1,7 @@
 import { globalIgnores } from "eslint/config";
-import { type PluginConfigs } from "../../sharedTypes.js";
+import { type PluginConfigs } from "../../sharedTypes";
 
-const astigeIgnoreConfigs: PluginConfigs<[], {}> = [
+const astigeIgnoreConfigs: PluginConfigs<[], { string: unknown }> = [
   globalIgnores([
     "out/**",
     ".data/**",
