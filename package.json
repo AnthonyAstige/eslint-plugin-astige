@@ -5,7 +5,6 @@
   },
   "dependencies": {
     "@eslint/markdown": "^6.3.0",
-    "eslint-config-canonical": "^44.4.2",
     "fta-cli": "^2.0.1",
     "gpt-tokenizer": "^2.9.0"
   },
@@ -22,6 +21,7 @@
     "@typescript-eslint/utils": "^8.26.1",
     "dprint": "^0.49.1",
     "eslint": "^9.22.0",
+    "eslint-config-canonical": "^44.4.2",
     "jest": "^29.7.0",
     "jiti": "^2.4.2",
     "react": "^19.0.0",
@@ -45,6 +45,8 @@
   "name": "eslint-plugin-astige",
   "peerDependencies": {
     "eslint": ">=9.0.0",
+    "eslint-config-canonical": ">=44.0.0",
+    "eslint-plugin-canonical": ">=44.0.0",
     "jiti": ">=2.4.0",
     "react": ">=16.8.0",
     "typescript": ">=4.4.0"
