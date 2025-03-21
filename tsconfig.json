@@ -8,10 +8,12 @@
     // From https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html#im-writing-a-library but removing those already in:
     // * https://www.npmjs.com/package/@tsconfig/node20
     // * https://www.npmjs.com/package/@tsconfig/strictest
-    "verbatimModuleSyntax": true,
     "declaration": true,
     "sourceMap": true,
     "declarationMap": true,
+    // TODO: See if we can get this back, seems like a good setting
+    // * https://www.typescriptlang.org/tsconfig/#verbatimModuleSyntax
+    "verbatimModuleSyntax": false, // Disabled for Jest (ts-jest) tests to have import syntax work
 
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
