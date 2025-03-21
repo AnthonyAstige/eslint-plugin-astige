@@ -7,11 +7,11 @@ import { createRule } from "../../../../createRule";
 type MaxTokensConfig = {
   [key: string]: number;
 };
-function reportIfNeeded(
+const reportIfNeeded = (
   context: RuleContext<"maxTokens", [MaxTokensConfig]>,
   node: TSESTree.Node | TSESTree.Token,
   sourceText: string,
-) {
+) => {
   const encodedTokens = encode(sourceText);
   const tokenCount = encodedTokens.length;
   const fileType = context.filename.split(".").pop();
@@ -34,7 +34,7 @@ function reportIfNeeded(
     messageId: "maxTokens",
     node,
   });
-}
+};
 
 export const maxTokensPerFile = createRule({
   create(context) {
