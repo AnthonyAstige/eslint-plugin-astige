@@ -70,7 +70,7 @@ const complexityRuleConfig: ComplexityRule = {
             return;
           }
 
-          const meetsMinThreshold = scoreMustBeAbove === undefined || score > scoreMustBeAbove;
+          const meetsMinThreshold = score > scoreMustBeAbove;
           const meetsMaxThreshold = scoreMustBeAtOrBelow === undefined || score <= scoreMustBeAtOrBelow;
 
           if (meetsMinThreshold && meetsMaxThreshold) {
