@@ -24,9 +24,10 @@ This extremely opinionated preset is designed with these key principles in mind:
 
    1. [Canonical ESLint Config](https://github.com/gajus/eslint-config-canonical)
    2. [T3 stack](https://create.t3.gg/)
-      1. [PostgreSQL](https://www.postgresql.org/) via [Prisma](https://www.prisma.io/)
-      2. [Tailwind](https://tailwindcss.com/)
-      3. [tRPC](https://trpc.io/) (+[Zod](https://zod.dev/))
+      1. [Next.js](https://nextjs.org/)
+      2. [PostgreSQL](https://www.postgresql.org/) via [Prisma](https://www.prisma.io/)
+      3. [Tailwind](https://tailwindcss.com/)
+      4. [tRPC](https://trpc.io/) (+[Zod](https://zod.dev/))
    3. [Aider](https://aider.chat/)
    4. [dprint](https://dprint.dev/) - Fast rust based formatting to minimize that done by ESLint. Dprint config included since there's ESLint rule overlap and dprint should take priority for speed where it can.
 
