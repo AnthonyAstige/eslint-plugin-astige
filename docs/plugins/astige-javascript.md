@@ -1,35 +1,16 @@
 # astige-javascript
 
-The Astige JavaScript ESLint plugin
+The Astige JavaScript ESLint plugin. Installation instructions at [README.md](../../README.md).
 
-## Installation
-
-See [README.md](../../README.md)
-
-## Usage
-
-Add to your ESLint config:
-
-```ts
-import typescriptParser from "@typescript-eslint/parser";
-import { astigeJavascriptConfigs } from "eslint-plugin-astige-javascript";
-
-export default [
-  {
-    files: ["src/**/*.ts"],
-    languageOptions: {
-      parser: typescriptParser,
-    },
-    ...astigeJavascriptConfigs,
-  },
-];
-```
+---
 
 ## Rules
 
 ### `fta-complexity-could-be-better` & `fta-complexity-needs-improvement`
 
-Triggers when FTA score is between specified thresholds and when FTA score exceeds threshold respectively.
+Triggers when the file's FTA (Fast TypeScript Analyzer) score is between specified thresholds and when the file's FTA score exceeds threshold respectively.
+
+**Configuration**
 
 ```ts
 export default [
@@ -53,43 +34,53 @@ export default [
 
 FTA (Fast TypeScript Analyzer) is a Rust-based static analysis tool that calculates code complexity metrics. Learn more at [ftaproject.dev](https://ftaproject.dev).
 
+**Inspiration**
+
+[sgb-io/fta#193](https://github.com/sgb-io/fta/issues/193)
+
+---
+
 ### `no-export-as`
 
 Disallows using the `as` keyword in export statements, enforcing direct named exports.
 
-❌ Incorrect:
+**❌ Incorrect:**
 
 ```typescript
 export { foo as bar };
 ```
 
-✅ Correct:
+**✅ Correct:**
 
 ```typescript
 export { foo };
 ```
 
+---
+
 ### `no-import-as`
 
 Disallows using the `as` keyword in import statements, enforcing direct named imports.
 
-❌ Incorrect:
+**❌ Incorrect:**
 
 ```typescript
 import { foo as bar } from "module";
 ```
 
-✅ Correct:
+**✅ Correct:**
 
 ```typescript
 import { foo } from "module";
 ```
 
+---
+
 ### `no-tsx-without-jsx`
 
 Ensures JSX presence in `.tsx` files to maintain clear file type distinctions in TypeScript projects.
 
-❌ Incorrect:
+**❌ Incorrect:**
 
 ```tsx
 // utility.tsx
@@ -98,7 +89,7 @@ export function utility() {
 } // Should be utility.ts
 ```
 
-✅ Valid (contains JSX):
+**✅ Valid (contains JSX):**
 
 ```tsx
 // myComponent.tsx
@@ -109,7 +100,9 @@ const MyComponent = () => <div>Hello</div>;
 
 [jsx-eslint/eslint-plugin-react#3843](https://github.com/jsx-eslint/eslint-plugin-react/issues/3843)
 
-## Related
+---
+
+# Related
 
 - [ESLint](https://eslint.org/) - Pluggable JavaScript linter
 - [TypeScript ESLint](https://typescript-eslint.io/) - TypeScript support for ESLint
