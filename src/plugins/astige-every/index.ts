@@ -1,11 +1,11 @@
 import markdown from "@eslint/markdown";
+import nextPlugin from "@next/eslint-plugin-next";
 import importPlugin from "eslint-plugin-import";
 import { ERROR, OFF, WARN } from "../../severityConstants";
 import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile";
-import nextPlugin from "@next/eslint-plugin-next";
 // import jsxA11yConfig from "eslint-config-canonical/configurations/jsx-a11y";
-import globals from "globals";
 import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
+import globals from "globals";
 
 const MAX_TEXT_TOKENS = 3_000;
 const MAX_CODE_TOKENS = 2_000;
@@ -230,6 +230,7 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
       ],
     },
   },
+  // TODO: Move this globals somewhere we want it ...main setup or something?
   {
     files: ["**/*.cjs", "**/*.mjs", "**/*.js"],
     languageOptions: {
@@ -262,8 +263,8 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
   {
     files: ["**/*"],
     rules: {
-      "jsonc/no-comments": OFF
-    }
+      "jsonc/no-comments": OFF,
+    },
   },
   // Disable or adjust slow rules
   // * Found via `TIMING=1 npx eslint`
