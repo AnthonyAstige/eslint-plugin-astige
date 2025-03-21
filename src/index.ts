@@ -1,4 +1,3 @@
-// TODO: Pull in other eslint repositories I've made into here
 // TODO: Add recommended config and use it in my repository instead of configing there
 // TODO: * Pull in all my config from repository and document it well in here
 // TODO: Self-apply my full eslint system to this repository
