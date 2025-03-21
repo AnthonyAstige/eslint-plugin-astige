@@ -6,6 +6,12 @@ if ! grep -q '"name": "eslint-plugin-astige"' package.json; then
   exit 1
 fi
 
+# Run tests first
+if ! npm test; then
+  echo 'Error: Tests failed. Build aborted.'
+  exit 1
+fi
+
 # Clear the dist directory
 rm -rf ./dist
 
