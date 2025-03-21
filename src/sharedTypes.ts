@@ -1,7 +1,4 @@
-import {
-  type FlatConfig,
-  type SharedConfig,
-} from '@typescript-eslint/utils/ts-eslint';
+import { type FlatConfig, type SharedConfig } from "@typescript-eslint/utils/ts-eslint";
 
 export type PluginConfigs<
   PluginNames extends string[],

@@ -1,27 +1,27 @@
-import { createRule } from '../../../../createRule';
-import { type TSESTree } from '@typescript-eslint/utils';
-import { type RuleWithMetaAndName } from '@typescript-eslint/utils/eslint-utils';
-import { type RuleContext } from '@typescript-eslint/utils/ts-eslint';
-import { type AnalyzedFile, runFta } from 'fta-cli';
-import path from 'node:path';
+import { type TSESTree } from "@typescript-eslint/utils";
+import { type RuleWithMetaAndName } from "@typescript-eslint/utils/eslint-utils";
+import { type RuleContext } from "@typescript-eslint/utils/ts-eslint";
+import { type AnalyzedFile, runFta } from "fta-cli";
+import path from "node:path";
+import { createRule } from "../../../../createRule";
 
 type ComplexityRule = Omit<
   RuleWithMetaAndName<Options, MessageIds>,
-  'defaultOptions' | 'name'
+  "defaultOptions" | "name"
 >;
 
 type Options = readonly [
   | {
-      'when-above': number;
-      'when-at-or-under': number;
-    }
+    "when-above": number;
+    "when-at-or-under": number;
+  }
   | {
-      'when-above': number;
-    },
+    "when-above": number;
+  },
 ];
 
 const MESSAGE_IDS = {
-  COMPLEXITY_ERROR: 'complexityError',
+  COMPLEXITY_ERROR: "complexityError",
 } as const;
 
 type MessageIds = (typeof MESSAGE_IDS)[keyof typeof MESSAGE_IDS];
@@ -33,17 +33,18 @@ const complexityRuleConfig: ComplexityRule = {
     context: Readonly<RuleContext<MessageIds, Options>>,
     [options]: Options,
   ) {
-    const scoreMustBeAbove: number = options['when-above'];
-    const scoreMustBeAtOrBelow: number | undefined =
-      'when-at-or-under' in options ? options['when-at-or-under'] : undefined;
+    const scoreMustBeAbove: number = options["when-above"];
+    const scoreMustBeAtOrBelow: number | undefined = "when-at-or-under" in options
+      ? options["when-at-or-under"]
+      : undefined;
 
     // Skip virtual files (e.g. "<input>")
-    if (context.filename === '<input>') {
+    if (context.filename === "<input>") {
       return {};
     }
 
     return {
-      'Program:exit'(node: TSESTree.Program) {
+      "Program:exit"(node: TSESTree.Program) {
         try {
           // Lazy load the FTA analysis once for the entire codebase
           if (!fileScores) {
@@ -52,8 +53,7 @@ const complexityRuleConfig: ComplexityRule = {
               json: true,
             });
             try {
-              const results: AnalyzedFile[] =
-                typeof output === 'string' ? JSON.parse(output) : output;
+              const results: AnalyzedFile[] = typeof output === "string" ? JSON.parse(output) : output;
               fileScores = new Map(
                 results.map((file) => [
                   path.join(context.cwd, file.file_name),
@@ -70,10 +70,8 @@ const complexityRuleConfig: ComplexityRule = {
             return;
           }
 
-          const meetsMinThreshold =
-            scoreMustBeAbove === undefined || score > scoreMustBeAbove;
-          const meetsMaxThreshold =
-            scoreMustBeAtOrBelow === undefined || score <= scoreMustBeAtOrBelow;
+          const meetsMinThreshold = scoreMustBeAbove === undefined || score > scoreMustBeAbove;
+          const meetsMaxThreshold = scoreMustBeAtOrBelow === undefined || score <= scoreMustBeAtOrBelow;
 
           if (meetsMinThreshold && meetsMaxThreshold) {
             const firstToken = context.sourceCode.getFirstToken(node);
@@ -98,48 +96,47 @@ const complexityRuleConfig: ComplexityRule = {
   },
   meta: {
     docs: {
-      description: 'Enforce FTA-based file complexity limits',
+      description: "Enforce FTA-based file complexity limits",
     },
     messages: {
-      [MESSAGE_IDS.COMPLEXITY_ERROR]:
-        "File's high FTA complexity score ({{score}}) is above {{scoreMustBeAbove}}.",
+      [MESSAGE_IDS.COMPLEXITY_ERROR]: "File's high FTA complexity score ({{score}}) is above {{scoreMustBeAbove}}.",
     },
     schema: [
       {
         additionalProperties: false,
         anyOf: [
           {
-            required: ['when-above'],
-            type: 'object',
+            required: ["when-above"],
+            type: "object",
           },
           {
-            required: ['when-at-or-under'],
-            type: 'object',
+            required: ["when-at-or-under"],
+            type: "object",
           },
         ],
         properties: {
-          'when-above': {
-            type: 'number',
+          "when-above": {
+            type: "number",
           },
-          'when-at-or-under': {
-            type: 'number',
+          "when-at-or-under": {
+            type: "number",
           },
         },
-        type: 'object',
+        type: "object",
       },
     ],
-    type: 'suggestion',
+    type: "suggestion",
   },
 };
 
 export const ftaComplexityCouldBeBetter = createRule<Options, MessageIds>({
   ...complexityRuleConfig,
-  defaultOptions: [{ 'when-above': 50, 'when-at-or-under': 60 }],
-  name: 'complexity-could-be-better',
+  defaultOptions: [{ "when-above": 50, "when-at-or-under": 60 }],
+  name: "complexity-could-be-better",
 });
 
 export const ftaComplexityNeedsImprovement = createRule<Options, MessageIds>({
   ...complexityRuleConfig,
-  defaultOptions: [{ 'when-above': 60 }],
-  name: 'complexity-needs-improvement',
+  defaultOptions: [{ "when-above": 60 }],
+  name: "complexity-needs-improvement",
 });

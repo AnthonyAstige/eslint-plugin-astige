@@ -32,7 +32,7 @@ const config = {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: 'v8',
+  coverageProvider: "v8",
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -102,7 +102,7 @@ const config = {
 
   // A preset that is used as a base for Jest's configuration
   // preset: undefined,
-  preset: 'ts-jest',
+  preset: "ts-jest",
   // Run tests from one or more projects
   // projects: undefined,
 
@@ -177,7 +177,7 @@ const config = {
   // transform: undefined,
   // Bandaid disabling verbatimModuleSyntax for Jest Only (2 of 2) per https://github.com/kulshekhar/ts-jest/issues/4081#issuecomment-1515758013
   transform: {
-    '.ts': ['ts-jest', { tsconfig: './tsconfig.jest.json' }],
+    ".ts": ["ts-jest", { tsconfig: "./tsconfig.jest.json" }],
   },
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
