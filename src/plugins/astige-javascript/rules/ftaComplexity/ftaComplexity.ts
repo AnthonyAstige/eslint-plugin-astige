@@ -129,14 +129,16 @@ const complexityRuleConfig: ComplexityRule = {
   },
 };
 
-export const ftaComplexityCouldBeBetter = createRule<Options, MessageIds>({
+const ftaComplexityCouldBeBetter = createRule<Options, MessageIds>({
   ...complexityRuleConfig,
   defaultOptions: [{ "when-above": 50, "when-at-or-under": 60 }],
   name: "complexity-could-be-better",
 });
 
-export const ftaComplexityNeedsImprovement = createRule<Options, MessageIds>({
+const ftaComplexityNeedsImprovement = createRule<Options, MessageIds>({
   ...complexityRuleConfig,
   defaultOptions: [{ "when-above": 60 }],
   name: "complexity-needs-improvement",
 });
+
+export { ftaComplexityCouldBeBetter, ftaComplexityNeedsImprovement };
