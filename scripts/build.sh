@@ -17,3 +17,6 @@ rm -rf ./dist
 
 # Run TypeScript compiler
 npx tsc
+
+# Copy manual files
+cp ./dprint.json ./dist/
