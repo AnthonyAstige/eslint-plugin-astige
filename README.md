@@ -61,7 +61,7 @@ This extremely opinionated preset is designed with these key principles:
       1. [Next.js](https://nextjs.org/) (built on [React](https://react.dev/))
       2. [PostgreSQL](https://www.postgresql.org/) (accessed via [Prisma](https://www.prisma.io/))
       3. [Tailwind](https://tailwindcss.com/)
-      4. [tRPC](https://trpc.io/) (+[Zod](https://zod.dev/))
+      4. [tRPC](https://trpc.io/) (typesafe via [Zod](https://zod.dev/))
    3. [Aider](https://aider.chat/)
    4. [dprint](https://dprint.dev/)
 7. **Custom Rules When Necessary**: While I prioritize leveraging existing ESLint rules to maintain consistency and development speed, I'm willing to create custom rules when needed to enforce my guiding principles and address specific needs.
