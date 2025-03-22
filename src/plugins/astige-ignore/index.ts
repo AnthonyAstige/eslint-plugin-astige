@@ -6,6 +6,7 @@ const astigeIgnoreConfigs: PluginConfigs<[], { string: unknown }> = [
     "out/**",
     ".data/**",
     ".next-prod/**",
+    ".next/**",
     ".next-dev/**",
     "package-lock.json",
     "next-env.d.ts",
