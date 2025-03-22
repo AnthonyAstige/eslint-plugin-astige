@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# Exit on error
-set -e
+set -e # Exit on error
 
 DPRINT_FILE="./dprint.json"
 
