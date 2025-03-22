@@ -57,13 +57,14 @@ This extremely opinionated preset is designed with these key principles:
 5. **Fast**: Any included rules should be fast enough to run across entire codebases with hundreds of files in seconds, and on individual files within milliseconds for complete analysis and editor integration.
 6. **Technology Foundations**: The preset is built around a carefully curated set of core technologies that provide a stable development foundation. Current primary influences include:
    1. [Canonical ESLint Config](https://github.com/gajus/eslint-config-canonical)
-   2. [T3 stack](https://create.t3.gg/)
+   2. [TypeScript](https://www.typescriptlang.org/)
+   3. [T3 stack](https://create.t3.gg/)
       1. [Next.js](https://nextjs.org/) (built on [React](https://react.dev/))
       2. [PostgreSQL](https://www.postgresql.org/) (accessed via [Prisma](https://www.prisma.io/))
       3. [Tailwind](https://tailwindcss.com/)
       4. [tRPC](https://trpc.io/) (typesafe via [Zod](https://zod.dev/))
-   3. [Aider](https://aider.chat/)
-   4. [dprint](https://dprint.dev/)
+   4. [Aider](https://aider.chat/)
+   5. [dprint](https://dprint.dev/)
 7. **Custom Rules When Necessary**: While I prioritize leveraging existing ESLint rules to maintain consistency and development speed, I'm willing to create custom rules when needed to enforce my guiding principles and address specific needs.
 8. **Multiple Sub-Plugins**: The plugin is structured as a collection of sub-plugins in a single repository to enable logical grouping by usage, modular rule adoption, and a single source of truth for all shared ESLint configurations. This approach simplifies dependency management, versioning, and coding of multiple plugins while enabling focused development and testing of specific rule sets.
 
