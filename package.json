@@ -1,6 +1,7 @@
 {
   "author": "Anthony Astige",
   "bin": {
+    "eslint-plugin-astige-format": "./dist/bin/format.sh",
     "eslint-plugin-astige-init": "./dist/bin/init.sh"
   },
   "bugs": {
