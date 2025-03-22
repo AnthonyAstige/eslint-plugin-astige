@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Exit on error
+set -e
+
 DPRINT_FILE="./dprint.json"
 
 if [ -f "$DPRINT_FILE" ]; then
