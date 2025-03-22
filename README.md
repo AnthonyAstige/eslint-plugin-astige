@@ -59,7 +59,7 @@ This extremely opinionated preset is designed with these key principles:
    1. [Canonical ESLint Config](https://github.com/gajus/eslint-config-canonical)
    2. [T3 stack](https://create.t3.gg/)
       1. [Next.js](https://nextjs.org/) (built on [React](https://react.dev/))
-      2. [PostgreSQL](https://www.postgresql.org/) via [Prisma](https://www.prisma.io/)
+      2. [PostgreSQL](https://www.postgresql.org/) (accessed via [Prisma](https://www.prisma.io/))
       3. [Tailwind](https://tailwindcss.com/)
       4. [tRPC](https://trpc.io/) (+[Zod](https://zod.dev/))
    3. [Aider](https://aider.chat/)
