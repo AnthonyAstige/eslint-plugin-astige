@@ -67,7 +67,7 @@
   },
   "scripts": {
     "build": "./scripts/build.sh",
-    "format": "./scripts/format.sh",
+    "format": "./src/bin/format.sh",
     "lint": "./scripts/lint.sh",
     "postinstall": "echo Running post-install script",
     "pub": "npm run build && npm publish",
