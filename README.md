@@ -54,7 +54,7 @@ This extremely opinionated preset is designed with these key principles:
 2. **LLM-Friendly Code**: The rules are optimized for code that is easily processed and understood by large language models (LLMs), emphasizing clear and explicit code patterns with minimal use of complex or ambiguous syntax. The code maintains consistent formatting and structure while being modular and concise for better context window management. This results in consistent, predictable code patterns that are easy to parse, simple to extend, and clear in intent.
 3. **TypeScript Best Practices**: Fully embrace TypeScript's type system and idioms, following TypeScript conventions and best practices wherever practical.
 4. **Formatters First**: [Linters are not formatters](https://typescript-eslint.io/users/what-about-formatting/#formatters-vs-linters) and are inherently slower. We rely on formatters for whatever they can do, and minimize the formatting work we have ESLint do.
-5. **Speed**: Any included rules should be fast enough to run across entire codebases with hundreds of files in seconds, and on individual files within milliseconds for complete analysis and editor integration.
+5. **Fast**: Any included rules should be fast enough to run across entire codebases with hundreds of files in seconds, and on individual files within milliseconds for complete analysis and editor integration.
 6. **Technology Foundations**: The preset is built around a carefully curated set of core technologies that provide a stable development foundation. Current primary influences include:
    1. [Canonical ESLint Config](https://github.com/gajus/eslint-config-canonical)
    2. [T3 stack](https://create.t3.gg/)
