@@ -225,7 +225,8 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
     files: [
       // Next.JS pages (Note: only place actual pages here)
       // * TODO: Check that only pages are in this folder
-      "src/pages/**/*.{ts,tsx}",
+      "src/pages/**/*.{ts,tsx}", // Next.JS V12 and earlier
+      "src/app/**/page.tsx", // Next.JS V13
       // Other plugins expecting a default export
       "eslint.config.ts",
       "jest.config.mjs",
