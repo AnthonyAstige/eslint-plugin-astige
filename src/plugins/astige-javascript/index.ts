@@ -1,6 +1,5 @@
 import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 import { ERROR, WARN } from "../../severityConstants";
-import { type PluginConfigs } from "../../sharedTypes";
 import { ftaComplexityCouldBeBetter, ftaComplexityNeedsImprovement } from "./rules/ftaComplexity/ftaComplexity";
 import { noExportAs } from "./rules/noExportAs/noExportAs";
 import { noImportAs } from "./rules/noImportAs/noImportAs";
@@ -16,10 +15,7 @@ const rules = {
 };
 
 const astigeJavascriptPlugin: FlatConfig.Plugin = { rules };
-const astigeJavascriptConfigs: PluginConfigs<
-  [typeof PLUGIN_NAME],
-  typeof rules
-> = [
+const astigeJavascriptConfigs: FlatConfig.Config[] = [
   {
     files: ["**/*.{js,ts,jsx,tsx}"],
     plugins: { [PLUGIN_NAME]: astigeJavascriptPlugin },
@@ -35,6 +31,13 @@ const astigeJavascriptConfigs: PluginConfigs<
       "astige-javascript/no-export-as": ERROR,
       "astige-javascript/no-import-as": ERROR,
       "astige-javascript/no-tsx-without-jsx": ERROR,
+      "no-restricted-syntax": [
+        "error",
+        {
+          message: "Avoid using throw directly. Consider alternative error handling strategies like assert.",
+          selector: "ThrowStatement",
+        },
+      ],
     },
   },
 ];
