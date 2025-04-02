@@ -1,0 +1,1 @@
+- Add https://mysticatea.github.io/eslint-plugin-eslint-comments/rules/require-description.html
