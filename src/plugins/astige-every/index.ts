@@ -257,6 +257,9 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
     rules: {
       "jsonc/array-bracket-newline": OFF,
       "jsonc/array-element-newline": OFF,
+      "jsonc/indent": OFF,
+      "jsonc/key-spacing": OFF,
+      "jsonc/object-curly-spacing": OFF,
       "perfectionist/sort-imports": OFF,
       "prettier/prettier": OFF,
     },
