@@ -241,11 +241,20 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
       "tailwind.config.ts",
       "src/types/**/*.d.ts",
     ],
-    // files: ['**/*'],
     rules: {
       "eslint-plugin-import/no-default-export": OFF,
       "eslint-plugin-import/no-named-export": ERROR,
       "eslint-plugin-import/prefer-default-export": ERROR,
+    },
+  },
+  // Special cases
+  {
+    files: [
+      "src/app/layout.tsx",
+    ],
+    rules: {
+      "eslint-plugin-import/no-default-export": OFF,
+      "eslint-plugin-import/no-named-export": OFF,
     },
   },
   {
