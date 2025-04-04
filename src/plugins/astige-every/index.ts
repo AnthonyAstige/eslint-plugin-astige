@@ -236,6 +236,7 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
       "next.config.mjs",
       "next.config.js",
       "postcss.config.mjs",
+      "postcss.config.js",
       "tailwind.config.ts",
       "src/types/**/*.d.ts",
     ],
