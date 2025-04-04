@@ -122,6 +122,12 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
       "eslint-plugin-import/group-exports": ERROR,
       "eslint-plugin-import/no-commonjs": ERROR,
       "eslint-plugin-import/no-default-export": ERROR, // General concensus is default-exports are bad - https://old.reddit.com/r/javascript/comments/x3hsov/default_exports_in_javascript_modules_are_terrible/
+      "eslint-plugin-import/no-unassigned-import": [
+        ERROR,
+        {
+          allow: ["server-only", "**/*.css"],
+        },
+      ],
       "max-depth": [WARN, 2],
       "max-lines-per-function": [WARN, 150],
       "no-console": [WARN], // Allow console logs during normal development, plan is to cleanup in cleanup phase
