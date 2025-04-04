@@ -84,10 +84,7 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
   },
   {
     plugins: {
-      // TODO: Ensure this is correct / fix back to "import/[rule-name]" override everywhere?
-      // TODO: * Before I had this named "import" in an attempt to override import from canonical's auto config
-      // TODO: ** Not sure if everything was working as intended even
-      "eslint-plugin-import": importPlugin,
+      import: importPlugin,
     },
   },
   {
@@ -106,7 +103,7 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
         "^[a-zA-Z_$][a-zA-Z0-9_$]*$|^[A-Z]+(_[A-Z0-9]+)*$|^[a-z]+(_[a-z0-9]+)*$",
       ],
       complexity: [WARN, 8],
-      "eslint-plugin-import/extensions": [
+      "import/extensions": [
         ERROR,
         {
           pattern: {
@@ -119,10 +116,10 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
           },
         },
       ],
-      "eslint-plugin-import/group-exports": ERROR,
-      "eslint-plugin-import/no-commonjs": ERROR,
-      "eslint-plugin-import/no-default-export": ERROR, // General concensus is default-exports are bad - https://old.reddit.com/r/javascript/comments/x3hsov/default_exports_in_javascript_modules_are_terrible/
-      "eslint-plugin-import/no-unassigned-import": [
+      "import/group-exports": ERROR,
+      "import/no-commonjs": ERROR,
+      "import/no-default-export": ERROR, // General concensus is default-exports are bad - https://old.reddit.com/r/javascript/comments/x3hsov/default_exports_in_javascript_modules_are_terrible/
+      "import/no-unassigned-import": [
         ERROR,
         {
           allow: ["server-only", "**/*.css"],
@@ -139,7 +136,7 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
   {
     files: ["**/*.{cjs,mjs,js}"],
     rules: {
-      "eslint-plugin-import/extensions": [
+      "import/extensions": [
         ERROR,
         {
           pattern: {
@@ -242,9 +239,9 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
       "src/types/**/*.d.ts",
     ],
     rules: {
-      "eslint-plugin-import/no-default-export": OFF,
-      "eslint-plugin-import/no-named-export": ERROR,
-      "eslint-plugin-import/prefer-default-export": ERROR,
+      "import/no-default-export": OFF,
+      "import/no-named-export": ERROR,
+      "import/prefer-default-export": ERROR,
     },
   },
   // Special cases
@@ -253,8 +250,8 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
       "src/app/layout.tsx",
     ],
     rules: {
-      "eslint-plugin-import/no-default-export": OFF,
-      "eslint-plugin-import/no-named-export": OFF,
+      "import/no-default-export": OFF,
+      "import/no-named-export": OFF,
     },
   },
   {
