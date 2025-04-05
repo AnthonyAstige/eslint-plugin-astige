@@ -39,26 +39,27 @@ const isLikelyReactComponent = (
   } else if (
     node.body.type === "JSXElement"
     || node.body.type === "JSXFragment"
-    ) {
-      // Arrow function with direct JSX return
-      return true;
-    }
+  ) {
+    // Arrow function with direct JSX return
+    return true;
+  }
 
-    // Check if the function is being exported (common for components)
-    if (
-      node.parent.type === "ExportNamedDeclaration"
-      || node.parent.parent?.type === "ExportNamedDeclaration"
-      || node.parent.type === "ExportDefaultDeclaration"
-    ) {
-      return true;
-    }
+  // Check if the function is being exported (common for components)
+  if (
+    node.parent.type === "ExportNamedDeclaration"
+    || node.parent.parent?.type === "ExportNamedDeclaration"
+    || node.parent.type === "ExportDefaultDeclaration"
+  ) {
+    return true;
+  }
 
-    return false;
-  };
+  return false;
+};
 
 export const inlineReactPropertyTypes = createRule({
   create(context) {
     const typeAliases = new Map<string, TSESTree.TSTypeAliasDeclaration>();
+    const interfaces = new Map<string, TSESTree.TSInterfaceDeclaration>();
 
     return {
       // Check function components with props parameter
@@ -90,8 +91,8 @@ export const inlineReactPropertyTypes = createRule({
           ) {
             const typeName = typeAnnotation.typeName.name;
 
-            // Check if this type is in our map of type aliases
-            if (typeAliases.has(typeName)) {
+            // Check if this type is in our maps of type aliases or interfaces
+            if (typeAliases.has(typeName) || interfaces.has(typeName)) {
               // Check if this is likely a React component
               const isReactComponent = isLikelyReactComponent(node);
 
@@ -119,8 +120,8 @@ export const inlineReactPropertyTypes = createRule({
           ) {
             const typeName = typeAnnotation.typeName.name;
 
-            // Check if this type is in our map of type aliases
-            if (typeAliases.has(typeName)) {
+            // Check if this type is in our maps of type aliases or interfaces
+            if (typeAliases.has(typeName) || interfaces.has(typeName)) {
               // Check if this is likely a React component
               const isReactComponent = isLikelyReactComponent(node);
 
@@ -135,7 +136,10 @@ export const inlineReactPropertyTypes = createRule({
         }
       },
 
-      // Store all type aliases for later reference
+      TSInterfaceDeclaration(node) {
+        interfaces.set(node.id.name, node);
+      },
+      // Store all type aliases and interfaces for later reference
       TSTypeAliasDeclaration(node) {
         typeAliases.set(node.id.name, node);
       },
