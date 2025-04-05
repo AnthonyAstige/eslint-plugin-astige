@@ -6,6 +6,7 @@ import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile";
 import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 import globals from "globals";
 
+const MAX_API_TEXT_TOKENS = 50_000;
 const MAX_TEXT_TOKENS = 3_000;
 const MAX_CODE_TOKENS = 2_000;
 
@@ -31,6 +32,23 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
         WARN,
         {
           md: MAX_TEXT_TOKENS,
+        },
+      ],
+    },
+  },
+  // Allow API documentation to be pretty long in case we need it adhoc for reference material
+  {
+    files: ["docs/apis/*.md"],
+    language: "markdown/commonmark",
+    plugins: {
+      markdown,
+      [PLUGIN_NAME]: astigeEveryPlugin,
+    },
+    rules: {
+      "astige-every/max-tokens-per-file": [
+        WARN,
+        {
+          md: MAX_API_TEXT_TOKENS,
         },
       ],
     },
