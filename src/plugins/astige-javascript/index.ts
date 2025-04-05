@@ -1,6 +1,8 @@
 import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 import { ERROR, WARN } from "../../severityConstants";
 import { ftaComplexityCouldBeBetter, ftaComplexityNeedsImprovement } from "./rules/ftaComplexity/ftaComplexity";
+// TODO: Adjust unicorn/prevent-abbreviations eslint config so we can use word prop / props
+import { inlineReactPropertyTypes } from "./rules/inlineReactPropTypes/inlineReactPropertyTypes";
 import { noExportAs } from "./rules/noExportAs/noExportAs";
 import { noImportAs } from "./rules/noImportAs/noImportAs";
 import { noTsxWithoutJsx } from "./rules/noTsxWithoutJsx/noTsxWithoutJsx";
@@ -9,6 +11,7 @@ const PLUGIN_NAME = "astige-javascript";
 const rules = {
   "fta-complexity-could-be-better": ftaComplexityCouldBeBetter,
   "fta-complexity-needs-improvement": ftaComplexityNeedsImprovement,
+  "inline-react-property-types": inlineReactPropertyTypes,
   "no-export-as": noExportAs,
   "no-import-as": noImportAs,
   "no-tsx-without-jsx": noTsxWithoutJsx,
@@ -28,6 +31,8 @@ const astigeJavascriptConfigs: FlatConfig.Config[] = [
         ERROR,
         { "when-above": 75 },
       ],
+      // TODO: Move to just tsx file type
+      "astige-javascript/inline-react-property-types": ERROR,
       "astige-javascript/no-export-as": ERROR,
       "astige-javascript/no-import-as": ERROR,
       "astige-javascript/no-tsx-without-jsx": ERROR,
