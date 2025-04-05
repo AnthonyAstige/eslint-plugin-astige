@@ -42,11 +42,6 @@ const astigeJavascriptConfigs: FlatConfig.Config[] = [
           message: "Avoid using throw directly. Consider alternative error handling strategies like assert.",
           selector: "ThrowStatement",
         },
-        {
-          message:
-            "Avoid 'use client' directives ; we don't yet support server side rendering and this is adding complexity in tracking which components are client side vs server side (serializable tracking for setters especially ; https://github.com/vercel/next.js/issues/74343).",
-          selector: "ExpressionStatement > Literal[value='use client']",
-        },
       ],
     },
   },
