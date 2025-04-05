@@ -1,17 +1,17 @@
 import { RuleTester } from "@typescript-eslint/rule-tester";
 import { inlineReactPropertyTypes } from "../../src/plugins/astige-javascript/rules/inlineReactPropTypes/inlineReactPropertyTypes";
 
-
 const ruleTester = new RuleTester({
-  // TODO: Fix or eliminate this?
-  /*
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
+  languageOptions: {
+    parserOptions: {
+      parser: "@typescript-eslint/parser",
+      ecmaVersion: 2020,
+      sourceType: "module",
+      ecmaFeatures: {
+        jsx: true,
+      },
     },
   },
-  */
 });
 
 ruleTester.run("inline-react-prop-types", inlineReactPropertyTypes, {
