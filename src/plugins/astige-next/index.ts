@@ -5,7 +5,7 @@ const astigeNextConfigs: PluginConfigs<[], { string: unknown }> = [
   {
     files: ["**/*.{cjs,mjs,js,ts,tsx}"],
     plugins: {
-      "@next/eslint-plugin-next": nextPlugin,
+      "@next/next": nextPlugin,
     },
     // TODO: Test that these apply in app repository
     rules: {
