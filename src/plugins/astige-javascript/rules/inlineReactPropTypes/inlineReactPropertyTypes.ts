@@ -1,6 +1,61 @@
 import { type TSESTree } from "@typescript-eslint/utils";
 import { createRule } from "../../../../createRule";
 
+// Helper function to determine if a function is likely a React component
+const isLikelyReactComponent = (
+  node: TSESTree.ArrowFunctionExpression | TSESTree.FunctionDeclaration | TSESTree.FunctionExpression,
+): boolean => {
+  // Check if the function name starts with an uppercase letter (component convention)
+  if (node.type === "FunctionDeclaration" && node.id) {
+    const firstChar = node.id.name.charAt(0);
+    if (firstChar === firstChar.toUpperCase() && firstChar !== firstChar.toLowerCase()) {
+      return true;
+    }
+  }
+
+  // Check if the function is being assigned to a variable with uppercase first letter
+  if (
+    node.parent.type === "VariableDeclarator"
+    && node.parent.id.type === "Identifier"
+  ) {
+    const firstChar = node.parent.id.name.charAt(0);
+    if (firstChar === firstChar.toUpperCase() && firstChar !== firstChar.toLowerCase()) {
+      return true;
+    }
+  }
+
+  // Check if the function returns JSX
+  if (node.body.type === "BlockStatement") {
+    // For functions with block bodies, we'd need to analyze the return statements
+    // This is a simplified check
+    for (const statement of node.body.body) {
+      if (
+        statement.type === "ReturnStatement"
+        && statement.argument?.type === "JSXElement"
+      ) {
+        return true;
+      }
+    }
+  } else if (
+    node.body.type === "JSXElement"
+    || node.body.type === "JSXFragment"
+    ) {
+      // Arrow function with direct JSX return
+      return true;
+    }
+
+    // Check if the function is being exported (common for components)
+    if (
+      node.parent.type === "ExportNamedDeclaration"
+      || node.parent.parent?.type === "ExportNamedDeclaration"
+      || node.parent.type === "ExportDefaultDeclaration"
+    ) {
+      return true;
+    }
+
+    return false;
+  };
+
 export const inlineReactPropertyTypes = createRule({
   create(context) {
     const typeAliases = new Map<string, TSESTree.TSTypeAliasDeclaration>();
@@ -82,66 +137,9 @@ export const inlineReactPropertyTypes = createRule({
 
       // Store all type aliases for later reference
       TSTypeAliasDeclaration(node) {
-        if (node.id.type === "Identifier") {
-          typeAliases.set(node.id.name, node);
-        }
+        typeAliases.set(node.id.name, node);
       },
     };
-
-    // Helper function to determine if a function is likely a React component
-    function isLikelyReactComponent(
-      node: TSESTree.ArrowFunctionExpression | TSESTree.FunctionDeclaration | TSESTree.FunctionExpression,
-    ): boolean {
-      // Check if the function name starts with an uppercase letter (component convention)
-      if (node.type === "FunctionDeclaration" && node.id) {
-        const firstChar = node.id.name.charAt(0);
-        if (firstChar === firstChar.toUpperCase() && firstChar !== firstChar.toLowerCase()) {
-          return true;
-        }
-      }
-
-      // Check if the function is being assigned to a variable with uppercase first letter
-      if (
-        node.parent.type === "VariableDeclarator"
-        && node.parent.id.type === "Identifier"
-      ) {
-        const firstChar = node.parent.id.name.charAt(0);
-        if (firstChar === firstChar.toUpperCase() && firstChar !== firstChar.toLowerCase()) {
-          return true;
-        }
-      }
-
-      // Check if the function returns JSX
-      if (node.body.type === "BlockStatement") {
-        // For functions with block bodies, we'd need to analyze the return statements
-        // This is a simplified check
-        for (const statement of node.body.body) {
-          if (
-            statement.type === "ReturnStatement"
-            && statement.argument?.type === "JSXElement"
-          ) {
-            return true;
-          }
-        }
-      } else if (
-        node.body.type === "JSXElement"
-        || node.body.type === "JSXFragment"
-      ) {
-        // Arrow function with direct JSX return
-        return true;
-      }
-
-      // Check if the function is being exported (common for components)
-      if (
-        node.parent.type === "ExportNamedDeclaration"
-        || node.parent.parent?.type === "ExportNamedDeclaration"
-        || node.parent.type === "ExportDefaultDeclaration"
-      ) {
-        return true;
-      }
-
-      return false;
-    }
   },
   defaultOptions: [],
   meta: {
