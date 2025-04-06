@@ -1,4 +1,5 @@
 import markdown from "@eslint/markdown";
+import functional from "eslint-plugin-functional";
 import importPlugin from "eslint-plugin-import";
 import { ERROR, OFF, WARN } from "../../severityConstants";
 import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile";
@@ -98,6 +99,25 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
     files: ["**/*.{ts,tsx}"],
     rules: {
       "canonical/filename-match-regex": [ERROR],
+    },
+  },
+  {
+    // Note: We have prefer-read-only-props for tsx already, though this may expand to do more than it does and replace it
+    files: ["**/*.ts"],
+    plugins: { functional },
+    rules: {
+      "functional/prefer-immutable-types": [
+        ERROR,
+        {
+          // TODO: Adopt this library more broadly?
+          enforcement: "None", // Disable globally by default
+          parameters: {
+            // TODO: Change to ReadonlyDeep? ReadonlyShallow seems to match the react readonly props at least giving us something cheaply
+            enforcement: "ReadonlyShallow",
+            ignoreInferredTypes: true, // Ignore parameters with inferred types (common in inline arrows)
+          },
+        },
+      ],
     },
   },
   {
