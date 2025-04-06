@@ -36,6 +36,7 @@ const astigeJavascriptConfigs: FlatConfig.Config[] = [
       "astige-javascript/no-export-as": ERROR,
       "astige-javascript/no-import-as": ERROR,
       "astige-javascript/no-tsx-without-jsx": ERROR,
+      "max-params": [ERROR, 2], // TODO 3. Move to something enforcing single props like pattern stronger (since we're mostly react codebases first and it's a familiar pattern)
       "no-restricted-syntax": [
         "error",
         {
