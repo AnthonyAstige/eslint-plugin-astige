@@ -53,7 +53,7 @@ const astigeJavascriptConfigs: FlatConfig.Config[] = [
         },
         {
           message:
-            "Avoid React.FC (i.e.; React.FunctionComponent). Use plain functions with explicit props and inferred or explicit JSX.Element return type.",
+            "Avoid React.FC (i.e.; React.FunctionComponent) mostly for code uniformity. Use plain functions with explicit props and inferred or explicit JSX.Element return type.",
           selector: "TSTypeReference[typeName.name='FC'], TSTypeReference[typeName.name='FunctionComponent']",
         },
       ],
