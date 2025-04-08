@@ -51,6 +51,11 @@ const astigeJavascriptConfigs: FlatConfig.Config[] = [
           message: "Avoid using throw directly. Consider alternative error handling strategies like assert.",
           selector: "ThrowStatement",
         },
+        {
+          message:
+            "Avoid React.FC (i.e.; React.FunctionComponent). Use plain functions with explicit props and inferred or explicit JSX.Element return type.",
+          selector: "TSTypeReference[typeName.name='FC'], TSTypeReference[typeName.name='FunctionComponent']",
+        },
       ],
     },
   },
