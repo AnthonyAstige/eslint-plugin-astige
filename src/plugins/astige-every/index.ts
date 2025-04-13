@@ -144,6 +144,7 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
       "import/extensions": [
         ERROR,
         {
+          ignorePackages: true, // TODO 1: Narrow to [IxJS](https://github.com/ReactiveX/IxJS) ; can see them used in PhonicsSensei - Anthony 2025-04-12
           pattern: {
             cjs: "always",
             css: "always",
@@ -152,7 +153,6 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
             ts: "never",
             tsx: "never",
           },
-          ignorePackages: ["ix/asynciterable"],
         },
       ],
       "import/group-exports": ERROR,
