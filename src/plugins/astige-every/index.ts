@@ -152,6 +152,7 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
             ts: "never",
             tsx: "never",
           },
+          ignorePackages: ["ix/asynciterable"],
         },
       ],
       "import/group-exports": ERROR,
