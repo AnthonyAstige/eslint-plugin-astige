@@ -315,6 +315,7 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
       "jsonc/object-curly-spacing": OFF,
       "perfectionist/sort-imports": OFF,
       "prettier/prettier": OFF,
+      "react/jsx-indent": OFF,
     },
   },
   // Disable or adjust slow rules
