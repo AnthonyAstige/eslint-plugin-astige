@@ -121,6 +121,7 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
     },
   },
   {
+    files: ["**/*"],
     plugins: {
       import: importPlugin,
     },
