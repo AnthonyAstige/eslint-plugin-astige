@@ -7,12 +7,6 @@ import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 import canonicalAuto from "eslint-config-canonical/configurations/auto";
 import { astigeNextConfigs } from "./plugins/astige-next";
 
-const configs = {
-  "astige-every": astigeEveryConfigs,
-  "astige-ignore": astigeIgnoreConfigs,
-  "astige-javascript": astigeJavascriptConfigs,
-};
-
 const plugins = {
   "astige-every": astigeEveryPlugin,
   "astige-javascript": astigeJavascriptPlugin,
@@ -25,5 +19,12 @@ const auto: FlatConfig.Config[] = [
   ...astigeNextConfigs,
   ...astigeJavascriptConfigs,
 ];
+
+const configs = {
+  "astige-every": astigeEveryConfigs,
+  "astige-ignore": astigeIgnoreConfigs,
+  "astige-javascript": astigeJavascriptConfigs,
+  auto,
+};
 
 export { auto, configs, plugins };
