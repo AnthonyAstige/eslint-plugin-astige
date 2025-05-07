@@ -24,7 +24,6 @@ const configs = {
   "astige-every": astigeEveryConfigs,
   "astige-ignore": astigeIgnoreConfigs,
   "astige-javascript": astigeJavascriptConfigs,
-  auto,
 };
 
 export { auto, configs, plugins };
