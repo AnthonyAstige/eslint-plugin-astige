@@ -321,14 +321,6 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
   // Disable or adjust slow rules
   // * Found via `TIMING=1 npx eslint`
   {
-    plugins: {
-      // TODO: Ensure this is correct / fix back to "import/[rule-name]" override everywhere?
-      // TODO: * Before I had this named "import" in an attempt to override import from canonical's auto config
-      // TODO: ** Not sure if everything was working as intended even
-      import: importPlugin,
-    },
-  },
-  {
     files: ["**/*"],
     rules: {
       "@typescript-eslint/no-deprecated": OFF,
