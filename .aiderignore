@@ -1,0 +1,5 @@
+.aider*
+/node_modules/
+/dist/
+package-lock.json
+docs/dev/generated-create-eslint-plugin-instructions.md
