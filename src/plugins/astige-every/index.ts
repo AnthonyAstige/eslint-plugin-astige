@@ -1,6 +1,5 @@
 import markdown from "@eslint/markdown";
 import functional from "eslint-plugin-functional";
-import importPlugin from "eslint-plugin-import";
 import { ERROR, OFF, WARN } from "../../severityConstants";
 import { maxTokensPerFile } from "./rules/maxTokensPerFile/maxTokensPerFile";
 // import jsxA11yConfig from "eslint-config-canonical/configurations/jsx-a11y";
@@ -118,12 +117,6 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
           },
         },
       ],
-    },
-  },
-  {
-    files: ["**/*"],
-    plugins: {
-      import: importPlugin,
     },
   },
   {
