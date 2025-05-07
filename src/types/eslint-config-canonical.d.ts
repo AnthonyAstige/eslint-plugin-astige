@@ -1,5 +1,5 @@
 // eslint-disable-next-line canonical/filename-match-regex
-declare module "eslint-config-canonical/auto" {
+declare module "eslint-config-canonical" {
   import { type Linter } from "eslint";
 
   const config: Linter.Config[];
