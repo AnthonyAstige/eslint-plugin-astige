@@ -10,6 +10,7 @@
   "dependencies": {
     "@eslint/markdown": "^6.3.0",
     "@next/eslint-plugin-next": "^15.2.3",
+    "dprint": "^0.49.1",
     "fta-cli": "^2.0.1",
     "globals": "^16.0.0",
     "gpt-tokenizer": "^2.9.0"
@@ -25,7 +26,6 @@
     "@typescript-eslint/parser": "^8.26.1",
     "@typescript-eslint/rule-tester": "^8.27.0",
     "@typescript-eslint/utils": "^8.26.1",
-    "dprint": "^0.49.1",
     "eslint": "^9.22.0",
     "eslint_d": "^14.3.0",
     "eslint-config-canonical": "^44.4.2",
@@ -77,5 +77,5 @@
     "test": "jest"
   },
   "type": "module",
-  "version": "0.0.27"
+  "version": "0.0.29"
 }
