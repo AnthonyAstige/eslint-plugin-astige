@@ -318,6 +318,11 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
     files: ["**/*"],
     rules: {
       "@typescript-eslint/no-deprecated": OFF,
+    }
+  },
+  {
+    files: ["**/*.{js,cjs,mjs,ts,jsx,tsx}"],
+    rules: {
       "import/no-cycle": [
         ERROR,
         {
