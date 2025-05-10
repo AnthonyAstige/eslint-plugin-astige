@@ -312,6 +312,13 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
       "react/jsx-indent": OFF,
     },
   },
+  {
+    // Disable proptype rules that typescript can fix
+    files: ["**/*.{ts,tsx}"],
+    rules: {
+      'react/prop-types': OFF
+    }
+  },
   // Disable or adjust slow rules
   // * Found via `TIMING=1 npx eslint`
   {
