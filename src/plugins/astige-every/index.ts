@@ -95,9 +95,13 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
   },
   */
   {
+    // camelCase.ts or camelCase.tsx file naming with no numbers nor symbols
     files: ["**/*.{ts,tsx}"],
     rules: {
-      "canonical/filename-match-regex": [ERROR],
+      "canonical/filename-match-regex": [
+        ERROR,
+        { regex: "^[a-z]+(?:[A-Z][a-z]*)*$" },
+      ],
     },
   },
   {
