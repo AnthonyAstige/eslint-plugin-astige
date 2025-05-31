@@ -283,10 +283,11 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
       "import/prefer-default-export": ERROR,
     },
   },
-  // NextJS app layouts need default export
+  // NextJS app layouts & pages need default export
   {
     files: [
       "src/app/**/layout.tsx",
+      "src/app/**/page.tsx"
     ],
     rules: {
       "import/no-default-export": OFF,
