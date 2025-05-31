@@ -287,7 +287,7 @@ const astigeEveryConfigs: FlatConfig.Config[] = [
   {
     files: [
       "src/app/**/layout.tsx",
-      "src/app/**/page.tsx"
+      "src/app/**/page.{ts,tsx}"
     ],
     rules: {
       "import/no-default-export": OFF,
