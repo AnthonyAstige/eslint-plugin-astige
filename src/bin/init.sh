@@ -36,7 +36,6 @@ echo "$DPRINT_FILE created successfully!"
 # TODO: * - Anthony 2025-03-22
 echo "Creating $ESLINT_CONFIG in application root..."
 cat <<EOF >"$ESLINT_CONFIG"
-// eslint-disable-next-line canonical/filename-match-exported
 import { type FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 import * as astige from "eslint-plugin-astige";
 
